@@ -3,58 +3,431 @@ body {
     font-family: "sprite", Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: black;
 }
 
-.telaUm{
+.carregarInicial{
     width: 100%;
     height: 100vh;
-    background-color: aqua;
-    color: black;
+    background-color: black;
     display: flex;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.carregarInicial .esquerda{
+    height: 100%;
+    width: 50%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
     flex-direction: column;
 
 }
+
+.carregarInicial .esquerda h1{
+    color: #fff;
+    margin: 0 0 0 20%;
+    padding: 0;
+    font-size: 300%;
+    width: 17ch;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: digitando 2s steps(100) ;
+}
+@keyframes digitando {
+from{
+    width: 0;
+}
+}
+
+.carregarInicial .esquerda .text{
+    color: #fff;
+    margin-left: 20%;
+    font-size: 200%;
+    width: 13ch;
+    animation: piscando 1.5s infinite;
+}
+@keyframes piscando{
+0%{
+    opacity: 0;
+} 50%{
+    opacity: 1;
+} 100%{
+    opacity: 0;
+}
+}
+
+
+.carregarInicial .direita{
+    height: 100%;
+    width: 50%;
+    background-color: black;
+}
+
+.carregarInicial .direita p{
+    color: #fff;
+    margin-top: 10%;
+    margin-left: 10%;
+    width: fit-content;
+    font-size: 300%;
+    font-weight: 700;
+    animation: animacaoPonto 4s infinite;
+
+}
+@keyframes animacaoPonto{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.carregarInicial .direita .celular{
+    margin-top: 10%;
+    width: 320px;
+    height: 600px;
+    background-color: #000;
+    border: 10px solid #333;
+    border-radius: 15px;
+    position: relative;
+    margin-left: 15%;
+}
+.carregarInicial .direita .celular .linhaCamera{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+}
+.carregarInicial .direita .celular .linhaCamera .camera{
+    width: 30px;
+    height: 30px;
+    background-color: #333;
+    border: 2px solid #444;
+    border-radius: 50%;
+    position: absolute;
+    margin-top: 10px;
+
+}
+.carregarInicial .direita .celular .tela{
+    width: 90%;
+    height: 80%;
+    margin-top: 1% ;
+    margin-left: 8%; 
+
+}
+.carregarInicial .direita .celular .botaoCelular{
+    margin-top: 9%;
+    background-color: #333;
+    width: 100%;    
+    height: 5%;
+}
+
+
+
+
+
+/* Tela Inicial*/
+.telaUm{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: none;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 1s ease;
+
+}
+
+.telaUm img{
+    width: 100%;
+    height: 90%;
+    filter: brightness(0.89);
+}
 .header{
-    background-color: red;
+    background-color: black;
     color: white;
     width: 100%;
     height: 10%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }   
 
 .telaUm .header p{
     margin-top: 2.3%;
-    font-size: 160%;
+    font-size: 170%;
+    margin-left: 4%;
 }
 
 .telaUm .header button{
-    background-color: red;
+    background-color: black;
     color: white;
     border: none;
     font-size: 150%;
+    height: fit-content;
+    margin-top: 2%;
+    margin-right: 6%;
 }
-.telaUm .linhaTela01 {
+.telaUm .linhaTelaUm {
     height: 90%;
     width: 100%;
-    background-color: blueviolet;
+    position: absolute;      
     display: flex;
 }
-.telaUm .linhaTela01 div{
+.telaUm .linhaTelaUm div{
     width: 45%;
-    height: fit-content;
-    background-color: darkgray;
-    margin-top: 35%;
+    height: fit-content;;
+    margin-top: 40%;
     margin-left: 5%;
 }
-.telaUm .linhaTela01 div h1{
+.telaUm .linhaTelaUm div h1{
     font-size: 300%;
+    animation: texto01 2.5s ease infinite;
 }
-.telaUm .linhaTela01 div p{
+@keyframes texto01{
+    0%{
+        margin-left: 5%;
+    } 50%{
+        margin-left: 4%;
+    } 100%{
+        margin-left: 5%;
+    }
+}
+
+.telaUm .linhaTelaUm div p{
     font-size: 170%;
+    animation: texto02 2.5s ease infinite;
 }
-.telaUm .linhaTela01 .ladoEsquerdo{
-background-color: pink;
-width: 50%;
-height: fit-content;
+@keyframes texto02{
+    0%{
+        margin-left: 5%;
+    } 50%{
+        margin-left: 4%;
+    } 100%{
+        margin-left: 5%;
+    }
+}
+
+
+
+
+/*Tela sobre nós */
+
+.telaDois{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display:none;
+}
+
+.telaDois .esquerda{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: absolute ;
+    color: white;
+}
+
+.telaDois .esquerda .titulo{
+    margin-top: 10%;
+    margin-left: 5%;
+    font-size: 300%;
+    width: fit-content;
+    font-weight: 700;
+    text-shadow: 7px 7px 7px black;
+    animation: texto01 2.5s ease infinite;
+}
+.telaDois .esquerda .p{
+    margin-top: 20%;
+    margin-left: 5%;
+    font-size: 170%;
+    width: fit-content;
+    padding: 1%;
+    text-shadow: 5px 5px 5px black;
+}
+
+
+
+/* Tela de Como funciona */
+.telaTres{
+    height: fit-content;
+    width: 100%;
+    color: white;
+    display: none;
+    flex-direction: column;
+}
+
+.telaTres .titulo{
+    width: 50%;
+    text-align: center;
+    padding-top: 10%;  
+    height: fit-content;  
+    font-size: 300%;
+    position: absolute;
+    font-weight: 700;
+    text-shadow: 7px 7px 7px black;
+    animation: texto01 2.5s ease infinite;
+}
+
+.telaTres .linha01{
+
+    width: 100%;
+    margin-top: 20%;
+    height: 66%;
+    display: flex;
+    position: absolute;
+}
+
+.telaTres .linha01 .card{
+    width: 25%;
+    height: 75%;
+    margin: 10% 5%;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    opacity: 0.5;
+    border-radius: 15px;
+}   
+
+.telaTres .linha01 .card .linhaCard{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    font-size: 300%;
+    justify-content: center;
+    margin-top: 5%;
+}
+.telaTres .linha01 .card p{
+    padding: 1%;
+    margin: 4% 2%;
+    font-size: 105%;
+}
+
+
+
+
+/*Tela Das Principais Batalhas*/
+.telaQuatro{
+    height: fit-content;
+    width: 100%;
+    color: white;
+    display: none;
+    flex-direction: column;
+}
+.telaQuatro .titulo{
+    width:90%;
+    text-align: center;
+    margin-top: 2%;
+    height: fit-content;  
+    font-size: 300%;
+    position: absolute;
+    font-weight: 700;
+    text-shadow: 7px 7px 7px black;
+    animation: texto01 2.5s ease infinite;
+}
+.telaQuatro .cardGrande{
+    width:80%;
+    height: 20%;
+    margin-top: 10%;
+    margin-bottom: 2%;
+    position: absolute;
+    background-color: #aaa;
+    opacity: 0.7;
+    border-radius: 30px;
+    animation: cardGrande 5s infinite;
+    display: flex;
+}
+.telaQuatro .cardGrande .imgBatalha{
+    height: 100%;
+    padding: 0 3%;
+}
+@keyframes cardGrande{
+    0%{
+        margin-left: 2%;
+    }50%{
+        margin-left: 15%;
+    } 100%{
+        margin-left: 2%;
+    }
+}
+.cardGrande:hover{
+    animation-play-state: paused;
+    height: 22%;
+    width: 82%;
+    transition: 2s;
+
+}
+
+.telaQuatro .cardGrande2{
+    width:80%;
+    height: 20%;
+    margin-top: 30%;
+    margin-bottom: 2%;
+    margin-left: 20%;
+    position: absolute;
+    background-color: #aaa;
+    opacity: 0.5;
+    border-radius: 30px;
+    animation: cardGrande2 5s infinite;
+    display: flex;
+}
+.telaQuatro .cardGrande2 .imgBatalha{
+    height: 100%;
+    padding: 0 3%;
+}
+@keyframes cardGrande2{
+    0%{
+        margin-left: 18%;
+    }50%{
+        margin-left: 8%;
+    } 100%{
+        margin-left: 18%;
+    }
+}
+.cardGrande2:hover{
+    animation-play-state: paused;
+        height: 22%;
+    width: 82%;
+    transition: 2s;
+
+    
+}.telaQuatro .cardGrande3{
+    width:80%;
+    height: 20%;
+    margin-top: 50%;
+    margin-bottom: 2%;
+    position: absolute;
+    background-color: #aaa;
+    opacity: 0.5;
+    border-radius: 30px;
+    display: flex;
+    animation: cardGrande3 5s infinite;
+}
+@keyframes cardGrande3{
+    0%{
+        margin-left: 2%;
+    }50%{
+        margin-left: 15%;
+    } 100%{
+        margin-left: 2%;
+    }
+}
+.telaQuatro .cardGrande3 .imgBatalha{
+    height: 100%;
+    padding: 0 3%;
+}
+.cardGrande3:hover{
+    animation-play-state: paused;
+    height: 22%;
+    width: 82%;
+    transition: 2s;
+
 }
