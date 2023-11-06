@@ -1,6 +1,10 @@
-
+@font-face {
+    font-family: 'sprite-graffiti';
+    src: url('./sprite-graffiti-shadow.otf')
+    format('opentype');
+}
 body {
-    font-family: "sprite", Arial, sans-serif;
+    font-family: "sprite-graffiti";
     margin: 0;
     padding: 0;
     background-color: black;
@@ -10,7 +14,7 @@ body {
     width: 100%;
     height: 100vh;
     background-color: black;
-    display: flex;
+    display: flex   ;
     opacity: 1;
     transition: opacity 1s ease;
 }
@@ -18,18 +22,18 @@ body {
 .carregarInicial .esquerda{
     height: 100%;
     width: 50%;
-    background-color: black;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    position: absolute;
 
 }
 
 .carregarInicial .esquerda h1{
     color: #fff;
-    margin: 0 0 0 20%;
+    margin: 17% 0 0 20%;
     padding: 0;
-    font-size: 300%;
+    font-size: 350%;
     width: 17ch;
     white-space: nowrap;
     overflow: hidden;
@@ -44,9 +48,16 @@ from{
 .carregarInicial .esquerda .text{
     color: #fff;
     margin-left: 20%;
+    margin-top: 3%;
     font-size: 200%;
-    width: 13ch;
+    width: 25ch;
     animation: piscando 1.5s infinite;
+    cursor: pointer;
+}
+
+.carregarInicial .esquerda .text:hover{
+    opacity: 1;
+    animation-play-state: paused;
 }
 @keyframes piscando{
 0%{
@@ -58,16 +69,24 @@ from{
 }
 }
 
+.carregarInicial .esquerda .pularVideo{
+    color: #fff;
+    margin-left: 20%;
+    opacity: 0.7;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 .carregarInicial .direita{
     height: 100%;
-    width: 50%;
-    background-color: black;
+    width: 40%;
+    position: absolute;
+    margin-left: 60%;
 }
 
 .carregarInicial .direita p{
     color: #fff;
-    margin-top: 10%;
+    margin-top: 3%;
     margin-left: 10%;
     width: fit-content;
     font-size: 300%;
@@ -88,9 +107,9 @@ from{
 }
 
 .carregarInicial .direita .celular{
-    margin-top: 10%;
-    width: 320px;
-    height: 600px;
+    margin-top: 7%;
+    width: 250px;
+    height: 70%;
     background-color: #000;
     border: 10px solid #333;
     border-radius: 15px;
@@ -117,7 +136,7 @@ from{
     width: 90%;
     height: 80%;
     margin-top: 1% ;
-    margin-left: 8%; 
+    margin-left: 10%; 
 
 }
 .carregarInicial .direita .celular .botaoCelular{
@@ -146,48 +165,62 @@ from{
 
 .telaUm img{
     width: 100%;
-    height: 90%;
     filter: brightness(0.89);
 }
 .header{
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.05);
     color: white;
     width: 100%;
-    height: 10%;
+    height: fit-content;
     display: flex;
     justify-content: space-between;
+    position: absolute;
 }   
 
-.telaUm .header p{
-    margin-top: 2.3%;
-    font-size: 170%;
-    margin-left: 4%;
+.telaUm .header h1{
+    margin: 0;
+    margin-top: 2%;
+    margin-left: 5%;
+    font-size: 250%;
 }
 
 .telaUm .header button{
+    font-family: "sprite-graffiti";
     background-color: black;
     color: white;
+    border-radius: 15px;
     border: none;
-    font-size: 150%;
+    font-size: 200%;
     height: fit-content;
     margin-top: 2%;
     margin-right: 6%;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0.5%;
+    transition: 2s;
 }
+
+.telaUm .header button:hover{
+   transition: 2s;
+   background-color: white;
+   color: black; 
+}
+
 .telaUm .linhaTelaUm {
     height: 90%;
-    width: 100%;
+    width: 80%;
     position: absolute;      
     display: flex;
 }
 .telaUm .linhaTelaUm div{
     width: 45%;
     height: fit-content;;
-    margin-top: 40%;
+    margin-top: 35%;
     margin-left: 5%;
 }
 .telaUm .linhaTelaUm div h1{
-    font-size: 300%;
-    animation: texto01 2.5s ease infinite;
+    font-size: 310%;
+    animation: texto01 4s ease infinite;
 }
 @keyframes texto01{
     0%{
@@ -200,57 +233,63 @@ from{
 }
 
 .telaUm .linhaTelaUm div p{
-    font-size: 170%;
-    animation: texto02 2.5s ease infinite;
-}
-@keyframes texto02{
-    0%{
-        margin-left: 5%;
-    } 50%{
-        margin-left: 4%;
-    } 100%{
-        margin-left: 5%;
-    }
+    font-size: 160%;
+    animation: texto01 4s ease infinite;
 }
 
 
 
 
-/*Tela sobre nós */
+/*Tela Sobre o Rap*/
 
 .telaDois{
     width: 100%;
     height: 100vh;
     background-color: black;
     display:none;
+    transition: opacity 1s ease;
+    opacity: 0;
 }
 
 .telaDois .esquerda{
     height: 100%;
-    width: 60%;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    position: absolute ;
+    position: absolute;
     color: white;
 }
 
 .telaDois .esquerda .titulo{
-    margin-top: 10%;
-    margin-left: 5%;
     font-size: 300%;
     width: fit-content;
     font-weight: 700;
-    text-shadow: 7px 7px 7px black;
-    animation: texto01 2.5s ease infinite;
+    margin-top: 7%;
+    text-shadow: 5px 7px 7px black;
+    animation: texto02 6s ease infinite;
+    margin-left: 40%;
 }
+@keyframes texto02{
+    0%{
+        margin-left: 46%;
+    } 50%{
+        margin-left: 48%;
+    } 100%{
+        margin-left: 46%;
+    }
+}
+
 .telaDois .esquerda .p{
-    margin-top: 20%;
-    margin-left: 5%;
-    font-size: 170%;
-    width: fit-content;
+    margin-top: 2%;
+    margin-left: 46%;
+    font-size: 140%;
+    width: 45%;
     padding: 1%;
-    text-shadow: 5px 5px 5px black;
+    color: #000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgba(255,255,255, 0.5);
+    border-radius: 20px;
 }
 
 
@@ -262,40 +301,49 @@ from{
     color: white;
     display: none;
     flex-direction: column;
+    transition: opacity 1s ease;
+    opacity: 0;
 }
 
 .telaTres .titulo{
     width: 50%;
     text-align: center;
-    padding-top: 10%;  
+    margin-top: 10%;  
     height: fit-content;  
     font-size: 300%;
     position: absolute;
     font-weight: 700;
     text-shadow: 7px 7px 7px black;
-    animation: texto01 2.5s ease infinite;
+    animation: texto01 4s ease infinite;
 }
 
 .telaTres .linha01{
 
     width: 100%;
-    margin-top: 20%;
+    margin-top: 15%;
     height: 66%;
     display: flex;
     position: absolute;
 }
 
 .telaTres .linha01 .card{
-    width: 25%;
-    height: 75%;
-    margin: 10% 5%;
-    background-color: #fff;
+    width: 35%;
+    height: 122%;
+    margin: 5% 5%;
+    background-color: rgba(255,255,255, 0.5);
     color: #000;
     display: flex;
     flex-direction: column;
-    opacity: 0.5;
     border-radius: 15px;
+    transition: 2s;
 }   
+
+.telaTres .linha01 .card:hover{
+    width: 38%;
+    height: 119%;
+    transition: 2s;
+    background-color: rgba(255,255,255, 0.8);
+}
 
 .telaTres .linha01 .card .linhaCard{
     width: 100%;
@@ -306,10 +354,15 @@ from{
     margin-top: 5%;
 }
 .telaTres .linha01 .card p{
-    padding: 1%;
+    padding: 1.5%;
     margin: 4% 2%;
-    font-size: 105%;
+    font-size: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+
+
+
 
 
 
@@ -321,6 +374,8 @@ from{
     color: white;
     display: none;
     flex-direction: column;
+    transition: opacity 1s ease;
+    opacity: 0;
 }
 .telaQuatro .titulo{
     width:90%;
@@ -331,19 +386,19 @@ from{
     position: absolute;
     font-weight: 700;
     text-shadow: 7px 7px 7px black;
-    animation: texto01 2.5s ease infinite;
+    animation: texto01 4s ease infinite;
 }
 .telaQuatro .cardGrande{
+    display: flex;
     width:80%;
-    height: 20%;
+    height: 30%;
     margin-top: 10%;
     margin-bottom: 2%;
     position: absolute;
-    background-color: #aaa;
-    opacity: 0.7;
+    background-color:  rgba(255,255,255, 0.5);
+    justify-content: space-around;
     border-radius: 30px;
     animation: cardGrande 5s infinite;
-    display: flex;
 }
 .telaQuatro .cardGrande .imgBatalha{
     height: 100%;
@@ -360,7 +415,7 @@ from{
 }
 .cardGrande:hover{
     animation-play-state: paused;
-    height: 22%;
+    height: 32%;
     width: 82%;
     transition: 2s;
 
@@ -368,16 +423,16 @@ from{
 
 .telaQuatro .cardGrande2{
     width:80%;
-    height: 20%;
+    height: 30%;
     margin-top: 30%;
     margin-bottom: 2%;
     margin-left: 20%;
+    display: flex;
     position: absolute;
-    background-color: #aaa;
-    opacity: 0.5;
+    background-color:  rgba(255,255,255, 0.5);
+    justify-content: space-around;
     border-radius: 30px;
     animation: cardGrande2 5s infinite;
-    display: flex;
 }
 .telaQuatro .cardGrande2 .imgBatalha{
     height: 100%;
@@ -394,21 +449,21 @@ from{
 }
 .cardGrande2:hover{
     animation-play-state: paused;
-        height: 22%;
+        height: 32%;
     width: 82%;
-    transition: 2s;
+    transition: 2s;    
+} 
 
-    
-}.telaQuatro .cardGrande3{
+.telaQuatro .cardGrande3{
     width:80%;
-    height: 20%;
+    height: 30%;
     margin-top: 50%;
     margin-bottom: 2%;
     position: absolute;
-    background-color: #aaa;
-    opacity: 0.5;
-    border-radius: 30px;
     display: flex;
+    background-color:  rgba(255,255,255, 0.5);
+    justify-content: space-around;
+    border-radius: 30px;
     animation: cardGrande3 5s infinite;
 }
 @keyframes cardGrande3{
@@ -424,10 +479,404 @@ from{
     height: 100%;
     padding: 0 3%;
 }
-.cardGrande3:hover{
+ .cardGrande3:hover{
     animation-play-state: paused;
-    height: 22%;
+    height: 32%;
     width: 82%;
     transition: 2s;
 
+}
+
+
+
+
+
+
+
+
+
+/*Footer*/
+
+.telaCinco{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    transition: opacity 1s ease;
+    opacity: 0;
+}
+.telaCinco img{
+    width: 100%;
+    filter: brightness(0.60);
+}
+
+.telaCinco .footer {
+    display: flex;
+    width: 100%;
+    height: 60%;
+    margin-top: 38%;
+    background-color: rgba(0,0,0, 0.8);
+    position: absolute;
+}
+
+.telaCinco .footer .esquerda{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.telaCinco .footer .esquerda img{
+    width: fit-content;
+    height: 65%;
+    margin-left: 26%;
+    filter: opacity(0.9);
+}
+.telaCinco .footer .esquerda p{
+    font-size: 150%;
+    color: #fff;
+    margin-left: 8% ;
+    width: 57%;
+;
+}
+
+.telaCinco .footer .direita{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.telaCinco .footer .direita .linhas{
+    width: 80%;
+    height: 20%;
+    margin: 4%;
+    display: flex;
+
+}
+
+.telaCinco .footer .direita .linhas img{
+    width: 15%;
+    filter: brightness(1);
+    cursor: pointer;
+}
+
+.telaCinco .footer .direita .linhas p{
+    margin-top: 3%;
+    font-size: 200%;
+    color: #fff ;
+    margin-left: 7%;
+    cursor: pointer;
+}
+
+
+
+
+/*Tela de Cadastro Usuario*/
+.telaCadastroU{
+    display: none;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    opacity: 0;
+    transition: opacity 1s ease;
+    color: #fff;
+    flex-direction: column;
+}
+
+.telaCadastroU .linhaTitulo{
+    width: 100%;
+    height: 13%;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(255,255,255, 0.2);
+}
+
+.telaCadastroU .linhaTitulo h1{
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.telaCadastroU .linhaTitulo .irTelaCadastroB{
+    background-color: rgba(255,255,255, 0.5);
+    height: fit-content;
+    padding: 1%;
+    border-radius: 15px;
+    margin-top: 1%;
+    font-size: 150%;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 2s;
+}
+
+.telaCadastroU .linhaTitulo .irTelaCadastroB:hover{
+    transition: 2s;
+    background-color: white;
+    color: #000 ;
+}
+
+.telaCadastroU .form{
+    width: 100%;
+    background-color: none;
+    height: 85%;
+    position: absolute;
+    margin-top: 6.5%;
+    display: flex;
+}
+
+.telaCadastroU .form .esquerda{
+    width: 45%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.telaCadastroU .form .esquerda input{
+    width: 30%;
+    max-width: 40%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: #020202;
+    color: #fff;
+    height: 25%;
+    font-size: 105%;
+}
+
+.telaCadastroU .form .esquerda button{
+    font-family: "sprite-graffiti";
+    width: fit-content;
+    background-color: #fff;
+    border-radius: 15px;
+    font-size: 170%;
+    font-weight: 700;
+    color: #000;
+    margin-left: 9%;
+    border: none;
+    padding: 1%;
+    transition: 1s;
+    cursor: pointer;
+}
+.telaCadastroU .form .esquerda button:hover{
+    transition: 1s;
+    color: #fff;
+    background-color: orange;
+}
+
+.telaCadastroU .form .direita{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-right: 5%;
+    text-align: right;
+    align-items: end;
+}
+
+.telaCadastroU .form .direita h1{
+    margin-top: -5%;
+    margin-bottom: 10%;
+    border-bottom: 2px solid #fff;
+    width: 30%;
+}
+
+.telaCadastroU .form .direita input{
+    width: 30%;
+    max-width: 40%;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background-color: #020202;
+    color: #fff;
+    height: 7%;
+    text-align: end;
+    font-size: 105%;
+}
+
+.telaCadastroU .form .direita button{
+    font-family: "sprite-graffiti";
+    width: fit-content;
+    border-radius: 15px;
+    background-color: #fff;
+    color: #000;
+    font-size: 180%;
+    font-weight: 700;
+    margin-top: 7%;
+    border: none;
+    padding: 1%;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.telaCadastroU .form .direita button:hover{
+    transition: 1s;
+    color: #fff;
+    background-color: orange;
+}
+
+.telaCadastroU .mensagemErroU{
+    position: absolute;
+    color: red;
+    width: 100%;
+    text-align: center;
+    margin-top: 28%;
+    font-size: 120%;
+}
+
+
+
+
+
+/*Tela de cadastro batalha*/
+
+.telaCadastroB{
+    display: none;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    opacity: 0;
+    transition: opacity 1s ease;
+    color: #fff;
+    flex-direction: column;
+}
+
+.telaCadastroB .linhaTitulo{
+    width: 100%;
+    height: 13%;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(255,255,255, 0.2);
+}
+
+.telaCadastroB .linhaTitulo h1{
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.telaCadastroB .linhaTitulo .irTelaCadastroU{
+    background-color: rgba(255,255,255, 0.5);
+    height: fit-content;
+    padding: 1%;
+    border-radius: 15px;
+    margin-top: 1%;
+    font-size: 150%;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 2s;
+}
+
+.telaCadastroB .linhaTitulo .irTelaCadastroU:hover{
+    transition: 2s;
+    background-color: white;
+    color: #000 ;
+}
+
+.telaCadastroB .form{
+    width: 100%;
+    background-color: none;
+    height: 85%;
+    position: absolute;
+    margin-top: 6.5%;
+    display: flex;
+}
+
+.telaCadastroB .form .esquerda{
+    width: 45%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.telaCadastroB .form .esquerda input{
+    width: 30%;
+    max-width: 40%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: #000;
+    color: #fff;
+    height: 5%;
+    font-size: 105%;
+    cursor: pointer;
+}
+
+.telaCadastroB .form .esquerda button:hover{
+    transition: 1s;
+    color: #fff;
+    background-color: orange;
+}
+
+.telaCadastroB .form .direita{
+    width: 45%;
+    margin-top: 4%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 5%;
+    text-align: right;
+    align-items: end;
+}
+
+.telaCadastroB .form .direita input{
+    width: 30%;
+    max-width: 40%;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background-color: #020202;
+    color: #fff;
+    height: 7%;
+    text-align: end;
+    font-size: 105%;
+}
+
+.telaCadastroB .form .direita button{
+    font-family: "sprite-graffiti";
+    width: fit-content;
+    border-radius: 15px;
+    background-color: #fff;
+    color: #000;
+    font-size: 180%;
+    font-weight: 700;
+    margin-top: 7%;
+    border: none;
+    padding: 1%;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.telaCadastroB .form .direita button:hover{
+    transition: 1s;
+    color: #fff;
+    background-color: orange;
+}
+
+
+.telaCadastroB button{
+    position: absolute;
+    width: fit-content;
+    color: #000;
+    background-color: #fff;
+    margin-left: 42%;
+    font-size: 250%;
+    font-family: "sprite-graffiti";
+    border: none;
+    border-radius: 15px;
+    margin-top: 27%;
+    transition: 2s;
+    cursor: pointer;
+}
+
+.telaCadastroB button:hover{
+    background-color: orange;
+    color: #fff;
+    transition: 2s;
+}
+
+.telaCadastroB .mensagemErroB{
+    position: absolute;
+    color: red;
+    width: 100%;
+    text-align: center;
+    margin-top: 34%;
+    font-size: 120%;
 }
