@@ -42,9 +42,12 @@ CONSTRAINT idRackBatalhaRackBatakha FOREIGN KEY (fkBatalhaRB) REFERENCES batalha
 
 
 CREATE TABLE post(
-idPost int primary key,
+idPost int,
+fkBatalhaP int,
+PRIMARY KEY(idPost, fkBatalhaP),
 conteudo varchar(500),
-dtPost DATETIME 
+dtPost DATETIME,
+CONSTRAINT fkBatalhaPPost FOREIGN KEY (fkBatalhaP) REFERENCES batalhas (idBatalha)
 );
 
 CREATE TABLE curtidas(
@@ -52,7 +55,9 @@ fkPostC int,
 fkUsuarioC int,
 primary key(fkPostC, fkUsuarioC),
 curtida int,
-CONSTRAINT chkCurtidaCurtidas check (curtida IN (1))
+CONSTRAINT chkCurtidaCurtidas check (curtida IN (1)),
+CONSTRAINT fkPostCCurtidas FOREIGN KEY (fkPostC) REFERENCES post(idPost),
+CONSTRAINT fkUsuarioCurtidas FOREIGN KEY (fkUsuarioC) REFERENCES usuario(idUsuario)
 );
 
 INSERT INTO usuario VALUES
@@ -61,15 +66,10 @@ INSERT INTO usuario VALUES
 (3,'MC Barreto','barreto@gmail.com','11965218475','barreto1234');
 
 INSERT INTO batalhas VALUES
-(null, 'MC Alves','Mc Bob 13','Batalha da Aldeia', 'batalhadaaldeia@gmail.com', '11941873265','bda123'),
-(null, 'Mc Negralha', null, 'Batalha Do Coliseu', 'batalhadocoliseu@gmail.com', '11969369825','bdc123');
+(null, 'Batalha da Aldeia', 'BDA' ,'MC Alves','Mc Bob 13', 'batalhadaaldeia@gmail.com', '11941873265','bda123'),
+(null, 'Batalha Do Coliseu', 'BDC', 'Mc Negralha', null, 'batalhadocoliseu@gmail.com', '11969369825','bdc123');
 
-
-SELECT * FROM usuario JOIN relacao ON idUsuario=fkUsuario JOIN batalhas ON fkBatalha = idBatalha;
-
-SELECT u.nomeUsuario, b.nomeBatalha, r.numeroSeguidores FROM
- usuario AS u JOIN relacao AS r ON u.idUsuario = r.fkUsuario JOIN batalhas AS b ON r.fkBatalha = b.idBatalha;
  
- SELECT * FROM usuario;
+SELECT * FROM usuario;
  
  SELECT * FROM batalhas;
