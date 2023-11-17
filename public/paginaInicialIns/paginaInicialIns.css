@@ -236,6 +236,7 @@ from{
 .telaUm .linhaTelaUm div p{
     font-size: 160%;
     animation: texto01 4s ease infinite;
+    width: 110%;
 }
 
 
@@ -247,7 +248,7 @@ from{
     margin-left: 70%;
     margin-top: 35%;
     font-size: 210%;
-    background-color: orange;
+    background-color: #fff;
     color: #000;
     border-radius: 15px;
 }
@@ -261,8 +262,12 @@ from{
     display:none;
     transition: opacity 1s ease;
     opacity: 0;
+    margin-top: 2.5%;
 }
 
+.telaDois img{
+    filter: brightness(0.60);
+}
 .telaDois .esquerda{
     height: 100%;
     width: 100%;
@@ -415,6 +420,7 @@ from{
 .telaQuatro .cardGrande .imgBatalha{
     height: 100%;
     padding: 0 3%;
+    cursor: pointer;
 }
 @keyframes cardGrande{
     0%{
@@ -501,6 +507,15 @@ from{
 
 
 
+.telaQuatro .detalheBatalha {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background-color: rgba(255,255,255, 0.5);
+    margin-top: 15%;
+    margin-left: 15%;
+    display: none;
+}
 
 
 
@@ -516,10 +531,6 @@ from{
     transition: opacity 1s ease;
     opacity: 0;
 }
-.telaCinco img{
-    width: 100%;
-    filter: brightness(0.60);
-}
 
 .telaCinco .footer {
     display: flex;
@@ -527,7 +538,7 @@ from{
     height: 60%;
     background-color: rgba(0,0,0, 0.8);
     position: absolute;
-    margin-top: 40%;
+ 
 }
 
 .telaCinco .footer .esquerda{
