@@ -1,0 +1,1040 @@
+@font-face {
+    font-family: 'sprite-graffiti';
+    src: url('./sprite-graffiti-shadow.otf') format('opentype');
+}
+
+body {
+    font-family: "sprite-graffiti";
+    margin: 0;
+    padding: 0;
+    background-color: black;
+
+}
+
+::-webkit-scrollbar {
+    height: 0;
+    width: 3px;
+    margin-right: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.carregarInicial {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.carregarInicial .esquerda {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+
+}
+
+.carregarInicial .esquerda h1 {
+    color: #fff;
+    margin: 17% 0 0 20%;
+    padding: 0;
+    font-size: 280%;
+    width: 17ch;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: digitando 2s steps(100);
+}
+
+@keyframes digitando {
+    from {
+        width: 0;
+    }
+}
+
+.carregarInicial .esquerda .text {
+    color: #fff;
+    margin-left: 20%;
+    margin-top: 3%;
+    font-size: 150%;
+    width: 25ch;
+    animation: piscando 1.5s infinite;
+    cursor: pointer;
+}
+
+.carregarInicial .esquerda .text:hover {
+    opacity: 1;
+    animation-play-state: paused;
+}
+
+@keyframes piscando {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.carregarInicial .esquerda .pularVideo {
+    color: #fff;
+    margin-left: 20%;
+    opacity: 0.7;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 100%;
+}
+
+.carregarInicial .direita {
+    height: 100%;
+    width: 40%;
+    position: absolute;
+    margin-left: 60%;
+}
+
+.carregarInicial .direita p {
+    color: #fff;
+    margin-top: 3%;
+    margin-left: 15%;
+    width: fit-content;
+    font-size: 200%;
+    font-weight: 700;
+    animation: animacaoPonto 4s infinite;
+
+}
+
+@keyframes animacaoPonto {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.carregarInicial .direita .celular {
+    margin-top: 5%;
+    width: 200px;
+    height: 70%;
+    background-color: #000;
+    border: 10px solid #333;
+    border-radius: 15px;
+    position: relative;
+    margin-left: 15%;
+}
+
+.carregarInicial .direita .celular .linhaCamera {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.carregarInicial .direita .celular .linhaCamera .camera {
+    width: 30px;
+    height: 30px;
+    background-color: #333;
+    border: 2px solid #444;
+    border-radius: 50%;
+    position: absolute;
+    margin-top: 10px;
+
+}
+
+.carregarInicial .direita .celular .tela {
+    width: 90%;
+    height: 80%;
+    margin-top: 5%;
+    margin-left: 10%;
+    overflow: hidden;
+
+}
+
+.carregarInicial .direita .celular .tela video {
+    max-height: 105%;
+}
+
+.carregarInicial .direita .celular .botaoCelular {
+    margin-top: 9%;
+    background-color: #333;
+    width: 100%;
+    height: 5%;
+}
+
+
+
+
+
+/* Tela Inicial*/
+.telaUm {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: none;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 1s ease;
+
+}
+
+.telaUm img {
+    width: 100%;
+    filter: brightness(0.89);
+}
+
+.header {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: white;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    align-items: center;
+}
+
+.telaUm .header h1 {
+    margin: 0;
+    margin-left: 5%;
+    font-size: 200%;
+}
+
+.telaUm .header button {
+    font-family: "sprite-graffiti";
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    font-size: 150%;
+    height: fit-content;
+    margin-right: 6%;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0.5%;
+    transition: 2s;
+}
+
+.telaUm .header button:hover {
+    transition: 2s;
+    background-color: white;
+    color: black;
+}
+
+.telaUm .linhaTelaUm {
+    height: 90%;
+    width: 80%;
+    position: absolute;
+    display: flex;
+}
+
+.telaUm .linhaTelaUm div {
+    width: 45%;
+    height: fit-content;
+    ;
+    margin-top: 35%;
+    margin-left: 5%;
+}
+
+.telaUm .linhaTelaUm div h1 {
+    font-size: 210%;
+    animation: texto01 4s ease infinite;
+}
+
+@keyframes texto01 {
+    0% {
+        margin-left: 5%;
+    }
+
+    50% {
+        margin-left: 4%;
+    }
+
+    100% {
+        margin-left: 5%;
+    }
+}
+
+.telaUm .linhaTelaUm div p {
+    font-size: 120%;
+    animation: texto01 4s ease infinite;
+    width: 110%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2%;
+    border-radius: 15px;
+}
+
+
+.telaUm .button {
+    width: fit-content;
+    padding: 1%;
+    height: fit-content;
+    position: absolute;
+    margin-left: 70%;
+    margin-top: 35%;
+    font-size: 160%;
+    background-color: #fff;
+    color: #000;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/*Tela Sobre o Rap*/
+
+.telaDois {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: none;
+    transition: opacity 1s ease;
+    opacity: 0;
+    margin-top: 2.5%;
+}
+
+.telaDois img {
+    filter: brightness(0.60);
+}
+
+.telaDois .esquerda {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: absolute;
+    color: white;
+}
+
+.telaDois .esquerda .titulo {
+    font-size: 210%;
+    width: fit-content;
+    font-weight: 700;
+    margin-top: 7%;
+    text-shadow: 5px 7px 7px black;
+    animation: texto02 6s ease infinite;
+    margin-left: 40%;
+}
+
+@keyframes texto02 {
+    0% {
+        margin-left: 46%;
+    }
+
+    50% {
+        margin-left: 48%;
+    }
+
+    100% {
+        margin-left: 46%;
+    }
+}
+
+.telaDois .esquerda .p {
+    margin-top: 2%;
+    margin-left: 46%;
+    font-size: 110%;
+    width: 45%;
+    padding: 1%;
+    color: #000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+
+
+/* Tela de Como funciona */
+.telaTres {
+    width: 100%;
+    height: 120vh;
+    color: white;
+    display: none;
+    flex-direction: column;
+    transition: opacity 1s ease;
+    opacity: 0;
+}
+
+.telaTres .titulo {
+    width: 50%;
+    text-align: center;
+    margin-top: 10%;
+    height: fit-content;
+    font-size: 250%;
+    position: absolute;
+    font-weight: 700;
+    text-shadow: 7px 7px 7px black;
+    animation: texto01 4s ease infinite;
+}
+
+.telaTres .linha01 {
+
+    width: 100%;
+    margin-top: 15%;
+    height: 66%;
+    display: flex;
+    position: absolute;
+}
+
+.telaTres .linha01 .card {
+    width: 40%;
+    height: 100%;
+    margin: 5% 5%;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    transition: 3s;
+    overflow: scroll;
+}
+
+.telaTres .linha01 .card:hover {
+    width: 43%;
+    transition: 2s;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.telaTres .linha01 .card .linhaCard {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    font-size: 300%;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.telaTres .linha01 .card p {
+    padding: 1.5%;
+    margin: 4% 2%;
+    font-size: 85%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+
+
+
+
+
+/*Tela Das Principais Batalhas*/
+.telaQuatro {
+    height: 130vh;
+    width: 100%;
+    color: white;
+    display: none;
+    flex-direction: column;
+    transition: opacity 1s ease;
+    opacity: 0;
+}
+
+.telaQuatro .titulo {
+    width: 90%;
+    text-align: center;
+    margin-top: 5%;
+    height: fit-content;
+    font-size: 300%;
+    position: absolute;
+    font-weight: 700;
+    text-shadow: 7px 7px 7px black;
+    animation: texto01 4s ease infinite;
+}
+
+.telaQuatro .cardGrande {
+    display: flex;
+    width: 80%;
+    height: 25%;
+    margin-top: 13%;
+    margin-bottom: 2%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    justify-content: space-around;
+    border-radius: 30px;
+    animation: cardGrande 5s infinite;
+}
+
+.telaQuatro .cardGrande .imgBatalha {
+    height: 100%;
+    padding: 0 3%;
+    cursor: pointer;
+}
+
+@keyframes cardGrande {
+    0% {
+        margin-left: 2%;
+    }
+
+    50% {
+        margin-left: 15%;
+    }
+
+    100% {
+        margin-left: 2%;
+    }
+}
+
+.cardGrande:hover {
+    animation-play-state: paused;
+    height: 28%;
+    width: 82%;
+    transition: 2s;
+
+}
+
+.telaQuatro .cardGrande2 {
+    width: 80%;
+    height: 22%;
+    margin-top: 28%;
+    margin-bottom: 2%;
+    margin-left: 20%;
+    display: flex;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    justify-content: space-around;
+    border-radius: 30px;
+    animation: cardGrande2 5s infinite;
+}
+
+.telaQuatro .cardGrande2 .imgBatalha {
+    height: 100%;
+    padding: 0 3%;
+}
+
+@keyframes cardGrande2 {
+    0% {
+        margin-left: 18%;
+    }
+
+    50% {
+        margin-left: 8%;
+    }
+
+    100% {
+        margin-left: 18%;
+    }
+}
+
+.cardGrande2:hover {
+    animation-play-state: paused;
+    height: 28%;
+    width: 82%;
+    transition: 2s;
+}
+
+.telaQuatro .cardGrande3 {
+    width: 80%;
+    height: 22%;
+    margin-top: 45%;
+    margin-bottom: 2%;
+    position: absolute;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.5);
+    justify-content: space-around;
+    border-radius: 30px;
+    animation: cardGrande3 5s infinite;
+}
+
+@keyframes cardGrande3 {
+    0% {
+        margin-left: 2%;
+    }
+
+    50% {
+        margin-left: 15%;
+    }
+
+    100% {
+        margin-left: 2%;
+    }
+}
+
+.telaQuatro .cardGrande3 .imgBatalha {
+    height: 100%;
+    padding: 0 3%;
+}
+
+.cardGrande3:hover {
+    animation-play-state: paused;
+    height: 28%;
+    width: 82%;
+    transition: 2s;
+
+}
+
+
+
+.telaQuatro .detalheBatalha {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-top: 15%;
+    margin-left: 15%;
+    display: none;
+}
+
+
+
+
+
+
+/*Footer*/
+
+.telaCinco {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    transition: opacity 1s ease;
+    opacity: 0;
+}
+
+.telaCinco .footer {
+    display: flex;
+    width: 100%;
+    height: 60%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+
+}
+
+.telaCinco .footer .esquerda {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.telaCinco .footer .esquerda img {
+    width: fit-content;
+    height: 65%;
+    margin-left: 26%;
+    filter: opacity(0.9);
+}
+
+.telaCinco .footer .esquerda p {
+    font-size: 120%;
+    color: #fff;
+    margin-left: 8%;
+    width: 57%;
+    ;
+}
+
+.telaCinco .footer .direita {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.telaCinco .footer .direita .linhas {
+    width: 80%;
+    height: 20%;
+    margin: 4%;
+    display: flex;
+
+}
+
+.telaCinco .footer .direita .linhas img {
+    width: 12%;
+    cursor: pointer;
+}
+
+.telaCinco .footer .direita .linhas p {
+    margin-top: 3%;
+    font-size: 140%;
+    color: #fff;
+    margin-left: 7%;
+    cursor: pointer;
+}
+
+
+
+
+/*Tela de Cadastro Usuario*/
+.telaCadastroU {
+    display: none;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    opacity: 0;
+    transition: opacity 1s ease;
+    color: #fff;
+    flex-direction: column;
+}
+
+.telaCadastroU .linhaTitulo {
+    width: 100%;
+    height: 13%;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.2);
+    align-items: center;
+}
+
+.telaCadastroU .linhaTitulo h1 {
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 140%;
+}
+
+.telaCadastroU .linhaTitulo .irTelaCadastroB {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: fit-content;
+    padding: 1%;
+    border-radius: 15px;
+    font-size: 110%;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 2s;
+}
+
+.telaCadastroU .linhaTitulo .irTelaCadastroB:hover {
+    transition: 2s;
+    background-color: white;
+    color: #000;
+}
+
+.telaCadastroU .form {
+    width: 100%;
+    background-color: none;
+    height: 85%;
+    position: absolute;
+    margin-top: 6.5%;
+    display: flex;
+}
+
+.telaCadastroU .form .esquerda {
+    width: 45%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 90%;
+}
+.telaCadastroU .form .esquerda h1{
+    font-size: 160%;
+}
+
+.telaCadastroU .form .esquerda input {
+    width: 30%;
+    max-width: 40%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: #020202;
+    color: #fff;
+    height: 20%;
+    font-size: 80%;
+}
+
+.telaCadastroU .form .esquerda button {
+    font-family: "sprite-graffiti";
+    width: fit-content;
+    background-color: #fff;
+    border-radius: 15px;
+    font-size: 150%;
+    font-weight: 700;
+    color: #000;
+    margin-left: 9%;
+    border: none;
+    padding: 1%;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.telaCadastroU .form .esquerda button:hover {
+    transition: 1s;
+    color: #fff;
+    background-color: orange;
+}
+
+.telaCadastroU .form .direita {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-right: 5%;
+    text-align: right;
+    align-items: end;
+}
+
+.telaCadastroU .form .direita h1 {
+    margin-top: -5%;
+    margin-bottom: 10%;
+    border-bottom: 2px solid #fff;
+    width: 30%;
+    font-size: 150%;
+}
+
+.telaCadastroU .form .direita input {
+    width: 30%;
+    max-width: 40%;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background-color: #020202;
+    color: #fff;
+    height: 7%;
+    text-align: end;
+    font-size: 80%;
+}
+
+.telaCadastroU .form .direita button {
+    font-family: "sprite-graffiti";
+    width: fit-content;
+    border-radius: 15px;
+    background-color: #fff;
+    color: #000;
+    font-size: 150%;
+    font-weight: 700;
+    margin-top: 7%;
+    border: none;
+    padding: 1%;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.telaCadastroU .form .direita button:hover {
+    transition: 1s;
+    color: #fff;
+    background-color: orange;
+}
+
+.telaCadastroU .mensagemErroU {
+    position: absolute;
+    color: red;
+    width: 100%;
+    text-align: center;
+    margin-top: 28%;
+    font-size: 100%;
+
+}
+
+
+
+
+
+/*Tela de cadastro batalha*/
+
+.telaCadastroB {
+    display: none;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    opacity: 1;
+    transition: opacity 1s ease;
+    color: #fff;
+    flex-direction: column;
+}
+
+.telaCadastroB .linhaTitulo {
+    width: 100%;
+    height: 13%;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.2);
+    align-items: center;
+}
+
+.telaCadastroB .linhaTitulo h1 {
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 135%;
+}
+
+.telaCadastroB .linhaTitulo .irTelaCadastroU {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: fit-content;
+    padding: 1%;
+    border-radius: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 2s;
+}
+
+.telaCadastroB .linhaTitulo .irTelaCadastroU:hover {
+    transition: 2s;
+    background-color: white;
+    color: #000;
+}
+
+.telaCadastroB .form {
+    width: 100%;
+    background-color: none;
+    height: 85%;
+    position: absolute;
+    margin-top: 6.5%;
+    display: flex;
+}
+
+.telaCadastroB .form .esquerda {
+    width: 45%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 90%;
+}
+
+.telaCadastroB .form .esquerda h1{
+    font-size: 150%;
+}
+
+.telaCadastroB .form .esquerda input {
+    width: 30%;
+    max-width: 40%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: #000;
+    color: #fff;
+    height: 5%;
+    font-size: 80%;
+    cursor: pointer;
+}
+
+.telaCadastroB .form .direita {
+    width: 45%;
+    margin-top: 4%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 5%;
+    text-align: right;
+    align-items: end;
+    font-size: 90%;
+}
+
+.telaCadastroB .form .direita input {
+    width: 30%;
+    max-width: 40%;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background-color: #020202;
+    color: #fff;
+    height: 7%;
+    text-align: end;
+    font-size: 105%;
+}
+
+
+.telaCadastroB button {
+    position: absolute;
+    width: fit-content;
+    color: #000;
+    background-color: #fff;
+    margin-left: 42%;
+    font-size: 180%;
+    font-family: "sprite-graffiti";
+    border: none;
+    border-radius: 15px;
+    margin-top: 27%;
+    transition: 2s;
+    cursor: pointer;
+}
+
+.telaCadastroB button:hover {
+    background-color: orange;
+    color: #fff;
+    transition: 2s;
+}
+
+.telaCadastroB .mensagemErroB {
+    position: absolute;
+    color: red;
+    width: 100%;
+    text-align: center;
+    margin-top: 34%;
+    font-size: 100%;
+}
+
+.telaCadastroB .loginBatalha {
+    width: 60%;
+    height: 80%;
+    background-color: #fff;
+    position: absolute;
+    margin-left: 20%;
+    margin-top: -5%;
+    display: none;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+.telaCadastroB .loginBatalha .esquerda .linhaFechar {
+    width: 48%;
+    height: 5%;
+    text-align: right;
+    margin: 0 2% 0 50%;
+    font-size: 180%;
+    position: absolute;
+    color: #000;
+    cursor: pointer;
+}
+
+.telaCadastroB .loginBatalha .esquerda {
+    width: 50%;
+    height: 100%;
+}
+
+.telaCadastroB .loginBatalha .direita {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 5%;
+    color: #000;
+    width: 50%;
+    height: 100%;
+}
+
+.telaCadastroB .loginBatalha .direita h1 {
+    font-size: 250%;
+}
+
+.telaCadastroB .loginBatalha .direita input {
+    width: 85%;
+    border: none;
+    border-bottom: 2px solid #000;
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 5%;
+    font-size: 80%;
+}
+
+.telaCadastroB .loginBatalha .direita input::placeholder {
+    color: #000;
+}
+
+.telaCadastroB .loginBatalha .direita button {
+    color: #fff;
+    background-color: #000;
+    padding: 2%;
+    font-size: 150%;
+    margin: 0%;
+    position: relative;
+    transition: 2s;
+}
+
+.telaCadastroB .loginBatalha .direita button:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.telaCadastroB .loginBatalha .direita .mensagemErroB {
+    color: black;
+    width: 100%;
+    text-align: center;
+    font-size: 130%;
+    position: relative;
+    margin-top: 10%;
+    display: flex;
+}

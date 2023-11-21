@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/DashboardU.css">
+</head>
+
+<body>
+     <!-- Tela de formulario -->
+  <div class="tela-form-ajuda" id="div_tela_form_ajuda">
+    <form>
+      <div>
+      <h1>Contate - Nos</h1>
+      <span onclick="fecharAjuda()">X</span>
+  </div>
+      <div class="pedaco-formulario">
+        <input type="text" id="nome" name="Nome" placeholder="Digite aqui seu nome">
+      </div>
+      <div class="pedaco-formulario">
+        <input type="email" id="email" name="Email para contato" placeholder="Digite aqui seu email para contato">
+      </div>
+      <div class="pedaco-formulario">
+        <input type="text" id="assunto" name="Assunto" placeholder="Digite aqui o assunto">
+      </div>
+      <div class="pedaco-formulario">
+        <input type="text" id="problema" name="Descrição do problema" placeholder="Descreva seu problema">
+      </div>
+      <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<!--Tela de perfil-->
+    <div class="telaPerfil" id="div_telaPerfil">
+        <div class="modal">
+            <div class="primeiraLinha">
+                <div id="nomeUsuario">Nome Usuario</div>
+                <span onclick="fecharPerfil()">X</span>
+            </div>
+            <div class="modal2">
+                <div class="esquerda">
+                    <div class="linha">
+                       Nome: <div id="nomeUsuario2">Nome Usuario</div>
+                        <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado1()">
+                    </div>
+                    <input type="text" id="input_nomeUsuario">
+                    <div class="linha">
+                       Email: <div id="emailUsuario">emailUsuario</div>
+                        <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado2()">
+                    </div>
+                    <input type="text" id="input_emailUsuario">
+                </div>
+                <div class="direita">
+                    <div class="linha">
+                       Telefone: <div id="telefoneUsuario">telefoneUsuario</div>
+                        <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado3()">
+                    </div>
+                    <input type="text" id="input_telefoneUsuario">
+                    <div class="linha">
+                       Senha <div id="senhaUsuario">senhaUsuario</div>
+                        <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado4()">
+                    </div>
+                    <input type="text" id="input_senhaUsuario">
+                </div>
+            </div>
+            <button onclick="sairPerfil()">Sair perfil</button>
+
+        </div>
+    </div>
+
+    <div class="telaCarregando" id="div_telaCarregando">
+        <div class="rimas321" id="rimasC">
+            <div class="rima1" id="div_rima1">Rimas em 3...</div>
+        </div>
+    </div>
+    <div class="telaInicial" id="div_telaInicial">
+        <div class="menuLateral">
+
+
+            <div class="esquerda">
+                <img src="../paginaInicialIns/Imagens/batalha_da_aldeia.png" class="imgAldeia" id="div_imgAldeia" onclick="abrirPerfilBatalha()">
+                <img src=".././paginaInicialIns/Imagens/batalha_da_brasilandia.png" class="imgBrasilandia"
+                    id="div_imgBrasilandia" onclick="abrirPerfilBatalha()">
+                <img src=".././paginaInicialIns/Imagens/batalha_da_leste.png" class="imgLeste" id="div_imgLeste" onclick="abrirPerfilBatalha()">
+                <img src=".././paginaInicialIns/Imagens/batalha_da_linear.png" class="imgLinear" id="div_imgLinear" onclick="abrirPerfilBatalha()">
+                <img src=".././paginaInicialIns/Imagens/batalha_da_norte.png" class="imgNorte" id="div_imgNorte" onclick="abrirPerfilBatalha()">
+                <img src=".././paginaInicialIns/Imagens/batalha_do_ana_rosa.png" class="imgAnaRosa" id="div_imgAnaRosa">
+                <img src=".././paginaInicialIns/Imagens/batalha_do_coliseu.png" class="imgColiseu" id="div_imgColiseu" onclick="abrirPerfilBatalha()">
+                <img src=".././paginaInicialIns/Imagens/batalha_321tempo.png" class="imgTempo" id="div_imgTempo" onclick="abrirPerfilBatalha()">
+                <img src=".././paginaInicialIns/Imagens/batalha_do_estudante.png" class="imgEstudante"
+                    id="div_imgEstudante" onclick="abrirPerfilBatalha()">
+                <img src=".././paginaInicialIns/Imagens/batalha_do_tanque.png" class="imgTanque" id="div_imgTanque" onclick="abrirPerfilBatalha()">
+                <img src=".././paginaInicialIns/Imagens/batalha_nacional.png" class="imgNacional" id="div_imgNacional" onclick="abrirPerfilBatalha()">
+            </div>
+
+            <div class="direita">
+                <img src=".././paginaInicialIns/Imagens/pagina-inicial.png" onclick="abrirHome()">
+                <img src=".././paginaInicialIns/Imagens/lupa.png" onclick="abrirPesquisa()">
+                <img src=".././paginaInicialIns/Imagens/notificacao.png">
+                <img src=".././paginaInicialIns/Imagens/perfil.png" onclick="abrirPerfil()">
+                <img src=".././paginaInicialIns/Imagens/ajuda.png" onclick="abrirAjuda()">
+            </div>
+        </div>
+
+
+        <div class="feed" id="div_feed2">
+            <div class="header" id="div_header">
+                <div class="todas">Todas</div>
+                <div class="seguindo">Seguindo</div>
+            </div>
+
+            <div class="headerPesquisa" id="div_pesquisa"> 
+                <img src="../paginaInicialIns/Imagens/lupa.png">
+                <input id="pesquisaBatalha" onclick="pesquisaBatalha()" placeholder="Pesquise aqui">
+            </div>
+            
+            <div class="margem"></div>
+            <div class="post">
+                <div class="titulo" id="nomeBatalha">Batalha Do Tanque</div>
+                <div class="texto">
+                    CAMPEÕES DA EDIÇÃO DE RETORNO DA BATALHA DO TANQUE - 02/11/2023
+                </div>
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2JHPMevGlDL9qUXsEdBIeIDGXvJ_ZZAWK6A&usqp=CAU">
+            </div>
+        </div>
+
+
+    <!--Tela de perfil das batalhas-->
+    <div class="telaPerfilBatalha" id="div_telaPerfilBatalha">
+        <div class="linha">
+            <div id="nomeBatlha">Nome da Batalha</div>
+        </div>
+        <div id="fotoFundo" class="fotoFundo">
+            <img src="../paginaInicialIns/Imagens/plateia.jpg">
+        </div>
+        <div id="fotoPerfil" class="fotoPerfil">
+            <img src="../paginaInicialIns/Imagens/batalha_da_aldeia.png">
+        </div>
+        <div class="linhaSeguir">
+            <button>Seguir</button>
+        </div>
+        <div class="detalhes">
+            <div>
+                <div class="texto">
+                  Apresentador:
+                  <span id="apresentador1">apresentador1</span>
+                </div>
+            </div>
+            <div>
+                <div class="texto">
+                  Apresentador:
+                  <span id="apresentador2">apresentador2</span>
+                </div>
+            </div>
+            <div>
+                <div class="texto">
+                  Detalhes:
+                  <span id="detalhes">Clique aqui para alterar  dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddsfffffffffffff</span>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+        <div class="rankingLateral">
+            <div class="rankDasBatalha">
+                <div>Batalhas mais seguidas</div>
+                <div class="colocao">
+                    bda
+                    <div id="contagemSeguidores">50</div>
+                    </div>
+                <div class="colocao">
+                    bdn
+                <div id="contagemSeguidores">50</div>
+                </div>
+                <div class="colocao">
+                    bdc
+                <div id="contagemSeguidores">50</div>
+                </div>
+                <div class="colocao">
+                    bdl
+                <div id="contagemSeguidores">50</div>
+                </div>
+                <div class="colocao">
+                    nacional
+                <div id="contagemSeguidores">50</div>
+                </div>
+                <div class="colocao">
+                    bdar
+                <div id="contagemSeguidores">50</div>
+                </div>
+            </div>
+
+
+        <div class="rankDasBatalha">
+            <div>Ranking Da Aldeia</div>
+            <div class="colocao">
+                bda
+                <div id="contagemSeguidores">50</div>
+                </div>
+            <div class="colocao">
+                bdn
+            <div id="contagemSeguidores">50</div>
+            </div>
+            <div class="colocao">
+                bdc
+            <div id="contagemSeguidores">50</div>
+            </div>
+            <div class="colocao">
+                bdl
+            <div id="contagemSeguidores">50</div>
+            </div>
+            <div class="colocao">
+                nacional
+            <div id="contagemSeguidores">50</div>
+            </div>
+            <div class="colocao">
+                bdar
+            <div id="contagemSeguidores">50</div>
+            </div>
+        </div>
+
+
+        <div class="rankDasBatalha">
+            <div>Ranking Do Ana Rosa</div>
+            <div class="colocao">
+                bda
+                <div id="contagemSeguidores">50</div>
+            </div>
+            <div class="colocao">
+                bdn
+            <div id="contagemSeguidores">50</div>
+            </div>
+            <div class="colocao">
+                bdc
+            <div id="contagemSeguidores">50</div>
+            </div>
+            <div class="colocao">
+                bdl
+            <div id="contagemSeguidores">50</div>
+            </div>
+            <div class="colocao">
+                nacional
+            <div id="contagemSeguidores">50</div>
+            </div>
+            <div class="colocao">
+                bdar
+            </div>
+            <div id="contagemSeguidores">50</div>
+    </div>
+
+
+    </div>
+</body>
+</html>
+<script src="../js/Dashboard.js"></script>

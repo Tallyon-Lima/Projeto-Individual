@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/paginaInicialIns.css">
+
+</head>
+
+<body>
+    <!-- Tela de carregamento inicial -->
+    <div class="carregarInicial" id="div_carregarInicial">
+        <img src="./Imagens/magrao_vs_tubarao.jpg">
+        <div class="esquerda">
+
+            <h1>Ponto Da Batalha</h1>
+
+            <div class="text" id="botaoAtivar" onclick="ativarVideo()">Clique para iniciar</div>
+            <div class="pularVideo" id="pularVideo" onclick="sairTelaCarregamento()"><i>Pular Vídeo</i></div>
+        </div>
+        <div class="direita">
+            <p>Vocês confiam?</p>
+            <div class="celular">
+                <div class="linhaCamera">
+                    <div class="camera"></div>
+                </div>
+                <div class="tela">
+                    <video id="videoCarregar" height="105%" controls>
+                        <source src="./videos/corte vocês confiam.mp4" type="video/mp4">
+                        Seu navegador não suporta a reprodução do video
+                    </video>
+                </div>
+                <div class="botaoCelular"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--Tela Inicial-->
+    <div class="telaUm" id="div_telaUm">
+        <img src="./Imagens/guri vs neo2.jpg">
+        <div class="header">
+            <h1>Ponto Da Batalha</h1>
+            <button onclick="cadastroU()">Entrar</button>
+        </div>
+        <div class="linhaTelaUm">
+            <div>
+                <h1>Batalha de rima</h1>
+                <p>Acompanhe tudo o que acontece nas batalhas de rimas em uma só ambiente!!<br>
+                </p>
+            </div>
+        </div>
+        <div class="button" onclick="cadastroU()">Cadastra-se </div>
+    </div>
+
+
+    <!-- Tela Sobre o Rap-->
+    <div id="div_telaDois" class="telaDois">
+        <img src="./Imagens/praca coliseu.heic" width="100%">
+        <div class="esquerda">
+            <div class="titulo">O Que é Batalha De Rima? </div>
+            <p class="p">Uma batalha de rima ou "batalha de rap" ou "duelo de MCs", é uma competição verbal na cultura
+                hip-hop em que os participantes improvisam versos rimados para criticar seus oponentes, demonstrando
+                habilidades líricas, criatividade e capacidade de improvisação. O vencedor é geralmente determinado por
+                um júri ou pela plateia com base em critérios como originalidade, fluência e punchlines, tornando as
+                batalhas de rima uma plataforma para artistas de rap mostrarem seu talento e ganharem reconhecimento.
+            </p>
+        </div>
+    </div>
+
+
+
+    <!--Tela de Como funciona-->
+    <div class="telaTres" id="div_telaTres">
+        <img src="./Imagens/mc da nova geração.jpg" width="100%" height="100%">
+        <div class="titulo">Como Funciona? </div>
+        <div class="linha01">
+            <div class="card" id="card01">
+                <div class="linhaCard">
+                    1 <img src="./Imagens/vs.png">1</div>
+                <p> O formato 1 vs 1 no estilo "bate e volta" é composto por uma batalha direta entre dois MCs. Eles
+                    tiram par ou ímpar para determinar a ordem. O vencedor é aquele que conquista 2 turnos primeiro. Os
+                    turnos variam de acordo com as regras da batalha, mas normalmente cada turno é composto por, no
+                    máximo, 3 rodadas. Cada rodada é formada por 8 versos, que são alternados entre os MCs. O vencedor
+                    de cada turno é decidido geralmente por 2 jurados, cada um com 1 ponto, além de mais 1 ponto para o
+                    MC que conseguir arrancar mais barulho da plateia.
+                </p>
+            </div>
+            <div class="card" id="card02">
+                <div class="linhaCard">
+                    2 <img src="./Imagens/vs.png">2</div>
+                <p>O formato 2 vs 2 é composto por duas duplas de MCs. Cada dupla cria rimas e performances em rodadas
+                    alternadas, com a primeira dupla começando e a segunda respondendo. O objetivo é impressionar os
+                    juízes ou o público com suas habilidades de rima e criatividade. Normalmente,a competição consiste
+                    em 3 a 4 rodadas, com no máximo 3 turnos cada. Ganha a dupla que conquista 2 voltas primeiro. A
+                    dupla que responde pode incorporar ou reagir ao que a dupla adversária disse. O vencedor é
+                    determinado pelos jurados e pela plateia.</p>
+            </div>
+            <div class="card" id="card03">
+                <div class="linhaCard">
+                    3<img src="./Imagens/vs.png">3</div>
+                <p>Uma batalha de rap 3 x 3 envolve duas equipes, cada uma com três MCs. As equipes se alternam em
+                    rodadas, respondendo às equipes adversárias e tentando impressionar os juízes e público. O vencedor
+                    é escolhido pelos jurados e pela plateia. A duração é de, no mínimo, 3 turnos, com duas
+                    oportunidades de rimas para cada MC do trio. Nos dois primeiros turnos, todos os MCs participam, e a
+                    partir da terceira rodada, é composto por confrontos individuais 1x1 entre os MCs de cada trio,
+                    sendo que o primeiro a ganhar 3 turnos é o vencedor.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--Tela sobre as principais batalhas-->
+    <div class="telaQuatro" id="div_telaQuatro">
+        <img src="./Imagens/big mike vs barreto.jpg" width="100%" height="100%">
+        <div class="titulo">Principais Batalhas</div>
+        <div class="detalheBatalha">
+            <div><span>X</span></div>
+
+        </div>
+        <div class="cardGrande" id="card_grande01">
+            <img id="batalhaAldeia" onclick="abrirImagem()" class="imgBatalha" src="./Imagens/batalha_da_aldeia.png"
+                onclick="batalhaAldeia()">
+            <img id="batalhaColiseu" onclick="abrirImagem()" class="imgBatalha" src="./Imagens/batalha_do_coliseu.png"
+                onclick="batalhaColiseu()">
+            <img id="batalhaNorte" onclick="abrirImagem()" class="imgBatalha" src="./Imagens/batalha_da_norte.png"
+                onclick="batalhaNorte()">
+            <img id="batalhaAnaRosa" onclick="abrirImagem()" class="imgBatalha" src="./Imagens/batalha_do_ana_rosa.png"
+                onclick="batalhaAnaRosa()">
+        </div>
+        <div class="cardGrande2" id="card_grande02">
+            <img id="batalha321tempo" onclick="abrirImagem()" class="imgBatalha" src="./Imagens/batalha_321tempo.png"
+                onclick="batalhaTempo()">
+            <img id="batalhaLeste" onclick="abrirImagem()" class="imgBatalha" src="./Imagens/batalha_da_leste.png"
+                onclick="batalhaLeste()">
+            <img id="batalhaAldeia" onclick="abrirImagem()" class="imgBatalha" src="./Imagens/batalha_da_linear.png"
+                onclick="batalhaLinear()">
+            <img id="batalhaBrasilandia" onclick="abrirImagem()" class="imgBatalha"
+                src="./Imagens/batalha_da_brasilandia.png" onclick="batalhaBrasilandia()">
+        </div>
+        <div class="cardGrande3" id="card_grande03">
+            <img id="batalhaMarDeMonstro" onclick="abrirImagem()" class="imgBatalha" src="./Imagens/mar_de_monstro.png"
+                onclick="batalhaMarDeMonstro()">
+            <img id="batalhaNacional" onclick="abrirImagem()" class="imgBatalha" src="./Imagens/batalha_nacional.png"
+                onclick="batalhaNacional()">
+            <img id="batalhaEstudante" onclick="abrirImagem()" class="imgBatalha"
+                src="./Imagens/batalha_do_estudante.png" onclick="batalhaEstudante()">
+            <img id="batalhaTanque" onclick="abrirImagem()" class="imgBatalha" src="./Imagens/batalha_do_tanque.png"
+                onclick="batalhaTanque()">
+        </div>
+
+
+    </div>
+
+
+
+
+    <!--Footer -->
+    <div class="telaCinco" id="div_telaCinco">
+        <div class="footer">
+            <div class="esquerda">
+                <img src="./Imagens/tipos de logos/logo normal recortada.jpeg">
+                <p>Tudo sobre as batalhas de rima em uma ambiente só!!</p>
+            </div>
+            <div class="direita">
+                <div class="linhas">
+                    <img src="./Imagens/gmail.png">
+                    <p>pontodabatalha@gmail.com</p>
+
+                </div>
+                <div class="linhas">
+                    <img src="./Imagens/whatsapp.png">
+                    <p>11 978301733</p>
+                </div>
+                <div class="linhas">
+                    <img src="./Imagens/instagram.png">
+                    <p>@Ponto_Da_Batalha</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- Tela De Login-->
+    <div class="telaCadastroU" id="div_telaCadastroU">
+
+        <div class="linhaTitulo">
+            <h1 onclick="voltarInicio()">Voltar</h1>
+            <h1>Área de Cadastro</h1>
+            <div class="irTelaCadastroB" onclick="cadastroB()">Cadastro/Login Batalha </div>
+        </div>
+        <img src=".././paginaInicialIns/Imagens/folha3.jpeg" height="87%">
+        <div class="form">
+            <div class="esquerda">
+                <h1>Cadastro:</h1>
+                Nome:<br>
+                <input id="input_nomeCadastroU" class="campoCadastro"><br>
+                Email:<br>
+                <input id="input_emailCadastroU" type="email"><br>
+                Telefone Celular:<br>
+                <input id="input_telefoneU" type="number"><br>
+                Senha:<br>
+                <input id="input_senhaCadastroU" type="password"><br>
+                Confirme sua senha:<br>
+                <input id="input_confirmarSenhaU" type="password"><br>
+                <button onclick="cadastroValidoU()">Cadastrar</button>
+            </div>
+            <div class="direita">
+                <h1>Login</h1>
+                Email<br>
+                <input id="input_emailLoginU" type="email"><br><br>
+                Senha<br>
+                <input id="input_senhaLoginU" type="password"><br><br>
+                <button onclick="verificarU()">Login</button>
+            </div>
+        </div>
+        <div class="mensagemErroU" id="div_mensagemErroU2"></div>
+    </div>
+
+
+
+    <div class="telaCadastroB" id="div_telaCadastroB">
+
+        <div class="linhaTitulo">
+            <h1 onclick="voltarInicio()">Voltar</h1>
+            <h1>Cadastro De Batalha</h1>
+            <div class="irTelaCadastroU" onclick="loginBatalha()">Login Batalha</div>
+            <div class="irTelaCadastroU" onclick="voltarCadastroU()">Cadastro/Login Usuário</div>
+        </div>
+        <img src="../paginaInicialIns/Imagens/folha3.jpeg" height="87%">
+        <div class="form">
+            <div class="esquerda">
+                <h1>Cadastro:</h1>
+                Nome Batalha:<br>
+                <input id="input_nomeCadastroB"><br><br>
+                Siglas:<br>
+                <input id="input_siglas"><br><br>
+                Apresentador 1:<br>
+                <input id="input_apresentador01"><br><br>
+                Apresentador 02:(Opcional)<br>
+                <input id="input_apresentador02"><br><br>
+            </div>
+            <div class="direita">
+                Email:<br>
+                <input id="input_emailB" type="email"><br><br>
+                Telefone Celular:<br>
+                <input id="input_telefoneB" type="number"><br><br>
+                Senha:<br>
+                <input id="input_senhaB" type="password"><br><br>
+                Confirme sua senha:<br>
+                <input id="input_confirmarSenhaB" type="password"><br><br>
+            </div>
+        </div>
+        <button class="botaoCadastro" onclick="cadastroValidoB()">Cadastrar</button>
+        <div class="mensagemErroB" id="mensagemErroB"></div>
+
+        <div class="loginBatalha" id="div_loginBatalha">
+            <div class="esquerda">
+                <div class="linhaFechar" onclick="fecharLoginBatalha()">X</div>
+                <img src="./Imagens/guriBatalha.jpg" height="100%">
+            </div>
+            <div class="direita">
+                <h1>Login</h1>
+                Email:<br>
+                <input id="input_emailCadastroB" type="email"
+                    placeholder="Digite seu email"><br><br>
+                Senha:<br>
+                <input id="input_senhaCadastroB" type="password" placeholder="Digite sua senha"><br><br>
+                <button onclick="verificarB()">Entrar</button>
+                <div class="mensagemErroB" id="div_mensagemErroB2"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="../js/paginaInicialIns.js"></script>
