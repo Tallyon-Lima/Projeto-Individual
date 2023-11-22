@@ -311,7 +311,7 @@ function verificarB(){
                 sessionStorage.SENHABATALHA_BATALHAS = json.senhaBatalha;
                 mensagemErroB2.innerHTML = "Entrando na Dashboard";
                 setTimeout(function () {
-                    window.location = "../Dashboard/DashboardU.html";
+                    window.location = "../Dashboard/DashboardB.html";
                 }, 3000); 
             });
         } else {

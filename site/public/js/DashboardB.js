@@ -9,14 +9,13 @@ var telaFormAjuda = document.getElementById('div_tela_form_ajuda');
 var header = document.getElementById('div_header');
 var pesquisa = document.getElementById('div_pesquisa');
 var telaPerfilBatalha = document.getElementById('div_telaPerfilBatalha');
-
-
 var telaFeed = document.getElementById('div_feed2');
+var telaAddPost = document.getElementById('div_telaAddPost');
 
 
 
 
-
+/*
 var nomeUsuario = document.getElementById('nomeUsuario')
 nomeUsuario.innerHTML = sessionStorage.NOMEUSUARIO_USUARIO;
 var nomeUsuario2 = document.getElementById('nomeUsuario2')
@@ -30,6 +29,23 @@ senhaUsuario.innerHTML = sessionStorage.SENHAUSUARIO_USUARIO;
 
 
 
+var idBatalha = document.getElementById('idBatalha');
+idBatalha.innerHTML = sessionStorage.IDBATALHA_BATALHAS;
+*/
+var nomeBatalha = document.getElementById('nomeBatalha');
+nomeBatalha.innerHTML = sessionStorage.NOMEBATALHA_BATALHAS;
+var nomeBatalha2 = document.getElementById('nomeBatalha2');
+nomeBatalha2.innerHTML = sessionStorage.NOMEBATALHA_BATALHAS;
+var siglasBatalha = document.getElementById('siglasBatalha');
+siglasBatalha.innerHTML = sessionStorage.SIGLAS_BATALHAS;
+var apresentador1 = document.getElementById('apresentador1');
+apresentador1.innerHTML = sessionStorage.APRESENTADOR1_BATALHAS;
+var emailBatalha = document.getElementById('emailBatalha');
+emailBatalha.innerHTML = sessionStorage.EMAILBATALHA_BATALHAS;
+var telefoneBatalha = document.getElementById('telefoneBatalha');
+telefoneBatalha.innerHTML = sessionStorage.TELEFONEBATALHA_BATALHAS;
+var senhaBatalha = document.getElementById('senhaBatalha');
+senhaBatalha.innerHTML = sessionStorage.SENHABATALHA_BATALHAS;
 
 
 
@@ -37,8 +53,9 @@ senhaUsuario.innerHTML = sessionStorage.SENHAUSUARIO_USUARIO;
 
 
 
+/*
 setTimeout(fRima02,1700)
-
+*/
 
 function fRima02(){
     rimasC.innerHTML = `2...`;
@@ -82,23 +99,33 @@ window.addEventListener("scroll", function() {
 
 
   function editarDado1(){
-    var editar1 = document.getElementById('input_nomeUsuario');
+    var editar1 = document.getElementById('input_nomeBatalha');
     editar1.style.display = "flex";
   }
 
   
   function editarDado2(){
-    var editar2 = document.getElementById('input_emailUsuario');
+    var editar2 = document.getElementById('input_siglasBatalha');
     editar2.style.display = "flex";
   }
 
   function editarDado3(){
-    var editar3 = document.getElementById('input_telefoneUsuario');
+    var editar3 = document.getElementById('input_apresentador1Batalha');
     editar3.style.display = "flex";
   }
 
   function editarDado4(){
-    var editar4 = document.getElementById('input_senhaUsuario');
+    var editar4 = document.getElementById('input_emailBatalha');
+    editar4.style.display = "flex";
+  }
+
+  function editarDado5(){
+    var editar3 = document.getElementById('input_telefoneBatalha');
+    editar3.style.display = "flex";
+  }
+
+  function editarDado6(){
+    var editar4 = document.getElementById('input_senhaBatalha');
     editar4.style.display = "flex";
   }
 
@@ -151,6 +178,7 @@ window.addEventListener("scroll", function() {
   function abrirPesquisa(){
     pesquisa.style.display = "flex";
     header.style.display = "none";
+    telaAddPost.style.display = "none";
   }
 
   
@@ -159,6 +187,7 @@ window.addEventListener("scroll", function() {
   function abrirHome(){
       telaFeed.style.display="flex";   
       telaPerfilBatalha.style.display="none";
+      telaAddPost.style.display = "none";
       header.style.display = "flex";
       pesquisa.style.display = "none";
   }
@@ -167,4 +196,11 @@ window.addEventListener("scroll", function() {
     abriuPerfilBatalha ="true";
     telaPerfilBatalha.style.display="flex";
     telaFeed.style.display="none";
+  }
+
+
+  function btnAdicionarPost(){
+    pesquisa.style.display = "none";
+    header.style.display = "none";
+    telaAddPost.style.display = "flex";
   }

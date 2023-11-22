@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/DashboardU.css">
+    <link rel="stylesheet" href="../css/DashboardB.css">
 </head>
 
 <body>
@@ -36,33 +36,48 @@
     <div class="telaPerfil" id="div_telaPerfil">
         <div class="modal">
             <div class="primeiraLinha">
-                <div id="nomeUsuario">Nome Usuario</div>
+                <div id="nomeBatalha">Nome Usuario</div>
                 <span onclick="fecharPerfil()">X</span>
             </div>
             <div class="modal2">
                 <div class="esquerda">
                     <div class="linha">
-                       Nome: <div id="nomeUsuario2">Nome Usuario</div>
+                       Nome: <div id="nomeBatalha2">Nome Batalha</div>
                         <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado1()">
                     </div>
-                    <input type="text" id="input_nomeUsuario">
+                    <input type="text" id="input_nomeBatalha">
+
                     <div class="linha">
-                       Email: <div id="emailUsuario">emailUsuario</div>
-                        <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado2()">
-                    </div>
-                    <input type="text" id="input_emailUsuario">
+                        Sigla: <div id="siglasBatalha">Siglas</div>
+                         <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado2()">
+                     </div>
+                     <input type="text" id="input_siglasBatalha">
+
+                     <div class="linha">
+                        Apresentador: <div id="apresentador1">Apresentador</div>
+                         <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado3()">
+                     </div>
+                     <input type="text" id="input_apresentador1Batalha">
+
                 </div>
                 <div class="direita">
                     <div class="linha">
-                       Telefone: <div id="telefoneUsuario">telefoneUsuario</div>
-                        <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado3()">
-                    </div>
-                    <input type="text" id="input_telefoneUsuario">
+                        Email: <div id="emailBatalha">Email</div>
+                         <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado4()">
+                     </div>
+                     <input type="text" id="input_emailBatalha">
+
                     <div class="linha">
-                       Senha <div id="senhaUsuario">senhaUsuario</div>
-                        <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado4()">
+                        TelefoneBatalha: <div id="telefoneBatalha">telefoneBatalha</div>
+                        <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado5()">
                     </div>
-                    <input type="text" id="input_senhaUsuario">
+                    <input type="text" id="input_telefoneBatalha">
+
+                    <div class="linha">
+                       Senha <div id="senhaBatalha">senhaBatalha</div>
+                        <img src="../paginaInicialIns/Imagens/ferramenta-lapis.png" onclick="editarDado6()">
+                    </div>
+                    <input type="text" id="input_senhaBatalha">
                 </div>
             </div>
             <div><button onclick="sairPerfil()">Sair perfil</button>
@@ -102,6 +117,7 @@
                 <img src=".././paginaInicialIns/Imagens/notificacao.png">
                 <img src=".././paginaInicialIns/Imagens/perfil.png" onclick="abrirPerfil()">
                 <img src=".././paginaInicialIns/Imagens/ajuda.png" onclick="abrirAjuda()">
+                <div class="addPost" onclick="btnAdicionarPost()">+</div>
             </div>
         </div>
 
@@ -109,22 +125,29 @@
         <div class="feed" id="div_feed2">
             <div class="header" id="div_header">
                 <div class="todas">Todos</div>
-                <div class="seguindo">Seguindo</div>
             </div>
 
             <div class="headerPesquisa" id="div_pesquisa"> 
                 <img src="../paginaInicialIns/Imagens/lupa.png">
-                <input id="pesquisaBatalha" onclick="pesquisaBatalha()" placeholder="Pesquise aqui">
+                <input id="pesquisaBatalha" oninput="pesquisaBatalha()" placeholder="Pesquise aqui">
+            </div>
+
+            <div class="telaAddPost" id="div_telaAddPost">
+                <input type="text" placeholder="Digite aqui">
+                <div class="linhaPost">
+                    <input type="file">
+                    <div class="publicar">Publicar</div>
+                </div>
             </div>
             
             <div class="margem"></div>
             <div class="post">
                 <div class="titulo" id="nomeBatalha">Batalha Do Tanque</div>
-                <div class="texto">
+                <div class="texto" id="textoPostado">
                     CAMPEÕES DA EDIÇÃO DE RETORNO DA BATALHA DO TANQUE - 02/11/2023
                 </div>
                 <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2JHPMevGlDL9qUXsEdBIeIDGXvJ_ZZAWK6A&usqp=CAU">
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2JHPMevGlDL9qUXsEdBIeIDGXvJ_ZZAWK6A&usqp=CAU" id="imagemPostada">
             </div>
         </div>
 
@@ -151,10 +174,6 @@
                 </div>
             </div>
             <div>
-                <div class="texto">
-                  Apresentador:
-                  <span id="apresentador2">apresentador2</span>
-                </div>
             </div>
             <div>
                 <div class="texto">
@@ -262,4 +281,4 @@
     </div>
 </body>
 </html>
-<script src="../js/Dashboard.js"></script>
+<script src="../js/DashboardB.js"></script>

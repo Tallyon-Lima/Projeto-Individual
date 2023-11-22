@@ -25,7 +25,7 @@ body {
     background-color: #000;
     color: #fff;
     margin: 0%;
-    display: flex;
+    display: none;
     justify-content: center;
     transition: 2s;
 }
@@ -64,7 +64,7 @@ body {
     width: 100%;
     margin: 0%;
     padding: 0%;
-    display: none;
+    display: flex;
     opacity: 1;
     background-color: #000;
     color: #fff;
@@ -92,89 +92,9 @@ body {
     max-height: 100vh;
 }
 
-.telaInicial .menuLateral .esquerda .imgAldeia {
+.telaInicial .menuLateral .esquerda img {
     width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgBrasilandia {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgLeste {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgLinear {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgNorte {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgAnaRosa {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgColiseu {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgTempo {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgEstudante {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgTanque {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgNacional {
-    width: 70%;
-    border: 2px solid red;
+    border: 2px solid white;
     border-radius: 100%;
     margin: 1% 0 0 0;
     cursor: pointer;
@@ -203,6 +123,25 @@ body {
     padding: 8%;
     background-color: rgba(255, 255, 255, 0.4);
 }
+
+.telaInicial .menuLateral .direita .addPost{
+    background-color: #fff;
+    color: #000;
+    width: fit-content;
+    height: fit-content;
+    padding: 2% 15%;
+    border-radius: 50%;
+    font-size: 200%;
+    font-weight: 900;
+    margin-top: 100%;
+    cursor: pointer;
+}
+
+.telaInicial .menuLateral .direita .addPost:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
 
 
 
@@ -233,7 +172,7 @@ body {
 }
 
 .telaInicial .feed .header .todas {
-    width: 50%;
+    width: 100%;
     height: 100%;
     text-align: center;
     padding: 0;
@@ -245,17 +184,6 @@ body {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-.telaInicial .feed .header .seguindo {
-    width: 50%;
-    height: 100%;
-    text-align: center;
-    padding: 0;
-    padding-top: 4%;
-}
-
-.telaInicial .feed .header .seguindo:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-}
 
 .telaInicial .feed .headerPesquisa{
     width: 50%;
@@ -282,7 +210,7 @@ body {
 } 
 
 .telaInicial .feed .margem {
-    height: 11%;
+    height: fit-content;
     color: #000;
 }
 
@@ -386,13 +314,13 @@ body {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    opacity: 1;
+    opacity: 0;
     transition: 1s;
 }
 
 .telaPerfil .modal {
     width: 60%;
-    height: 50%;
+    height: fit-content;
     background-color: white;
     margin-left: 20%;
     display: flex;
@@ -453,7 +381,7 @@ body {
 
 
 .telaPerfil .modal .modal2 .esquerda .linha {
-    font-size: 100%;
+    font-size: 110%;
     display: flex;
     width: 100%;
     margin: 5% 0 0 0;
@@ -469,7 +397,7 @@ body {
 }
 
 .telaPerfil .modal .modal2 .direita .linha {
-    font-size: 100%;
+    font-size: 110%;
     display: flex;
     width: 95%;
     margin: 5% 0 0 5%;
@@ -716,4 +644,54 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0 2%;
     word-wrap: break-word;
+}
+
+
+
+
+/*Tela para add post*/
+
+.telaInicial .telaAddPost{
+    display: none ;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+}
+
+.telaInicial .feed .telaAddPost input{
+    background-color: #000;
+    margin-left: 5%;
+    border: none;
+    word-wrap: break-word;
+    max-width: 90%;
+    height: fit-content;
+    margin-top: 4%;
+    margin-bottom: 1%;
+    color: #fff;
+    padding: 2% 0 0 0;
+}
+
+.telaInicial .telaAddPost input::placeholder{
+    font-size: 110%;
+}
+
+.telaInicial .feed .telaAddPost .linhaPost{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: 20%;
+}
+
+.telaInicial .feed .telaAddPost .linhaPost .publicar{
+    width: fit-content;
+    height: fit-content;
+    padding: 0 2%;
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+    border-radius: 15px;
+    font-size: 120%;
+    font-weight: 700;
+    font-family: "sprite-graffiti";
+    margin: 0;
 }

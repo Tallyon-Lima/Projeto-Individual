@@ -16,10 +16,10 @@ idBatalha int primary key auto_increment,
 nomeBatalha varchar(70),
 siglas varchar(7),
 apresentador1 varchar(45),
-apresentador2 varchar(45),
 emailBatalha varchar(80),
 telefoneBatalha float(11),
-senhaBatalha varchar(14)
+senhaBatalha varchar(14),
+imagem varchar(500)
 )auto_increment=1000;
 
 CREATE TABLE seguidores(
@@ -46,6 +46,7 @@ idPost int,
 fkBatalhaP int,
 PRIMARY KEY(idPost, fkBatalhaP),
 conteudo varchar(500),
+imagemPost varchar(500),
 dtPost DATETIME,
 CONSTRAINT fkBatalhaPPost FOREIGN KEY (fkBatalhaP) REFERENCES batalhas (idBatalha)
 );
@@ -66,10 +67,10 @@ INSERT INTO usuario VALUES
 (3,'MC Barreto','barreto@gmail.com','11965218475','barreto1234');
 
 INSERT INTO batalhas VALUES
-(null, 'Batalha da Aldeia', 'BDA' ,'MC Alves','Mc Bob 13', 'batalhadaaldeia@gmail.com', '11941873265','bda123'),
-(null, 'Batalha Do Coliseu', 'BDC', 'Mc Negralha', null, 'batalhadocoliseu@gmail.com', '11969369825','bdc123');
+(null, 'Batalha da Aldeia', 'BDA' ,'Mc Bob 13', 'batalhadaaldeia@gmail.com', '11941873265','bda123', null),
+(null, 'Batalha Do Coliseu', 'BDC', 'Mc Negralha', 'batalhadocoliseu@gmail.com', '11969369825','bdc123', null);
 
  
 SELECT * FROM usuario;
- 
+
  SELECT * FROM batalhas;
