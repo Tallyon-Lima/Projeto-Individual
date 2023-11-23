@@ -379,7 +379,7 @@ function verificarU() {
                 mensagemErroU2.innerHTML = "Entrando na Dashboard";
                 setTimeout(function () {
                     window.location = "../Dashboard/DashboardU.html";
-                    console.log('Chegou aqui na lincagem')
+                    
                 }, 3000); 
             });
         } else {

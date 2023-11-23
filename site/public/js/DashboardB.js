@@ -1,3 +1,90 @@
+function pegarDadosPost(){
+  fetch("/post/pegarDados")
+  .then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+          console.log(resposta);
+          resposta.json().then(json => {
+              console.log(json);
+              console.log(JSON.stringify(json));
+              sessionStorage.IDPOST_POST = json.idPost;
+              sessionStorage.CONTEUDO_POST = json.conteudo;
+              sessionStorage.IMAGEMPOST_POST = json.imagemPost;
+              sessionStorage.DTPOST = json.dtPost;
+              sessionStorage.FKBATALHAP = json.fkBatalhaP;
+              sessionStorage.BATALHA = JSON.stringify(json.batalha)
+          });
+      } else {
+          return false;
+      }
+      
+  }).catch(
+      function (erro) {
+          res.status(500).json(erro.sqlMessage );
+          
+  })
+
+}
+
+
+
+
+function carregarFeed() {
+  fetch("/feed/listar")
+    .then(function (resposta) {
+      if (resposta.ok) {
+          resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+              for (contador = 0; contador < resposta.length; contador ++) {
+                  var post = resposta[contador];
+                  var feed = document.getElementById('div_feedHistory');
+
+
+                  feed.innerHTML += `
+                  <div class="post" id="post">
+                  <div class="titulo" id="nomeBatalha">
+                  ${post.nomeBatalha} </div>
+                  <div class="texto" id="textoPostado">${post.conteudo}
+                  </div>
+                  <img
+                      src="../paginaInicialIns/Imagens/${post.imagemPost}" id="imagemPostada">
+              </div>
+                  `;
+              }
+              /* setTimeout(likes1, 50);
+              setTimeout(listarQtdLikes, 100);
+              setTimeout(listarQtdComents, 150);
+              */
+          })
+      }
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var rima1 = document.getElementById('div_rima1');
 var rima2 = document.getElementById('div_rima2');
 var rima3 = document.getElementById('div_rima3');
@@ -53,9 +140,9 @@ senhaBatalha.innerHTML = sessionStorage.SENHABATALHA_BATALHAS;
 
 
 
-/*
+
 setTimeout(fRima02,1700)
-*/
+
 
 function fRima02(){
     rimasC.innerHTML = `2...`;

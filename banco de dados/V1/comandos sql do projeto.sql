@@ -21,7 +21,7 @@ telefoneBatalha float(11),
 senhaBatalha varchar(14),
 imagem varchar(500)
 )auto_increment=1000;
-
+ 
 CREATE TABLE seguidores(
 fkUsuarioS int,
 fkBatalhaS int,
@@ -33,7 +33,7 @@ CONSTRAINT chkSeguindoSeguidores check (seguindo IN (1))
 );
 
 CREATE TABLE rackBatalha(
-idRackBatalha int primary key,
+idRackBatalha int primary key auto_increment,
 nomeMc varchar(45),
 qtdTitulo int,
 fkBatalhaRB int,
@@ -42,7 +42,7 @@ CONSTRAINT idRackBatalhaRackBatakha FOREIGN KEY (fkBatalhaRB) REFERENCES batalha
 
 
 CREATE TABLE post(
-idPost int,
+idPost int auto_increment,
 fkBatalhaP int,
 PRIMARY KEY(idPost, fkBatalhaP),
 conteudo varchar(500),
@@ -70,7 +70,16 @@ INSERT INTO batalhas VALUES
 (null, 'Batalha da Aldeia', 'BDA' ,'Mc Bob 13', 'batalhadaaldeia@gmail.com', '11941873265','bda123', null),
 (null, 'Batalha Do Coliseu', 'BDC', 'Mc Negralha', 'batalhadocoliseu@gmail.com', '11969369825','bdc123', null);
 
- 
+INSERT INTO Post VALUES 
+(null, 1000, 'Teste feed', 'batalha_da_aldeia.png', CURRENT_TIMESTAMP); 
+
+
 SELECT * FROM usuario;
 
  SELECT * FROM batalhas;
+ 
+ SELECT * FROM post;
+ 
+  SELECT * FROM post AS p
+JOIN batalhas AS b ON p.fkBatalhaP = b.idBatalha
+ORDER BY p.idPost DESC;
