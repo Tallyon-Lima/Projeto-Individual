@@ -1,5 +1,5 @@
-const batalhaModel = require('../models/feedModel.js');
-/*
+const feedModel = require('../models/feedModel.js');
+
 function salvar(req, res) {
     const imagemPostada = req.file.filename;
 
@@ -7,7 +7,7 @@ function salvar(req, res) {
 
     const batalha = { textoPostado, imagemPostada, id }
 
- batalhaModel.salvar(batalha)
+ feedModel.salvar(batalha)
         .then(resultado => {
             res.status(201).send("Post criado com sucesso");
             console.log(resultado)
@@ -15,9 +15,10 @@ function salvar(req, res) {
             res.status(500).send(err);
         });
 }
-*/
+
+
 function listar(req, res) {
- batalhaModel.listar().then(function (resultado) {
+ feedModel.listar().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -31,5 +32,37 @@ function listar(req, res) {
 }
 
 
+function publicarP(req, res){
 
-module.exports = { listar }
+    var textoPost = req.body.textoPostServer;
+    var imagemPost = req.body.imagemPostServer;
+    var idBatalha = req.body.idServer;
+
+console.log(`${idBatalha}, ${textoPost}, ${imagemPost} bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb`)
+    feedModel.publicarP(textoPost, imagemPost, idBatalha)
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro ao realizar o cadastro do post! Erro: ",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+
+
+
+
+
+module.exports = { 
+    listar,
+    salvar,
+    publicarP
+}

@@ -1,3 +1,4 @@
+/* Pega os dados dos posts do bd*/ 
 function pegarDadosPost(){
   fetch("/post/pegarDados")
   .then(function (resposta) {
@@ -13,7 +14,7 @@ function pegarDadosPost(){
               sessionStorage.IMAGEMPOST_POST = json.imagemPost;
               sessionStorage.DTPOST = json.dtPost;
               sessionStorage.FKBATALHAP = json.fkBatalhaP;
-              sessionStorage.BATALHA = JSON.stringify(json.batalha)
+              sessionStorage.BATALHAS = JSON.stringify(json.batalha)
           });
       } else {
           return false;
@@ -29,7 +30,7 @@ function pegarDadosPost(){
 
 
 
-
+/* Cria um laco de repetição para publicar item por item*/
 function carregarFeed() {
   fetch("/feed/listar")
     .then(function (resposta) {
@@ -63,13 +64,40 @@ function carregarFeed() {
 }
 
 
+/*Enviar os pots pro banco*/
+function publicarPost() {
+
+  var textoPost = input_textoPost.value;
+  var imagemPost = document.getElementById('input_imagemPost');
+  var id = sessionStorage.IDBATALHA_BATALHAS;
+  
+  var imagemPostEnviar = imagemPost.files[0].name;
+  var fkBatalha = {fkBatalhaP: id}
 
 
 
+  fetch("/feed/publicarP", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+    },
+        body: JSON.stringify({
+            body: JSON.stringify({
+            textoPostServer: textoPost,
+            imagemPostServer: imagemPostEnviar,
+            idServer: fkBatalha,
+          }),
+        })
+  })
+
+setTimeout(recarregar, 500)
+}
 
 
 
-
+function recarregar(){  
+  window.location = "DashboardB.html";
+}
 
 
 

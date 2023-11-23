@@ -1,16 +1,17 @@
 var express = require("express");
 var router = express.Router();
 
-/*Arquivo para fazer o upload de img
-const upload = require('../config/upload'); */
 const feedController = require('../controllers/feedController.js');
 
 
 
 router.get('/listar', function (req, res){
   feedController.listar(req, res);
-  console.log('Teste BAnana');
 });
+
+router.post('/publicarP', function (req, res) {
+  feedController.publicarP(req, res);
+})
 
   /*
 router.post('/listarLike', (req, res) => {

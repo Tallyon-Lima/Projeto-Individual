@@ -78,8 +78,10 @@ SELECT * FROM usuario;
 
  SELECT * FROM batalhas;
  
- SELECT * FROM post;
+ SELECT * FROM post;	
  
   SELECT * FROM post AS p
 JOIN batalhas AS b ON p.fkBatalhaP = b.idBatalha
 ORDER BY p.idPost DESC;
+
+INSERT INTO post (fkBatalhaP, conteudo, imagemPost, dtPost) VALUES (1001 , 'textoPost', 'imagemPost', CURRENT_TIMESTAMP )
