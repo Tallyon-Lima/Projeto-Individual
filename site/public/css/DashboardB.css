@@ -27,6 +27,17 @@ body {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+#input_imagemPost::file-selector-button{
+    background-color: white;
+    border: none;
+    font-family: "sprite-graffiti";
+    font-size: 100%;
+    padding: 1%;
+    color: black;
+    border-radius: 15px;
+}
+
+
 /* Tela de Carregamento */
 .telaCarregando {
     width: 100%;

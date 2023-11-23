@@ -23,9 +23,9 @@ imagem varchar(500)
 )auto_increment=1000;
  
 CREATE TABLE seguidores(
+idSeguidor int primary key auto_increment,
 fkUsuarioS int,
 fkBatalhaS int,
-primary key (fkUsuarioS, fkBatalhaS),
 CONSTRAINT fkUsuarioSSeguir FOREIGN KEY (fkUsuarioS) REFERENCES usuario(idUsuario),
 CONSTRAINT fkBatalhaSSeguir FOREIGN KEY (fkBatalhaS) REFERENCES batalhas(idBatalha),
 seguindo int,
@@ -42,9 +42,8 @@ CONSTRAINT idRackBatalhaRackBatakha FOREIGN KEY (fkBatalhaRB) REFERENCES batalha
 
 
 CREATE TABLE post(
-idPost int auto_increment,
+idPost int auto_increment primary key,
 fkBatalhaP int,
-PRIMARY KEY(idPost, fkBatalhaP),
 conteudo varchar(500),
 imagemPost varchar(500),
 dtPost DATETIME,
@@ -52,9 +51,9 @@ CONSTRAINT fkBatalhaPPost FOREIGN KEY (fkBatalhaP) REFERENCES batalhas (idBatalh
 );
 
 CREATE TABLE curtidas(
+idCurtida int primary key auto_increment,
 fkPostC int,
 fkUsuarioC int,
-primary key(fkPostC, fkUsuarioC),
 curtida int,
 CONSTRAINT chkCurtidaCurtidas check (curtida IN (1)),
 CONSTRAINT fkPostCCurtidas FOREIGN KEY (fkPostC) REFERENCES post(idPost),
@@ -73,15 +72,3 @@ INSERT INTO batalhas VALUES
 INSERT INTO Post VALUES 
 (null, 1000, 'Teste feed', 'batalha_da_aldeia.png', CURRENT_TIMESTAMP); 
 
-
-SELECT * FROM usuario;
-
- SELECT * FROM batalhas;
- 
- SELECT * FROM post;	
- 
-  SELECT * FROM post AS p
-JOIN batalhas AS b ON p.fkBatalhaP = b.idBatalha
-ORDER BY p.idPost DESC;
-
-INSERT INTO post (fkBatalhaP, conteudo, imagemPost, dtPost) VALUES (1001 , 'textoPost', 'imagemPost', CURRENT_TIMESTAMP )

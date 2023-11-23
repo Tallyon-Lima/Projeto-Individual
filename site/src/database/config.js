@@ -6,8 +6,8 @@ var mysql = require("mysql2");
 var mySqlConfig = {
     host: "localhost",
     database: "pontodabatalha",
-    user: "root",
-    password: "03052005",
+    user: "aluno",
+    password: "sptech",
 };
 
  
@@ -15,7 +15,7 @@ function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         return new Promise(function (resolve, reject) {
-            sql.connect(sqlServerConfig).then(function () {
+            sql.connect(sqlServerConfig).then(function () {;
                 return sql.query(instrucao);
             }).then(function (resultados) {
                 console.log(resultados);
