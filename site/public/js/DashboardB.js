@@ -61,6 +61,8 @@ function carregarFeed() {
           })
       }
   })
+
+  setTimeout(descerFeed, 3500)
 }
 
 
@@ -69,10 +71,9 @@ function publicarPost() {
 
   var textoPost = input_textoPost.value;
   var imagemPost = document.getElementById('input_imagemPost');
-  var id = sessionStorage.IDBATALHA_BATALHAS;
-  
-  var imagemPostEnviar = imagemPost.files[0].name;
-  var fkBatalha = {fkBatalhaP: id}
+  var fkBatalhaP = sessionStorage.IDBATALHA_BATALHAS;
+  var imagemPostEnviar = imagemPost.files[0];
+
 
 
 
@@ -82,12 +83,10 @@ function publicarPost() {
         "Content-Type": "application/json"
     },
         body: JSON.stringify({
-            body: JSON.stringify({
             textoPostServer: textoPost,
             imagemPostServer: imagemPostEnviar,
-            idServer: fkBatalha,
+            idServer: fkBatalhaP,
           }),
-        })
   })
 
 setTimeout(recarregar, 500)
@@ -99,8 +98,11 @@ function recarregar(){
   window.location = "DashboardB.html";
 }
 
-
-
+function descerFeed(){
+var feedHistory = document.getElementById('div_feedHistory'); 
+feedHistory.scrollTop = feedHistory.scrollHeight;
+window.scrollTo(0, document.body.scrollHeight);
+}
 
 
 
