@@ -90,10 +90,14 @@ function publicarPost() {
             imagemPostServer: imagemPostEnviar,
             idServer: fkBatalhaP,
           }),
-  })
-setTimeout()
- setTimeout(carregarFeed, 1000)
-
+        })
+        .then((req) => {
+          window.location="../Dashboard/DashboardB.html"
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        
 }
 
 

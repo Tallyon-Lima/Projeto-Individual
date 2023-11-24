@@ -296,7 +296,7 @@ body {
 
 .telaInicial .feed2 .feed .post img {
     min-height: 100px;
-    max-height: 400px;
+    max-height: 200px;
     padding: 0;
     margin: 2% 0;
     border: 1px solid black;
@@ -724,6 +724,7 @@ body {
     margin-bottom: 1%;
     color: #fff;
     padding: 2% 0 0 0;
+    outline: none;
 }
 
 .telaInicial .telaAddPost input::placeholder{

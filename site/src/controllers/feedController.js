@@ -38,7 +38,6 @@ function publicarP(req, res){
     var imagemPost = req.body.imagemPostServer;
     var idBatalha = req.body.idServer;
 
-console.log(`${idBatalha}, ${textoPost}, ${imagemPost} bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb`)
     feedModel.publicarP(textoPost, imagemPost, idBatalha)
     .then(
         function (resultado) {

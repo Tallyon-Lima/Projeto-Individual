@@ -57,8 +57,14 @@ INSERT INTO usuario VALUES
 (3,'MC Barreto','barreto@gmail.com','11965218475','barreto1234');
 
 INSERT INTO batalhas VALUES
-(null, 'Batalha da Aldeia', 'BDA' ,'Mc Bob 13', 'batalhadaaldeia@gmail.com', '11941873265','bda123', null),
-(null, 'Batalha Do Coliseu', 'BDC', 'Mc Negralha', 'batalhadocoliseu@gmail.com', '11969369825','bdc123', null);
+(null, 'Batalha Da Aldeia', 'BDA' ,'Mc Bob 13', 'batalhadaaldeia@gmail.com', '11941873265','bda123', 'batalha_da_aldeia.png'),
+(null, 'Batalha Do Coliseu', 'BDC', 'Mc Negralha', 'batalhadocoliseu@gmail.com', '11969369825','bdc123', 'batalha_do_coliseu.png'),
+(null, 'Batalha Da Brasilândia', 'BDB', 'Não sei', 'batalhadabrasilandia@gmail.com', '1195742837', 'bdb1233', 'batalha_da_brasilandia.png'),
+(null, 'Batalha Da Leste', 'BDL','Não sei', 'batalhadaleste@gmail.com','11934567898', 'bdl123', 'batalha_da_leste.png'),
+(null, 'Batalha Da Linear', 'BDL', 'Não sei', 'batalhadalinear@gmail.com', '11908647645', 'bdl123', 'batalha_da_linear.png'),
+(null, 'Batalha Da Norte', 'BDN', 'Não Sei', 'batalhadanorte@gmail.com', '11945357654', 'bdn123', 'batalha_da_norte.png'),
+(null, 'Batalha Do Ana Rosa', 'BDAR', 'Não sei', 'batalhadoanarosa@gmail.com', '11965738712', 'bdar123', 'batatalha_do_ana_rosa.png');
+
 
 INSERT INTO Post VALUES 
 (null, 1000, 'Teste feed', 'batalha_da_aldeia.png', CURRENT_TIMESTAMP),
