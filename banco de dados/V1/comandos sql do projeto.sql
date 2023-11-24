@@ -50,15 +50,6 @@ dtPost DATETIME,
 CONSTRAINT fkBatalhaPPost FOREIGN KEY (fkBatalhaP) REFERENCES batalhas (idBatalha)
 );
 
-CREATE TABLE curtidas(
-idCurtida int primary key auto_increment,
-fkPostC int,
-fkUsuarioC int,
-curtida int,
-CONSTRAINT chkCurtidaCurtidas check (curtida IN (1)),
-CONSTRAINT fkPostCCurtidas FOREIGN KEY (fkPostC) REFERENCES post(idPost),
-CONSTRAINT fkUsuarioCurtidas FOREIGN KEY (fkUsuarioC) REFERENCES usuario(idUsuario)
-);
 
 INSERT INTO usuario VALUES
 (1,'Tallyon','tallyon@gmail.com','11987307133','tallyon1234'),
@@ -70,5 +61,12 @@ INSERT INTO batalhas VALUES
 (null, 'Batalha Do Coliseu', 'BDC', 'Mc Negralha', 'batalhadocoliseu@gmail.com', '11969369825','bdc123', null);
 
 INSERT INTO Post VALUES 
-(null, 1000, 'Teste feed', 'batalha_da_aldeia.png', CURRENT_TIMESTAMP); 
+(null, 1000, 'Teste feed', 'batalha_da_aldeia.png', CURRENT_TIMESTAMP),
+(null, 1001, 'CAMPEÕES DA EDIÇÃO DE RETORNO DA BATALHA DO TANQUE','batalha_do_tanque.png', CURRENT_TIMESTAMP); 
 
+
+SELECT * FROM post;
+
+SELECT * FROM post AS p
+    JOIN batalhas AS b ON p.fkBatalhaP = b.idBatalha
+    Order BY p.dtPost DESC;

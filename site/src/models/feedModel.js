@@ -10,8 +10,8 @@ function salvar(batalha) {
 function listar() {
 
     var instrucao = ` SELECT * FROM post AS p
-    JOIN batalhas AS b ON p.fkBatalhaP = b.idBatalha;
-    `;
+    JOIN batalhas AS b ON p.fkBatalhaP = b.idBatalha
+    ORDER BY p.dtPost DESC;`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

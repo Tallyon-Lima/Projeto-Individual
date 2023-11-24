@@ -43,6 +43,16 @@ function carregarFeed() {
                   var feed = document.getElementById('div_feedHistory');
 
 
+                  if(post.imagemPost == ''){
+                    feed.innerHTML += `
+                  <div class="post" id="post">
+                  <div class="titulo" id="nomeBatalha">
+                  ${post.nomeBatalha} </div>
+                  <div class="texto" id="textoPostado">${post.conteudo}
+                  </div>
+                  </div>
+                  `;
+                  }else{
                   feed.innerHTML += `
                   <div class="post" id="post">
                   <div class="titulo" id="nomeBatalha">
@@ -53,16 +63,12 @@ function carregarFeed() {
                       src="../paginaInicialIns/Imagens/${post.imagemPost}" id="imagemPostada">
               </div>
                   `;
-              }
-              /* setTimeout(likes1, 50);
-              setTimeout(listarQtdLikes, 100);
-              setTimeout(listarQtdComents, 150);
-              */
+              }}
           })
       }
   })
 
-  setTimeout(descerFeed, 3500)
+
 }
 
 
@@ -70,11 +76,8 @@ function carregarFeed() {
 function publicarPost() {
 
   var textoPost = input_textoPost.value;
-  var imagemPost = document.getElementById('input_imagemPost');
+  var imagemPostEnviar = input_imagemPost.value.replace(`C:\\fakepath\\`,"");
   var fkBatalhaP = sessionStorage.IDBATALHA_BATALHAS;
-  var imagemPostEnviar = imagemPost.files[0];
-
-
 
 
   fetch("/feed/publicarP", {
@@ -88,8 +91,9 @@ function publicarPost() {
             idServer: fkBatalhaP,
           }),
   })
+setTimeout()
+ setTimeout(carregarFeed, 1000)
 
-setTimeout(recarregar, 500)
 }
 
 
@@ -98,11 +102,6 @@ function recarregar(){
   window.location = "DashboardB.html";
 }
 
-function descerFeed(){
-var feedHistory = document.getElementById('div_feedHistory'); 
-feedHistory.scrollTop = feedHistory.scrollHeight;
-window.scrollTo(0, document.body.scrollHeight);
-}
 
 
 

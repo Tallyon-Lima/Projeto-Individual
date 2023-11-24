@@ -401,5 +401,5 @@ function verificarU() {
 
     setTimeout(function () {
         mensagemErroU2.innerHTML = "Email ou senha incorreto";
-    }, 6200); 
+    }, 7000); 
 }
