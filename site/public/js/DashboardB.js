@@ -1,6 +1,6 @@
 /* Pega os dados dos posts do bd*/
 function pegarDadosPost() {
-  fetch("/feed/listar")
+  fetch("/batalhas/listarBatalha")
     .then(function (resposta) {
       console.log("ESTOU NO THEN DO entrar()!")
 
@@ -26,7 +26,8 @@ function pegarDadosPost() {
 
       })
 
-      setTimeout(pegarDadosBatalhas, 100);
+      setTimeout(pegarDadosBatalhas, 1000);
+      setTimeout(pegarTodosOsDadosBatalhas,2000);
 }
 
 
@@ -37,12 +38,9 @@ function carregarFeed() {
     .then(function (resposta) {
       if (resposta.ok) {
         resposta.json().then(function (resposta) {
-          console.log("Dados recebidos: ", JSON.stringify(resposta));
           for (contador = 0; contador < resposta.length; contador++) {
             var post = resposta[contador];
             var feed = document.getElementById('div_feedHistory');
-            console.log(`${post.nomeBatalha}`)
-            console.log(`<br><br>${post.nomeBatalha} laranja`)
 
             if (post.imagemPost == '') {
               feed.innerHTML += `
@@ -77,12 +75,12 @@ function carregarFeed() {
 
 
 
+
+
 /*Pegar dados das batalhas */
 function pegarDadosBatalhas() {
   fetch("/batalha/listarB")
     .then(function (resposta2) {
-      console.log("ESTOU NO THEN DO entrar()!")
-
       if (resposta2.ok) {
         console.log(resposta2);
         resposta2.json().then(json => {
@@ -100,9 +98,10 @@ function pegarDadosBatalhas() {
         res.status(500).json(erro.sqlMessage);
 
       })
-
-
 }
+
+
+
 
 
 function carregarImagemBatalhas() {
@@ -114,22 +113,68 @@ function carregarImagemBatalhas() {
 
           for (contador = 0; contador < resposta2.length; contador++) {
             var batalhas = resposta2[contador];
+            console.log(batalhas);
             var esquerdaPagina = document.getElementById('div_esquerdaPagina');
-            console.log(`<br><br><br> `);
 
               esquerdaPagina.innerHTML += `
-              <img src="../paginaInicialIns/Imagens/${batalhas.imagem}" id="divimg" onclick="abrirPerfilBatalha()">
+              <img src="../paginaInicialIns/Imagens/${batalhas.imagem}" id="divimg" onclick="abrirPerfilBatalha(${batalhas.imagem})">
                   `;
             
           }
         })
       }
     })
-
-
 }
 
 
+
+
+/*Pegar todos os dados das batalhas */
+var listaNomeBatalhas =  [];
+var listaSiglasBatalhas = [];
+var listaApresentadorBatalhas = [];
+var listaEmailBatalhas = [];
+var listaTelefoneBatalhas = [];
+var listaImagemBatalhas = [];
+
+
+
+function pegarTodosOsDadosBatalhas() {
+  fetch("/batalha/buscarTodosBatalha")
+  .then(function (resultado) {
+    console.log("ESTOU NO THEN DO entrar 5555()!");
+
+    if (resultado.ok) {
+        resultado.json()
+        .then(json => {
+          console.log(json);
+          sessionStorage.NOMEBATALHA_BATALHAS = json.nomeBatalha;
+          sessionStorage.SIGLAS_BATALHAS = json.siglas;
+          sessionStorage.APRESENTADOR1_BATALHAS = json.apresentador1;
+          sessionStorage.EMAILBATALHA_BATALHAS = json.emailBatalha;
+          sessionStorage.TELEFONEBATALHA_BATALHAS = json.telefoneBatalha;
+          sessionStorage.IMAGEM_BATALHAS = json.imagem;
+        console.log(`resposta do banco ${json}`)
+          for (contador = 0; contador < json.length; contador++) {
+            var batalhas = json[contador];
+            listaNomeBatalhas.push(batalhas.nomeBatalha);
+            listaSiglasBatalhas.push(batalhas.siglas);   
+            listaApresentadorBatalhas.push(batalhas.apresentador1);
+            listaEmailBatalhas.push(batalhas.emailBatalha);
+            listaTelefoneBatalhas.push(batalhas.telefoneBatalha);
+            listaImagemBatalhas.push(batalhas.imagem);        
+          }
+    setTimeout(mostrarResultadoPesquisa, 100)
+        })
+    } else{
+      return false;
+    } 
+  }).catch(
+    function (erro){
+      res.status(500).json(erro.sqlMessage)
+    }
+  )
+ }
 
 
 
@@ -328,11 +373,13 @@ function abrirHome() {
   mostrarResultadoBatalhas.style.display = "none";
 }
 
-function abrirPerfilBatalha() {
+function abrirPerfilBatalha(peixe) {
   abriuPerfilBatalha = "true";
   telaPerfilBatalha.style.display = "flex";
   telaFeed.style.display = "none";
   mostrarResultadoBatalhas.style.display = "none";
+
+  var peixe2 = peixe;
 }
 
 
@@ -349,10 +396,9 @@ function btnAdicionarPost() {
 
 
 /*Pesquisa batalha*/
-var listaNomeBatalha = ["", ""];
+var listaNomeBatalha = [  ];
 
 function pesquisarBatalhaFuncao() {
-
   var pesquisaBatalha = input_pesquisaBatalha.value.toLowerCase();
   fetch("/batalha/buscarBatalha", {
     method: "POST",
@@ -366,18 +412,17 @@ function pesquisarBatalhaFuncao() {
     console.log("ESTOU NO THEN DO entrar 2222()!");
 
     if (resposta.ok) {
-      resposta.json()
-      .then(function (resposta) {
-        console.log(resposta);
-
-        resposta.json().then(json => {
+        resposta.json()
+        .then(json => {
           console.log(json);
-          console.log(JSOn.stringify(json));
-          sessionStorage.RESULTADOBATALHA_BATALHAS = json.nomeBatalha;
-          setTimeout(pesquisarBatalhaFuncao2, 1000)
+          sessionStorage.NOMEBATALHA_BATALHAS = json.nomeBatalha;
+          console.log(resposta+"aqui" + nomeBatalha)
+          for (contador = 0; contador < json.length; contador++) {
+            var batalhasP = json[contador];
+            listaNomeBatalha.push(batalhasP.nomeBatalha)           
+          }
+    setTimeout(mostrarResultadoPesquisa, 100)
         })
-
-      });
     } else{
       return false;
     } 
@@ -387,32 +432,35 @@ function pesquisarBatalhaFuncao() {
     }
   )
  }
+
+
+function mostrarResultadoPesquisa(){
+  var mostrarResultadoBatalhas = document.getElementById('div_mostrarResultadoBatalhas');
+  mostrarResultadoBatalhas.innerHTML = ""
+  mostrarResultadoBatalhas.innerHTML += `<div class="headerPesquisa" id="div_pesquisa"> 
+  <img src="../paginaInicialIns/Imagens/lupa.png" >
+  <input id="input_pesquisaBatalha"  placeholder="Pesquise aqui">
+  <button onclick="pesquisarBatalhaFuncao()">Pesquisar</button>`;
   
+  for(var contador = 0; contador < listaNomeBatalha.length; contador++){
+    mostrarResultadoBatalhas.innerHTML += `
+      <div class="resultadoBatalha">
+    ${listaNomeBatalha[contador]}
+</div>
+  `;
 
-
-
-
- function pesquisarBatalhaFuncao2() {
-  fetch("/batalha/buscarBatalha") 
-  .then(function (resposta) {
-    if (resposta.ok) {
-      resposta.json()
-      .then(function (resposta) {
-        console.log(`Dados recebidos llllllllllllllllllllllllllllllllllllllllllllllllll`, JSON.stringify(resposta))
-        
-      for (contador = 0; contador < resposta.length; contador++) {
-        var mostrarResultadoBatalhas = document.getElementById('div_mostrarResultadoBatalhas');
-        
-        var batalhas = resposta[contador];
-
-        mostrarResultadoBatalhas.innerHTML += `
-                        <div class="resultadoBatalha">
-                        ${batalhas}
-                    </div>
-                      `;
-      }
-
-      });
-    } 
-  })
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+ /*Gráfico*/

@@ -33,10 +33,17 @@ function listarB() {
     return database.executar(instrucao2);
 }
 
+function buscarTodosBatalha() {
+    var instrucao = ` SELECT * FROM batalhas;`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 
 module.exports = {
     autenticarB,
     cadastrarB,
     buscarBatalha,
     listarB,
+    buscarTodosBatalha
 };

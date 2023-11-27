@@ -68,17 +68,22 @@ function cadastrarB(req, res) {
 }
 
 function buscarBatalha(req, res) {
-
     var pesquisaBatalha = req.body.pesquisaBatalhaServer;
-
-    console.log(`PASSEI POR AQUI no controller variavel ${pesquisaBatalha}`)
     if (ReadableStreamDefaultController == undefined) {
         res.status(400).send("Não tem batalhas está undefined!");
     }
 
     batalhaModel.buscarBatalha(pesquisaBatalha).then(function(resposta){
-        res.status(200).send(`${pesquisaBatalha}`);
-        console.log(`PASSEI AQUI ${resposta}`)
+        res.status(200).send(resposta);
+        for(
+            var i = 0;
+            i < resposta.length;
+            i += 1
+        ){
+            var dados = resposta[i];
+            console.log(` MELANCIA${dados.nomeBatalha}`);
+            console.log(resposta)
+        }
     }).catch(function(erro){
         console.log(erro);
         res.status(500).json(erro.sqlMessage);
@@ -102,10 +107,26 @@ function buscarBatalha(req, res) {
    }
 
 
+   function buscarTodosBatalha(req, res) {
+    batalhaModel.buscarTodosBatalha().then(function (resultado) {
+           if (resultado.length > 0) {
+               res.status(200).json(resultado);
+           } else {
+               res.status(204).send("Nenhum resultado encontrado!")
+           }
+       }).catch(function (erro) {
+           console.log(erro);
+           console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+           res.status(500).json(erro.sqlMessage);
+       });
+   }
+   
+
 
 module.exports = {
     autenticarB,
     cadastrarB,
     buscarBatalha,
     listarB,
+    buscarTodosBatalha
 }
