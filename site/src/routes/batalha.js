@@ -12,4 +12,13 @@ router.post("/autenticarB", function (req, res) {
     batalhaController.autenticarB(req, res);
 });
 
+router.post('/buscarBatalha', function (req, res){
+    batalhaController.buscarBatalha(req, res);
+   
+  });
+
+  router.get('/listarB', function (req, res){
+    batalhaController.listarB(req, res);
+  });
+
 module.exports = router;

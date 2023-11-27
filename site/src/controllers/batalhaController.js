@@ -22,7 +22,6 @@ function autenticarB(req, res) {
                     nomeBatalha: resultadoAutenticarB[0].nomeBatalha,
                     siglas: resultadoAutenticarB[0].siglas,
                     apresentador1: resultadoAutenticarB[0].apresentador1,
-                    apresentador2: resultadoAutenticarB[0].apresentador2,
                     emailBatalha: resultadoAutenticarB[0].emailBatalha,
                     telefoneBatalha: resultadoAutenticarB[0].telefoneBatalha,
                     senhaBatalha: resultadoAutenticarB[0].senhaBatalha,
@@ -51,7 +50,6 @@ function cadastrarB(req, res) {
     var nomeBatalha = req.body.nomeServer;
     var siglas = req.body.siglasServer;
     var apresentador1 = req.body.apresentador1Server;
-    var apresentador2 = req.body.apresentador2Server;
     var emailBatalha = req.body.emailBatalhaServer;
     var telefoneBatalha = req.body.telefoneBatalhaServer;
     var senhaBatalha = req.body.senhaBatalhaServer;
@@ -61,7 +59,7 @@ function cadastrarB(req, res) {
         res.status(400).send("Sua empresa está undefined!");
     }
 
-    batalhaModel.cadastrarB(nomeBatalha, siglas, apresentador1, apresentador2, emailBatalha, telefoneBatalha, senhaBatalha).then(function(resposta){
+    batalhaModel.cadastrarB(nomeBatalha, siglas, apresentador1, emailBatalha, telefoneBatalha, senhaBatalha).then(function(resposta){
         res.status(200).send("Empresa cadastrada com sucesso");
     }).catch(function(erro){
         console.log(erro);
@@ -69,9 +67,45 @@ function cadastrarB(req, res) {
     })
 }
 
+function buscarBatalha(req, res) {
+
+    var pesquisaBatalha = req.body.pesquisaBatalhaServer;
+
+    console.log(`PASSEI POR AQUI no controller variavel ${pesquisaBatalha}`)
+    if (ReadableStreamDefaultController == undefined) {
+        res.status(400).send("Não tem batalhas está undefined!");
+    }
+
+    batalhaModel.buscarBatalha(pesquisaBatalha).then(function(resposta){
+        res.status(200).send(`${pesquisaBatalha}`);
+        console.log(`PASSEI AQUI ${resposta}`)
+    }).catch(function(erro){
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+    })
+   }
+
+
+
+   function listarB(req, res) {
+    batalhaModel.listarB().then(function (resultado2) {
+           if (resultado2.length > 0) {
+               res.status(200).json(resultado2);
+           } else {
+               res.status(204).send("Nenhum resultado encontrado!")
+           }
+       }).catch(function (erro) {
+           console.log(erro);
+           console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+           res.status(500).json(erro.sqlMessage);
+       });
+   }
+
 
 
 module.exports = {
     autenticarB,
-    cadastrarB
+    cadastrarB,
+    buscarBatalha,
+    listarB,
 }

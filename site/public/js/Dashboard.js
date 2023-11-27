@@ -1,3 +1,109 @@
+/* Pega os dados dos posts do bd*/
+function pegarDadosPost() {
+  fetch("/feed/listar")
+    .then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          sessionStorage.IDPOST_POST = json.idPost;
+          sessionStorage.CONTEUDO_POST = json.conteudo;
+          sessionStorage.IMAGEMPOST_POST = json.imagemPost;
+          sessionStorage.DTPOST = json.dtPost;
+          sessionStorage.FKBATALHAP = json.fkBatalhaP;
+          sessionStorage.BATALHAS = JSON.stringify(json.batalha)
+        });
+      } else {
+        return false;
+      }
+
+    }).catch(
+      function (erro) {
+        res.status(500).json(erro.sqlMessage);
+
+      })
+
+}
+
+
+
+/* Cria um laco de repetição para publicar item por item*/
+function carregarFeed() {
+  fetch("/feed/listar")
+    .then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+          for (contador = 0; contador < resposta.length; contador++) {
+            var post = resposta[contador];
+            var feed = document.getElementById('div_feedHistory');
+
+
+            if (post.imagemPost == '') {
+              feed.innerHTML += `
+                  <div class="post" id="post">
+                  <div class="titulo" id="nomeBatalha">
+                  ${post.nomeBatalha} </div>
+                  <div class="texto" id="textoPostado">${post.conteudo}
+                  </div>
+                  </div>
+                  `;
+            } else {
+              feed.innerHTML += `
+                  <div class="post" id="post">
+                  <div class="titulo" id="nomeBatalha">
+                  ${post.nomeBatalha} </div>
+                  <div class="texto" id="textoPostado">${post.conteudo}
+                  </div>
+                  <img
+                      src="../paginaInicialIns/Imagens/${post.imagemPost}" id="imagemPostada">
+              </div>
+                  `;
+            }
+          }
+        })
+      }
+    })
+}
+
+
+/*Enviar os pots pro banco*/
+function publicarPost() {
+
+  var textoPost = input_textoPost.value;
+  var imagemPostEnviar = input_imagemPost.value.replace(`C:\\fakepath\\`, "");
+  var fkBatalhaP = sessionStorage.IDBATALHA_BATALHAS;
+
+
+  fetch("/feed/publicarP", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      textoPostServer: textoPost,
+      imagemPostServer: imagemPostEnviar,
+      idServer: fkBatalhaP,
+    }),
+  })
+    .then((req) => {
+      window.location = "../Dashboard/Dashboard.html"
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+}
+
+
+
+
+
+/*Pego os valores das divs*/
 var rima1 = document.getElementById('div_rima1');
 var rima2 = document.getElementById('div_rima2');
 var rima3 = document.getElementById('div_rima3');
@@ -9,7 +115,8 @@ var telaFormAjuda = document.getElementById('div_tela_form_ajuda');
 var header = document.getElementById('div_header');
 var pesquisa = document.getElementById('div_pesquisa');
 var telaPerfilBatalha = document.getElementById('div_telaPerfilBatalha');
-
+var telaFeed = document.getElementById('div_feed2');
+var mostrarResultadoBatalhas = document.getElementById('div_mostrarResultadoBatalhas');
 
 var telaFeed = document.getElementById('div_feed2');
 
@@ -151,20 +258,24 @@ window.addEventListener("scroll", function() {
   function abrirPesquisa(){
     pesquisa.style.display = "flex";
     header.style.display = "none";
+    telaFeed.style.display = "none";
+    mostrarResultadoBatalhas.style.display = "flex";
   }
 
   
-  var abriuPerfilBatalha = "false";
+
 
   function abrirHome(){
       telaFeed.style.display="flex";   
       telaPerfilBatalha.style.display="none";
       header.style.display = "flex";
       pesquisa.style.display = "none";
+      mostrarResultadoBatalhas.style.display = "none";
   }
   
   function abrirPerfilBatalha(){
     abriuPerfilBatalha ="true";
     telaPerfilBatalha.style.display="flex";
     telaFeed.style.display="none";
+    mostrarResultadoBatalhas.style.display = "none";
   }

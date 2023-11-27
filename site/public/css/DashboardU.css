@@ -92,93 +92,14 @@ body {
     max-height: 100vh;
 }
 
-.telaInicial .menuLateral .esquerda .imgAldeia {
+.telaInicial .menuLateral .esquerda img {
     width: 70%;
-    border: 2px solid red;
+    border: 2px solid white;
     border-radius: 100%;
     margin: 1% 0 0 0;
     cursor: pointer;
 }
 
-.telaInicial .menuLateral .esquerda .imgBrasilandia {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgLeste {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgLinear {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgNorte {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgAnaRosa {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgColiseu {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgTempo {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgEstudante {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgTanque {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
-
-.telaInicial .menuLateral .esquerda .imgNacional {
-    width: 70%;
-    border: 2px solid red;
-    border-radius: 100%;
-    margin: 1% 0 0 0;
-    cursor: pointer;
-}
 
 .telaInicial .menuLateral .esquerda img:hover {
     background-color: rgba(255, 255, 255, 0.4);
@@ -203,6 +124,24 @@ body {
     padding: 8%;
     background-color: rgba(255, 255, 255, 0.4);
 }
+
+.telaInicial .menuLateral .direita .addPost{
+    background-color: #fff;
+    color: #000;
+    width: fit-content;
+    height: fit-content;
+    padding: 2% 15%;
+    border-radius: 50%;
+    font-size: 200%;
+    font-weight: 900;
+    margin-top: 100%;
+    cursor: pointer;
+}
+
+.telaInicial .menuLateral .direita .addPost:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 
 
 
@@ -245,30 +184,6 @@ body {
 }
 
 
-.telaInicial .feed2 .headerPesquisa{
-    width: 50%;
-    height: fit-content;
-    display: none;
-    position: absolute;
-    backdrop-filter: blur(5px);
-    background-color: rgba(0, 0, 0, 0.8);
-    height: 10%;
-    justify-content: center;
-    align-items: center;
-}
-
-.telaInicial .feed2 .headerPesquisa input{
-    border: none;
-    width: 90%;
-    background-color: #fff;
-    height: 60%;
-    border-radius: 15px;
-} 
-
-.telaInicial .feed2 .headerPesquisa img{
-    width: 7%;
-} 
-
 .telaInicial .feed2 .margem {
     height: fit-content;
     color: #000;
@@ -277,6 +192,19 @@ body {
 
 .telaInicial .feed2 {
     width: 50%;
+    background-color: #000;
+    margin: 0%;
+    padding: 0%;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    overflow: scroll;
+}
+
+.telaInicial .feed{
+    width: 100%;
     background-color: #000;
     margin: 0%;
     padding: 0%;
@@ -297,7 +225,7 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.5);
     display: flex;
     justify-content: center;
-    margin: 2% 0;
+    margin: 0;
     flex-direction: column;
     align-items: center;
     font-size: 90%;
@@ -324,12 +252,16 @@ body {
 
 .telaInicial .feed2 .feed .post img {
     min-height: 100px;
-    max-height: 400px;
+    max-height: 200px;
     padding: 0;
     margin: 2% 0;
     border: 1px solid black;
     border-radius: 15px;
 }
+
+
+
+
 
 /*Ranking Lateral*/
 .telaInicial .rankingLateral {
@@ -726,4 +658,145 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0 2%;
     word-wrap: break-word;
+}
+
+
+
+
+
+
+
+
+
+
+/*Tela para add post*/
+
+.telaInicial .telaAddPost{
+    display: none ;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+}
+
+.telaInicial .feed2 .telaAddPost input{
+    background-color: #000;
+    margin-left: 5%;
+    border: none;
+    word-wrap: break-word;
+    max-width: 90%;
+    height: fit-content;
+    margin-top: 4%;
+    margin-bottom: 1%;
+    color: #fff;
+    padding: 2% 0 0 0;
+    outline: none;
+}
+
+.telaInicial .telaAddPost input::placeholder{
+    font-size: 110%;
+}
+
+.telaInicial .feed2 .telaAddPost .linhaPost{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: 20%;
+}
+
+.telaInicial .feed2 .telaAddPost .linhaPost .publicar{
+    width: fit-content;
+    height: fit-content;
+    padding: 0 2%;
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+    border-radius: 15px;
+    font-size: 120%;
+    font-weight: 700;
+    font-family: "sprite-graffiti";
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*Tela de procura de post*/
+
+.telaInicial .mostrarResultadoBatalhas{
+    width: 50%;
+    background-color: #000;
+    margin: 0%;
+    padding: 0%;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    display: none;
+    flex-direction: column;
+    max-height: 100vh;
+    overflow: scroll;
+}
+
+.telaInicial .mostrarResultadoBatalhas .headerPesquisa{
+    width: 50%;
+    height: fit-content;
+    display: none;
+    position: absolute;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.telaInicial .mostrarResultadoBatalhas .headerPesquisa input{
+    border: none;
+    width: 70%;
+    background-color: #fff;
+    height: 60%;
+    border-radius: 15px;
+} 
+
+.telaInicial .mostrarResultadoBatalhas .headerPesquisa img{
+    width: 7%;
+} 
+
+.telaInicial .mostrarResultadoBatalhas .headerPesquisa button{
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    background-color: #fff;
+    color: #000;
+    border-radius: 15px;
+    font-size: 90%;
+    font-family:  "sprite-graffiti";
+}
+
+.telaInicial .mostrarResultadoBatalhas .margem{
+    color: #000;
+    height: 10%;
+}
+
+.telaInicial .mostrarResultadoBatalhas .resultadoBatalha{
+    width: 100%;
+    height: fit-content;
+    padding: 1.5% 0;
+    font-size: 150%;
+    font-family: "sprite-graffiti";
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.telaInicial .mostrarResultadoBatalhas .resultadoBatalha img{
+    width: 10%;
+    height: auto;
+    border-radius: 15px;
+    border: 2px solid white;
+    margin-left: 5%;
 }

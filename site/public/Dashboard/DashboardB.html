@@ -37,6 +37,9 @@
     <div class="telaPerfil" id="div_telaPerfil">
         <div class="modal">
             <div class="primeiraLinha">
+                <div class="divDaImagem">
+                    <img src="../paginaInicialIns/Imagens/batalha_da_aldeia.png">
+                </div>
                 <div id="nomeBatalha">Nome Usuario</div>
                 <span onclick="fecharPerfil()">X</span>
             </div>
@@ -87,29 +90,21 @@
         </div>
     </div>
 
-    <div class="telaCarregando" id="div_telaCarregando">
-        <div class="rimas321" id="rimasC">
-            <div class="rima1" id="div_rima1">Rimas em 3...</div>
-        </div>
-    </div>
+
+
+
+
+
+
+
+
+
     <div class="telaInicial" id="div_telaInicial">
         <div class="menuLateral">
 
 
-            <div class="esquerda">
-                <img src="../paginaInicialIns/Imagens/batalha_da_aldeia.png" class="imgAldeia" id="div_imgAldeia" onclick="abrirPerfilBatalha()">
-                <img src=".././paginaInicialIns/Imagens/batalha_da_brasilandia.png" class="imgBrasilandia"
-                    id="div_imgBrasilandia" onclick="abrirPerfilBatalha()">
-                <img src=".././paginaInicialIns/Imagens/batalha_da_leste.png" class="imgLeste" id="div_imgLeste" onclick="abrirPerfilBatalha()">
-                <img src=".././paginaInicialIns/Imagens/batalha_da_linear.png" class="imgLinear" id="div_imgLinear" onclick="abrirPerfilBatalha()">
-                <img src=".././paginaInicialIns/Imagens/batalha_da_norte.png" class="imgNorte" id="div_imgNorte" onclick="abrirPerfilBatalha()">
-                <img src=".././paginaInicialIns/Imagens/batalha_do_ana_rosa.png" class="imgAnaRosa" id="div_imgAnaRosa">
-                <img src=".././paginaInicialIns/Imagens/batalha_do_coliseu.png" class="imgColiseu" id="div_imgColiseu" onclick="abrirPerfilBatalha()">
-                <img src=".././paginaInicialIns/Imagens/batalha_321tempo.png" class="imgTempo" id="div_imgTempo" onclick="abrirPerfilBatalha()">
-                <img src=".././paginaInicialIns/Imagens/batalha_do_estudante.png" class="imgEstudante"
-                    id="div_imgEstudante" onclick="abrirPerfilBatalha()">
-                <img src=".././paginaInicialIns/Imagens/batalha_do_tanque.png" class="imgTanque" id="div_imgTanque" onclick="abrirPerfilBatalha()">
-                <img src=".././paginaInicialIns/Imagens/batalha_nacional.png" class="imgNacional" id="div_imgNacional" onclick="abrirPerfilBatalha()">
+            <div class="esquerda" id="div_esquerdaPagina">
+               
             </div>
 
             <div class="direita">
@@ -128,11 +123,6 @@
                 <div class="todas">Todos</div>
             </div>
 
-            <div class="headerPesquisa" id="div_pesquisa"> 
-                <img src="../paginaInicialIns/Imagens/lupa.png">
-                <input id="pesquisaBatalha" oninput="pesquisaBatalha()" placeholder="Pesquise aqui">
-            </div>
-
             <div class="telaAddPost" id="div_telaAddPost">
                 <input type="text" id="input_textoPost" placeholder="Digite aqui">
                 <div class="linhaPost">
@@ -145,9 +135,20 @@
 
             <div class="feed" id="div_feedHistory">
 
-        
+            </div>
         </div>
-        </div>
+            <div class="mostrarResultadoBatalhas" id="div_mostrarResultadoBatalhas">
+                <div class="headerPesquisa" id="div_pesquisa"> 
+                    <img src="../paginaInicialIns/Imagens/lupa.png" >
+                    <input id="input_pesquisaBatalha"  placeholder="Pesquise aqui">
+                    <button onclick="pesquisarBatalhaFuncao()">Pesquisar</button>
+                </div> 
+                <div class="margem">
+                    r
+                </div>
+
+                
+                </div>
 
 
     <!--Tela de perfil das batalhas-->
@@ -189,32 +190,12 @@
 
 
         <div class="rankingLateral">
-            <div class="rankDasBatalha">
-                <div>Batalhas mais seguidas</div>
-                <div class="colocao">
-                    bda
-                    <div id="contagemSeguidores">50</div>
-                    </div>
-                <div class="colocao">
-                    bdn
-                <div id="contagemSeguidores">50</div>
-                </div>
-                <div class="colocao">
-                    bdc
-                <div id="contagemSeguidores">50</div>
-                </div>
-                <div class="colocao">
-                    bdl
-                <div id="contagemSeguidores">50</div>
-                </div>
-                <div class="colocao">
-                    nacional
-                <div id="contagemSeguidores">50</div>
-                </div>
-                <div class="colocao">
-                    bdar
-                <div id="contagemSeguidores">50</div>
-                </div>
+
+            <div class="maisSeguidos">
+                Batalhas mais seguidas:
+            </div>
+            <div class="canvas">
+                <canvas id="totalSeguidores"></canvas>
             </div>
 
 
@@ -280,3 +261,5 @@
 </body>
 </html>
 <script src="../js/DashboardB.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../js/graficos.js"></script>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/DashboardU.css">
 </head>
 
-<body>
+<body onload="pegarDadosPost(), carregarFeed()">
      <!-- Tela de formulario -->
   <div class="tela-form-ajuda" id="div_tela_form_ajuda">
     <form>
@@ -111,25 +111,33 @@
                 <div class="todas">Todos</div>
             </div>
 
-            <div class="headerPesquisa" id="div_pesquisa"> 
-                <img src="../paginaInicialIns/Imagens/lupa.png">
-                <input id="pesquisaBatalha" oninput="pesquisaBatalha()" placeholder="Pesquise aqui">
+            <div class="telaAddPost" id="div_telaAddPost">
+                <input type="text" id="input_textoPost" placeholder="Digite aqui">
+                <div class="linhaPost">
+                    <input type="file" id="input_imagemPost">
+                    <div class="publicar" onclick="publicarPost()">Publicar</div>
+                </div>
             </div>
             
             <div class="margem">d<br>b</div>
 
             <div class="feed" id="div_feedHistory">
-            <div class="post" id="post">
-                <div class="titulo" id="nomeBatalha">Batalha Do Tanque</div>
-                <div class="texto" id="textoPostado">
-                    CAMPEÕES DA EDIÇÃO DE RETORNO DA BATALHA DO TANQUE - 02/11/2023
-                </div>
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2JHPMevGlDL9qUXsEdBIeIDGXvJ_ZZAWK6A&usqp=CAU" id="imagemPostada">
+
             </div>
-        
         </div>
-        </div>
+            <div class="mostrarResultadoBatalhas" id="div_mostrarResultadoBatalhas">
+                <div class="headerPesquisa" id="div_pesquisa"> 
+                    <img src="../paginaInicialIns/Imagens/lupa.png" >
+                    <input id="input_pesquisaBatalha"  placeholder="Pesquise aqui">
+                    <button onclick="pesquisarBatalhaFuncao()">Pesquisar</button>
+                </div> 
+                <div class="margem">
+                    r
+                </div>
+
+                
+                </div>
+
 
 
     <!--Tela de perfil das batalhas-->

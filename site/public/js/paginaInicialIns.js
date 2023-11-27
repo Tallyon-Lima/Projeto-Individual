@@ -196,15 +196,12 @@ function cadastroValidoU(){
 
 function cadastroValidoB(){
     var nomeCadastroB = input_nomeCadastroB.value;
-    var siglas = input_siglas.value;
+    var siglas = input_siglas.value.toUpperCase();
     var apresentador01 = input_apresentador01.value;
-    var apresentador02 = input_apresentador02.value;
     var emailB = input_emailB.value;
     var telefoneB = input_telefoneB.value;
     var senhaB = input_senhaB.value;
     var confirmarSenhaB = input_confirmarSenhaB.value;
-
-
 
     if(nomeCadastroB == "" ||
         siglas == "" ||
@@ -221,13 +218,13 @@ function cadastroValidoB(){
         }else if(telefoneB.length < 11 || telaCadastroB.length > 11){
             mensagemErroB.innerHTML = 'Preencha com telefone válido';
             return false;
-        }/*else if(emailB.indexOf('@') <= 0){
+        }else if(emailB.indexOf('@') <= 0){
             mensagemErroB.innerHTML = 'Preencha com um email válido';
             return false;
         }else if(senhaB != confirmarSenhaB){
             mensagemErroB.innerHTML = `Senhas diferentes`;
             return false;
-        }*/else{
+        }else{
             mensagemErroB.innerHTML = 'Agora faça login';
             setTimeout(loginBatalha, 3000)
         }
@@ -241,7 +238,6 @@ function cadastroValidoB(){
                 nomeServer: nomeCadastroB,
                 siglasServer: siglas,
                 apresentador1Server: apresentador01,
-                apresentador2Server: apresentador02,
                 emailBatalhaServer: emailB, 
                 telefoneBatalhaServer: telefoneB,
                 senhaBatalhaServer: senhaB,
@@ -311,7 +307,7 @@ function verificarB(){
                 sessionStorage.SENHABATALHA_BATALHAS = json.senhaBatalha;
                 mensagemErroB2.innerHTML = "Entrando na Dashboard";
                 setTimeout(function () {
-                    window.location = "../Dashboard/DashboardB.html";
+                    window.location = "../Dashboard/telaCarregandoB.html";
                 }, 3000); 
             });
         } else {
@@ -333,7 +329,7 @@ function verificarB(){
 
     setTimeout(function () {
         mensagemErroB2.innerHTML = "Email ou senha incorreto";
-    }, 3000); 
+    }, 5000); 
 }
 
 
