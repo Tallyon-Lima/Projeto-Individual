@@ -22,7 +22,7 @@ router.post('/buscarBatalha', function (req, res){
   });
 
   router.get('/buscarTodosBatalha', function (req, res){
-    batalhaController.listarB(req, res);
+    batalhaController.buscarTodosBatalha(req, res);
   });
 
 module.exports = router;

@@ -111,6 +111,11 @@ function buscarBatalha(req, res) {
     batalhaModel.buscarTodosBatalha().then(function (resultado) {
            if (resultado.length > 0) {
                res.status(200).json(resultado);
+
+               for(var contador = 0; contador < resultado.length; contador++ ){
+                console.log(`${resultado[contador]}`)
+               }
+               console.log(`${resultado}`)
            } else {
                res.status(204).send("Nenhum resultado encontrado!")
            }

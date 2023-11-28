@@ -1,6 +1,6 @@
 /* Pega os dados dos posts do bd*/
 function pegarDadosPost() {
-  fetch("/batalhas/listarBatalha")
+  fetch("/batalhas/listarB")
     .then(function (resposta) {
       console.log("ESTOU NO THEN DO entrar()!")
 
@@ -117,7 +117,7 @@ function carregarImagemBatalhas() {
             var esquerdaPagina = document.getElementById('div_esquerdaPagina');
 
               esquerdaPagina.innerHTML += `
-              <img src="../paginaInicialIns/Imagens/${batalhas.imagem}" id="divimg" onclick="abrirPerfilBatalha(${batalhas.imagem})">
+              <img src="../paginaInicialIns/Imagens/${batalhas.imagem}" id="divimg" onclick="abrirPerfilBatalha('${batalhas.imagem}')">
                   `;
             
           }
@@ -148,13 +148,12 @@ function pegarTodosOsDadosBatalhas() {
         resultado.json()
         .then(json => {
           console.log(json);
-          sessionStorage.NOMEBATALHA_BATALHAS = json.nomeBatalha;
-          sessionStorage.SIGLAS_BATALHAS = json.siglas;
-          sessionStorage.APRESENTADOR1_BATALHAS = json.apresentador1;
-          sessionStorage.EMAILBATALHA_BATALHAS = json.emailBatalha;
-          sessionStorage.TELEFONEBATALHA_BATALHAS = json.telefoneBatalha;
-          sessionStorage.IMAGEM_BATALHAS = json.imagem;
-        console.log(`resposta do banco ${json}`)
+          sessionStorage.NOMEBATALHA_BATALHAS_PERFIL = json.nomeBatalha;
+          sessionStorage.SIGLAS_BATALHAS_PERFIL = json.siglas;
+          sessionStorage.APRESENTADOR1_BATALHAS_PERFIL = json.apresentador1;
+          sessionStorage.EMAILBATALHA_BATALHAS_PERFIL = json.emailBatalha;
+          sessionStorage.TELEFONEBATALHA_BATALHAS_PERFIL = json.telefoneBatalha;
+          sessionStorage.IMAGEM_BATALHAS_PERFIL = json.imagem;
           for (contador = 0; contador < json.length; contador++) {
             var batalhas = json[contador];
             listaNomeBatalhas.push(batalhas.nomeBatalha);
@@ -354,11 +353,11 @@ function fecharAjuda2() {
 }
 
 function abrirPesquisa() {
-  pesquisa.style.display = "flex";
   header.style.display = "none";
   telaAddPost.style.display = "none";
   telaFeed.style.display = "none";
   mostrarResultadoBatalhas.style.display = "flex";
+  pesquisa.style.display = "flex";
 }
 
 
@@ -373,14 +372,78 @@ function abrirHome() {
   mostrarResultadoBatalhas.style.display = "none";
 }
 
-function abrirPerfilBatalha(peixe) {
+function abrirPerfilBatalha(nomeImagemBatalha) {
+  var nomeBatalhaDiv = document.getElementById('div_nomeBatlha');
+  var fotoPerfilDiv = document.getElementById('div_fotoPerfil');
+  var apresentador1Div = document.getElementById('div_apresentador1');
+
   abriuPerfilBatalha = "true";
   telaPerfilBatalha.style.display = "flex";
   telaFeed.style.display = "none";
   mostrarResultadoBatalhas.style.display = "none";
 
-  var peixe2 = peixe;
+  var nomeImagemBatalhaPNG = nomeImagemBatalha;
+  
+
+  if(nomeImagemBatalhaPNG == 'batalha_da_aldeia.png'){
+  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[0];
+  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[0]}`;
+apresentador1Div.innerHTML = `${listaApresentadorBatalhas[0]}`
+
+  }else if(nomeImagemBatalhaPNG == 'batalha_do_coliseu.png'){
+    nomeBatalhaDiv.innerHTML = listaNomeBatalhas[1];
+    fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[1]}`;
+  apresentador1Div.innerHTML = `${listaApresentadorBatalhas[1]}`
+  
+}else if(nomeImagemBatalhaPNG == 'batalha_da_brasilandia.png'){
+  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[2];
+  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[2]}`;
+apresentador1Div.innerHTML = `${listaApresentadorBatalhas[2]}`
+
+} else if(nomeImagemBatalhaPNG == 'batalha_da_leste.png'){
+  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[3];
+  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[3]}`;
+apresentador1Div.innerHTML = `${listaApresentadorBatalhas[3]}`
+
+}else if(nomeImagemBatalhaPNG == 'batalha_da_linear.png'){
+  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[4];
+  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[4]}`;
+apresentador1Div.innerHTML = `${listaApresentadorBatalhas[4]}`
+
+} else if(nomeImagemBatalhaPNG == 'batalha_da_norte.png'){
+  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[5];
+  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[5]}`;
+apresentador1Div.innerHTML = `${listaApresentadorBatalhas[5]}`
+
+}else if(nomeImagemBatalhaPNG == 'batalha_do_ana_rosa.png'){
+  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[6];
+  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[6]}`;
+apresentador1Div.innerHTML = `${listaApresentadorBatalhas[6]}`
+
+}else if(nomeImagemBatalhaPNG == 'batalha_do_tanque.png'){
+  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[7];
+  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[7]}`;
+apresentador1Div.innerHTML = `${listaApresentadorBatalhas[7]}`
+
+}else if(nomeImagemBatalhaPNG == 'batalha_321tempo.png'){
+  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[8];
+  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[8]}`;
+apresentador1Div.innerHTML = `${listaApresentadorBatalhas[8]}`
+
+}else if(nomeImagemBatalhaPNG == 'batalha_do_estudante.png'){
+  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[9];
+  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[9]}`;
+apresentador1Div.innerHTML = `${listaApresentadorBatalhas[9]}`
+
+}else if(nomeImagemBatalhaPNG == 'batalha_nacional.png'){
+  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[10];
+  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[10]}`;
+apresentador1Div.innerHTML = `${listaApresentadorBatalhas[10]}`
+
 }
+}
+
+
 
 
 function btnAdicionarPost() {

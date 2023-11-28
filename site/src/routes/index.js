@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 
-router.get("/", function (req, res) {
+router.get("/paginaInicialIns/paginaInicialIns.html", function (req, res) {
  res.render(req, res);
 });
 

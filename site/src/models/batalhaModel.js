@@ -35,8 +35,8 @@ function listarB() {
 
 function buscarTodosBatalha() {
     var instrucao = ` SELECT * FROM batalhas;`;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    console.log("Executando a instrução RSQL: \n" + instrucao);
+    return database.executar(`${instrucao}`);
 }
 
 
