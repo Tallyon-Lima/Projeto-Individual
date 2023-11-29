@@ -25,6 +25,7 @@ function autenticarB(req, res) {
                     emailBatalha: resultadoAutenticarB[0].emailBatalha,
                     telefoneBatalha: resultadoAutenticarB[0].telefoneBatalha,
                     senhaBatalha: resultadoAutenticarB[0].senhaBatalha,
+                    imagemBatalha: resultadoAutenticarB[0].imagem,
                                 });    
                 } else if(resultadoAutenticarB.length == 0){
                 res.status(403).send("Email e/ou senha inválido(s)");
@@ -75,15 +76,7 @@ function buscarBatalha(req, res) {
 
     batalhaModel.buscarBatalha(pesquisaBatalha).then(function(resposta){
         res.status(200).send(resposta);
-        for(
-            var i = 0;
-            i < resposta.length;
-            i += 1
-        ){
-            var dados = resposta[i];
-            console.log(` MELANCIA${dados.nomeBatalha}`);
-            console.log(resposta)
-        }
+       
     }).catch(function(erro){
         console.log(erro);
         res.status(500).json(erro.sqlMessage);
@@ -111,11 +104,6 @@ function buscarBatalha(req, res) {
     batalhaModel.buscarTodosBatalha().then(function (resultado) {
            if (resultado.length > 0) {
                res.status(200).json(resultado);
-
-               for(var contador = 0; contador < resultado.length; contador++ ){
-                console.log(`${resultado[contador]}`)
-               }
-               console.log(`${resultado}`)
            } else {
                res.status(204).send("Nenhum resultado encontrado!")
            }

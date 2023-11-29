@@ -508,6 +508,69 @@ body {
     cursor: pointer;
 }
 
+.telaPerfilBatalha .feedPerfil{
+    width: 100%;
+    background-color: #000;
+    margin: 0%;
+    padding: 0%;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.telaPerfilBatalha .feedPerfil .post {
+    padding: 2%;
+    width: 89%;
+    min-height: fit-content;
+    max-height: 500px;
+    padding: 0% 5%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    font-size: 90%;
+}
+
+.telaPerfilBatalha .feedPerfil .post .titulo{
+    width: 100%;
+    font-weight: 500;
+    display: flex;
+    justify-content: flex-start;
+    margin: 2% 0 2% -5%;
+    font-size: 110%;
+    font-family: "sprite-graffiti";
+}
+
+.telaPerfilBatalha  .feedPerfil .post .texto{
+    width: 100%;
+    font-weight: 500;
+    display: flex;
+    justify-content: flex-start;
+    margin: 2% 0 2% -5%;
+    font-size: 90%;
+}
+
+.telaPerfilBatalha  .feedPerfil .post .texto button{
+    width: 100%;
+    font-weight: 500;
+    display: flex;
+    justify-content: flex-start;
+    margin: 2% 0 2% -5%;
+    font-size: 90%;
+}
+
+.telaPerfilBatalha .feedPerfil .post img {
+    min-height: 100px;
+    max-height: 200px;
+    padding: 0;
+    margin: 2% 0;
+    border: 1px solid black;
+    border-radius: 15px;
+}
 
 
 
@@ -626,14 +689,10 @@ body {
 
 .telaInicial .telaPerfilBatalha .fotoFundo{
     width: 100%;
-    height: 20%;
-    overflow: hidden;
-}
-
-.telaInicial .telaPerfilBatalha .fotoFundo img{
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
+    height: fit-content;
+    padding-bottom: 1%;
+    background-image: url('../paginaInicialIns/Imagens/plateia.jpg');
+    background-size: cover;
 }
 
 .telaInicial .telaPerfilBatalha .fotoPerfil{
@@ -642,9 +701,7 @@ body {
     border-radius: 50%;
     border: 2px solid white;
     background-color: black;
-    position: absolute;
-    margin-left: 20%;
-    margin-top: 7%;
+
 }
 
 .telaInicial .telaPerfilBatalha .fotoPerfil img{
@@ -667,7 +724,7 @@ body {
     background-color: #fff;
     color: #000;
     height: fit-content;
-    font-size: 120%;
+    font-size: 110%;
     border: none;
     border-radius: 15px;
     font-family: "sprite-graffiti";
@@ -681,13 +738,14 @@ body {
 
 .telaInicial .telaPerfilBatalha .detalhes{
     width: 100%;
-    padding-bottom: 5%;
     padding: 3%;
-    height: fit-content;
+    margin: 0%;
+    height: 20%;
     display: flex;
     flex-direction: column;
     border-top: 2px solid rgba(255, 255, 255, 0.5);
     border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    align-items: center;
 }
 
 .telaInicial .telaPerfilBatalha .detalhes div{

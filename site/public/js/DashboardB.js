@@ -32,7 +32,7 @@ function pegarDadosPost() {
 
 
 
-/* Cria um laco de repetição para publicar item por item*/
+/* Cria um laço de repetição para publicar item por item*/
 function carregarFeed() {
   fetch("/feed/listar")
     .then(function (resposta) {
@@ -67,8 +67,6 @@ function carregarFeed() {
         })
       }
     })
-
-
 }
 
 
@@ -130,6 +128,7 @@ function carregarImagemBatalhas() {
 
 
 /*Pegar todos os dados das batalhas */
+var listaIdBatalha = [];
 var listaNomeBatalhas =  [];
 var listaSiglasBatalhas = [];
 var listaApresentadorBatalhas = [];
@@ -148,14 +147,16 @@ function pegarTodosOsDadosBatalhas() {
         resultado.json()
         .then(json => {
           console.log(json);
-          sessionStorage.NOMEBATALHA_BATALHAS_PERFIL = json.nomeBatalha;
-          sessionStorage.SIGLAS_BATALHAS_PERFIL = json.siglas;
-          sessionStorage.APRESENTADOR1_BATALHAS_PERFIL = json.apresentador1;
-          sessionStorage.EMAILBATALHA_BATALHAS_PERFIL = json.emailBatalha;
-          sessionStorage.TELEFONEBATALHA_BATALHAS_PERFIL = json.telefoneBatalha;
-          sessionStorage.IMAGEM_BATALHAS_PERFIL = json.imagem;
+          sessionStorage.IDBATALHAS_BATALHAS = json.idBatalha;
+          sessionStorage.NOMEBATALHA_BATALHAS = json.nomeBatalha;
+          sessionStorage.SIGLAS_BATALHAS = json.siglas;
+          sessionStorage.APRESENTADOR1_BATALHAS = json.apresentador1;
+          sessionStorage.EMAILBATALHA_BATALHAS = json.emailBatalha;
+          sessionStorage.TELEFONEBATALHA_BATALHAS = json.telefoneBatalha;
+          sessionStorage.IMAGEM_BATALHAS = json.imagem;
           for (contador = 0; contador < json.length; contador++) {
             var batalhas = json[contador];
+            listaIdBatalha.push(batalhas.idBatalha)
             listaNomeBatalhas.push(batalhas.nomeBatalha);
             listaSiglasBatalhas.push(batalhas.siglas);   
             listaApresentadorBatalhas.push(batalhas.apresentador1);
@@ -164,6 +165,7 @@ function pegarTodosOsDadosBatalhas() {
             listaImagemBatalhas.push(batalhas.imagem);        
           }
     setTimeout(mostrarResultadoPesquisa, 100)
+
         })
     } else{
       return false;
@@ -243,8 +245,14 @@ var mostrarResultadoBatalhas = document.getElementById('div_mostrarResultadoBata
 
 
 
+var idBatalha = sessionStorage.IDBATALHA_BATALHAS;
+var batalhaSeguida = document.getElementById('div_idBatalha')
+batalhaSeguida.innerHTML = `${idBatalha}`;
 var nomeBatalha = document.getElementById('nomeBatalha');
 nomeBatalha.innerHTML = sessionStorage.NOMEBATALHA_BATALHAS;
+var imagemBatalhaPerfil = document.getElementById('div_imagemBatalhaPerfil');
+var imagemBatalhaPerfil2 =sessionStorage.IMAGEM_BATALHAS;
+imagemBatalhaPerfil.src = `../paginaInicialIns/Imagens/${imagemBatalhaPerfil2}`;
 var nomeBatalha2 = document.getElementById('nomeBatalha2');
 nomeBatalha2.innerHTML = sessionStorage.NOMEBATALHA_BATALHAS;
 var siglasBatalha = document.getElementById('siglasBatalha');
@@ -272,6 +280,16 @@ window.addEventListener("scroll", function () {
     header.style.position = "absolute";
   }
 });
+
+window.addEventListener("scroll", function () {
+  var header = document.getElementById("div_telaPerfilBatalha");
+  if (window.scrollY > 0) {
+    header.style.display = "none";
+  } else {
+    header.style.display = "flex";
+  }
+});
+
 
 
 
@@ -376,6 +394,9 @@ function abrirPerfilBatalha(nomeImagemBatalha) {
   var nomeBatalhaDiv = document.getElementById('div_nomeBatlha');
   var fotoPerfilDiv = document.getElementById('div_fotoPerfil');
   var apresentador1Div = document.getElementById('div_apresentador1');
+  var idBatalhaDiv = document.getElementById('div_idBatalha');
+
+
 
   abriuPerfilBatalha = "true";
   telaPerfilBatalha.style.display = "flex";
@@ -385,62 +406,75 @@ function abrirPerfilBatalha(nomeImagemBatalha) {
   var nomeImagemBatalhaPNG = nomeImagemBatalha;
   
 
-  if(nomeImagemBatalhaPNG == 'batalha_da_aldeia.png'){
+  if(nomeImagemBatalhaPNG == 'batalha_da_aldeia.png' || nomeImagemBatalhaPNG == 'Batalha Da Aldeia'){
+    idBatalhaDiv.innerHTML = listaIdBatalha[0];
   nomeBatalhaDiv.innerHTML = listaNomeBatalhas[0];
   fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[0]}`;
 apresentador1Div.innerHTML = `${listaApresentadorBatalhas[0]}`
 
-  }else if(nomeImagemBatalhaPNG == 'batalha_do_coliseu.png'){
+  }else if(nomeImagemBatalhaPNG == 'batalha_do_coliseu.png' || nomeImagemBatalhaPNG == 'Batalha Do Coliseu'){
+    idBatalhaDiv.innerHTML = listaIdBatalha[1]; 
     nomeBatalhaDiv.innerHTML = listaNomeBatalhas[1];
     fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[1]}`;
   apresentador1Div.innerHTML = `${listaApresentadorBatalhas[1]}`
   
-}else if(nomeImagemBatalhaPNG == 'batalha_da_brasilandia.png'){
+}else if(nomeImagemBatalhaPNG == 'batalha_da_brasilandia.png' || nomeImagemBatalhaPNG == 'Batalha Da Brasilândia'){
+  idBatalhaDiv.innerHTML = listaIdBatalha[2];
   nomeBatalhaDiv.innerHTML = listaNomeBatalhas[2];
   fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[2]}`;
 apresentador1Div.innerHTML = `${listaApresentadorBatalhas[2]}`
 
-} else if(nomeImagemBatalhaPNG == 'batalha_da_leste.png'){
+} else if(nomeImagemBatalhaPNG == 'batalha_da_leste.png' || nomeImagemBatalhaPNG == 'Batalha Da Leste'){
+  idBatalhaDiv.innerHTML = listaIdBatalha[3];
   nomeBatalhaDiv.innerHTML = listaNomeBatalhas[3];
   fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[3]}`;
 apresentador1Div.innerHTML = `${listaApresentadorBatalhas[3]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_da_linear.png'){
+}else if(nomeImagemBatalhaPNG == 'batalha_da_linear.png' || nomeImagemBatalhaPNG == 'Batalha Da Linear'){
+  idBatalhaDiv.innerHTML = listaIdBatalha[4];
   nomeBatalhaDiv.innerHTML = listaNomeBatalhas[4];
   fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[4]}`;
 apresentador1Div.innerHTML = `${listaApresentadorBatalhas[4]}`
 
-} else if(nomeImagemBatalhaPNG == 'batalha_da_norte.png'){
+} else if(nomeImagemBatalhaPNG == 'batalha_da_norte.png' || nomeImagemBatalhaPNG == 'Batalha Da Norte'){
+  idBatalhaDiv.innerHTML = listaIdBatalha[5];
   nomeBatalhaDiv.innerHTML = listaNomeBatalhas[5];
   fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[5]}`;
 apresentador1Div.innerHTML = `${listaApresentadorBatalhas[5]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_do_ana_rosa.png'){
+}else if(nomeImagemBatalhaPNG == 'batalha_do_ana_rosa.png' || nomeImagemBatalhaPNG == 'Batalha Do Ana Rosa'){
+  idBatalhaDiv.innerHTML = listaIdBatalha[6];
   nomeBatalhaDiv.innerHTML = listaNomeBatalhas[6];
   fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[6]}`;
 apresentador1Div.innerHTML = `${listaApresentadorBatalhas[6]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_do_tanque.png'){
+}else if(nomeImagemBatalhaPNG == 'batalha_do_tanque.png' || nomeImagemBatalhaPNG == 'Batalha Do Tanque'){
+  idBatalhaDiv.innerHTML = listaIdBatalha[7];
   nomeBatalhaDiv.innerHTML = listaNomeBatalhas[7];
   fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[7]}`;
 apresentador1Div.innerHTML = `${listaApresentadorBatalhas[7]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_321tempo.png'){
+}else if(nomeImagemBatalhaPNG == 'batalha_321tempo.png' || nomeImagemBatalhaPNG == 'Batalha 321 Tempo'){
+  idBatalhaDiv.innerHTML = listaIdBatalha[8];
   nomeBatalhaDiv.innerHTML = listaNomeBatalhas[8];
   fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[8]}`;
 apresentador1Div.innerHTML = `${listaApresentadorBatalhas[8]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_do_estudante.png'){
+}else if(nomeImagemBatalhaPNG == 'batalha_do_estudante.png' || nomeImagemBatalhaPNG == 'Batalha Do Estudante'){
+  idBatalhaDiv.innerHTML = listaIdBatalha[9];
   nomeBatalhaDiv.innerHTML = listaNomeBatalhas[9];
   fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[9]}`;
 apresentador1Div.innerHTML = `${listaApresentadorBatalhas[9]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_nacional.png'){
+}else if(nomeImagemBatalhaPNG == 'batalha_nacional.png' || nomeImagemBatalhaPNG == 'Batalha Do Nacional'){
+  idBatalhaDiv.innerHTML = listaIdBatalha[10];
   nomeBatalhaDiv.innerHTML = listaNomeBatalhas[10];
   fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[10]}`;
 apresentador1Div.innerHTML = `${listaApresentadorBatalhas[10]}`
 
 }
+setTimeout(carregarQtdSeguidores, 10);
+setTimeout(verificarSeguidor, 1000);
 }
 
 
@@ -459,6 +493,9 @@ function btnAdicionarPost() {
 
 
 /*Pesquisa batalha*/
+
+
+
 var listaNomeBatalha = [  ];
 
 function pesquisarBatalhaFuncao() {
@@ -494,6 +531,8 @@ function pesquisarBatalhaFuncao() {
       res.status(500).json(erro.sqlMessage)
     }
   )
+
+
  }
 
 
@@ -507,7 +546,7 @@ function mostrarResultadoPesquisa(){
   
   for(var contador = 0; contador < listaNomeBatalha.length; contador++){
     mostrarResultadoBatalhas.innerHTML += `
-      <div class="resultadoBatalha">
+      <div class="resultadoBatalha" onclick="abrirPerfilBatalha('${listaNomeBatalha[contador]}')">
     ${listaNomeBatalha[contador]}
 </div>
   `;
@@ -518,10 +557,152 @@ function mostrarResultadoPesquisa(){
 
 
 
+/*Seguidor*/
+function seguir(){
+  var btnSeguir = document.getElementById('btnSeguir').innerText;
+  var batalhaSeguida = document.getElementById('div_idBatalha').innerText;
+
+ 
+  if(btnSeguir == "Seguir"){
+      fetch("/seguidor/seguir", {
+          method: "POST",
+          headers:{
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            idBatalhaServer: idBatalha,
+            batalhaSeguidaServer: batalhaSeguida,
+          }),
+      }).then(function (resposta){
+          console.log("resposta: ", resposta);
+          if(resposta.ok){
+              document.getElementById('btnSeguir').innerText = "Deixar de Seguir";
+          }
+      })
+  } else{
+      fetch("/seguidor/deixarSeguir", {
+          method: "POST",
+          headers:{
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            idBatalhaServer: idBatalha,
+            batalhaSeguidaServer: batalhaSeguida
+          }),
+      }).then(function (resposta){
+          console.log("resposta: ", resposta);
+          if(resposta.ok){
+              document.getElementById('btnSeguir').innerText = "Seguir";
+          }
+      })
+  }
+}
 
 
 
 
+function carregarQtdSeguidores() {
+  var nomeBatalha = document.getElementById('div_nomeBatlha').innerText;
+  var mostrarQtdSeguidores = document.getElementById('div_mostrarQtdSeguidores');
+  mostrarQtdSeguidores.innerHTML = `0`;
+  fetch("/seguidor/seguidores", {
+      method: "POST",
+      headers:{
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+          nomeBatalhaServer: nomeBatalha,
+      }),
+  }).then(function (resposta){
+      if(resposta.ok) {
+          resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+              var qtd = 0;
+              for(var contador = 0; contador < resposta.length; contador++){
+                qtd++
+              }
+              mostrarQtdSeguidores.innerHTML = `${qtd}`
+          
+          });
+      }
+  })
+}
+
+function verificarSeguidor(){
+  var batalhaSeguida = document.getElementById('div_idBatalha').innerText;
+  document.getElementById('btnSeguir').innerText = "Seguir";
+  fetch("/seguidor/verificarSeguidor", {
+      method: "POST",
+      headers:{
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        idBatalhaServer: idBatalha,
+        batalhaSeguidaServer: batalhaSeguida,
+      }),
+  }).then(function (resposta){
+      if(resposta.ok) {
+          resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              var seguindoOuNao = resposta[0];
+
+              if(seguindoOuNao.seguindo == 1){
+                  document.getElementById('btnSeguir').innerText = "Deixar de Seguir";
+              } else{
+                  document.getElementById('btnSeguir').innerText = "Seguir";
+              }
+              
+          });
+      }
+  })
+  setTimeout(FeedPerfil, 200)
+}
+
+function FeedPerfil() {
+  var nomeBatalha = document.getElementById('div_nomeBatlha').innerText;
+  fetch("/feed/feedPerfil", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        nomeBatalhaServer: nomeBatalha,
+      }),
+  }).then(function (resposta) {
+      if (resposta.ok) {
+          resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              for (contador = 0; contador < resposta.length; contador++) {
+                var post = resposta[contador];
+                var feed = document.getElementById('div_feedPerfil');
+    
+                if (post.imagemPost == '') {
+                  feed.innerHTML += `
+                      <div class="post" id="post">
+                      <div class="titulo" id="nomeBatalha">
+                      ${post.nomeBatalha} </div>
+                      <div class="texto" id="textoPostado">${post.conteudo}
+                      </div>
+                      </div>
+                      `;
+                } else {
+                  feed.innerHTML += `
+                      <div class="post" id="post">
+                      <div class="titulo" id="nomeBatalha">
+                      ${post.nomeBatalha} </div>
+                      <div class="texto" id="textoPostado">${post.conteudo}
+                      </div>
+                      <img
+                          src="../paginaInicialIns/Imagens/${post.imagemPost}" id="imagemPostada">
+                  </div>
+                      `;
+                } ;
+              }
+          })
+      }
+  })
+}
 
 
 

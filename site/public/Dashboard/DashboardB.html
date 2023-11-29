@@ -38,7 +38,7 @@
         <div class="modal">
             <div class="primeiraLinha">
                 <div class="divDaImagem">
-                    <img src="../paginaInicialIns/Imagens/batalha_da_aldeia.png">
+                    <img id="div_imagemBatalhaPerfil" src="../paginaInicialIns/Imagens/">
                 </div>
                 <div id="nomeBatalha">Nome Usuario</div>
                 <span onclick="fecharPerfil()">X</span>
@@ -153,25 +153,33 @@
 
     <!--Tela de perfil das batalhas-->
     <div class="telaPerfilBatalha" id="div_telaPerfilBatalha">
-        <div class="linha">
-            <div id="div_nomeBatlha">Nome da Batalha</div>
-        </div>
+
         <div id="fotoFundo" class="fotoFundo">
-            <img src="../paginaInicialIns/Imagens/plateia.jpg">
+            <div class="fotoPerfil">
+                <img id="div_fotoPerfil" src="">
+            </div>
         </div>
-        <div class="fotoPerfil">
-            <img id="div_fotoPerfil" src="">
-        </div>
-        <div class="linhaSeguir">
-            <button>Seguir</button>
-        </div>
+   
         <div class="detalhes">
             <div>
+                <div class="texto">
+                    <div id="div_nomeBatlha">Nome da Batalha</div> <div style="display: none;" id="div_idBatalha">Teste</div>
+                </div>
+                <div class="linhaSeguir">
+                    <button id="btnSeguir" onclick="seguir()">Seguir</button>
+                </div>
+                <div class="texto">
+                    Seguidores: 
+                    <span id="div_mostrarQtdSeguidores">0 </span>
+                </div>
                 <div class="texto">
                   Apresentador:
                   <span id="div_apresentador1">apresentador1</span>
                 </div>
             </div>
+        </div>
+        <div class="feedPerfil" id="div_feedPerfil">
+    
         </div>
     </div>
 

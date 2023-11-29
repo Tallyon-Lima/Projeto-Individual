@@ -305,6 +305,7 @@ function verificarB(){
                 sessionStorage.EMAILBATALHA_BATALHAS = json.emailBatalha;
                 sessionStorage.TELEFONEBATALHA_BATALHAS = json.telefoneBatalha;
                 sessionStorage.SENHABATALHA_BATALHAS = json.senhaBatalha;
+                sessionStorage.IMAGEMBATALHAPERFIL_BATALHAS = json.imagem;
                 mensagemErroB2.innerHTML = "Entrando na Dashboard";
                 setTimeout(function () {
                     window.location = "../Dashboard/telaCarregandoB.html";
@@ -360,7 +361,7 @@ function verificarU() {
         })
     })
     .then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
+      
 
         if (resposta.ok) {
             console.log(resposta);
@@ -372,10 +373,11 @@ function verificarU() {
                 sessionStorage.EMAILUSUARIO_USUARIO = json.emailUsuario;
                 sessionStorage.SENHAUSUARIO_USUARIO = json.senhaUsuario;
                 sessionStorage.TELEFONEUSUARIO_USUARIO = json.telefoneUsuario;
+                sessionStorage.IMAGEMBATALHAPERFIL_BATALHAS = json.imagem;
                 mensagemErroU2.innerHTML = "Entrando na Dashboard";
                 setTimeout(function () {
                     window.location = "../Dashboard/DashboardU.html";
-                    
+                    console.log(`${emailUsuario} ${senhaU}`)              
                 }, 3000); 
             });
         } else {

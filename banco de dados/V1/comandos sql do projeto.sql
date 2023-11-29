@@ -26,8 +26,10 @@ CREATE TABLE seguidores(
 idSeguidor int primary key auto_increment,
 fkUsuarioS int,
 fkBatalhaS int,
+fkBatalhaSeguindo int,
 CONSTRAINT fkUsuarioSSeguir FOREIGN KEY (fkUsuarioS) REFERENCES usuario(idUsuario),
 CONSTRAINT fkBatalhaSSeguir FOREIGN KEY (fkBatalhaS) REFERENCES batalhas(idBatalha),
+CONSTRAINT fkBatalhaSeguindoSeguir FOREIGN KEY (fkBatalhaSeguindo) REFERENCES batalhas(idBatalha),
 seguindo int,
 CONSTRAINT chkSeguindoSeguidores check (seguindo IN (1))
 );
@@ -191,6 +193,17 @@ Fica na sintonia e cola com Nóis! 🔥⬇️<br>*MCS FINALISTAS*<br>1 - @lorran
 ', 'naciona1.jpg', CURRENT_TIMESTAMP);
 
 
+INSERT INTO seguidores(idSeguidor,fkUsuarioS, fkBatalhaS, seguindo) VALUES
+(1, 1, 1001, 1),
+(2, 1, 1000, 1);
+
+INSERT INTO seguidores(idSeguidor, fKBatalhaS, fkBatalhaSeguindo, seguindo) VALUES
+(null, 1001, 1000, 1);
+
+
+SELECT * FROM seguidores;		
+
+SELECT * FROM batalhas JOIN seguidores ON fkBatalhaS = idBatalha;
 
 SELECT * FROM post;
 
@@ -206,3 +219,14 @@ SELECT nomeBatalha FROM batalhas WHERE
 nomeBatalha like '%%'; 
 
  SELECT imagem FROM batalhas;
+ 
+ delete from seguidores where fkBatalhaSeguindo = 1000 and fkBatalhaS = 1000;
+ 
+ select sum(seguindo) from seguidores JOIN batalhas ON idBatalha = fkBatalhaS
+ WHERE nomeBatalha = 'Batalha Da Aldeia';
+ 
+ select seguindo from seguidores where fkBatalhaS = 1004 and fkBatalhaSeguindo = 1000;
+ 
+ 
+ SELECT * FROM post JOIN Batalhas ON fkBatalhaP = idBatalha WHERE nomeBatalha = 'Batalha Da Aldeia'
+ ORDER BY dtPost DESC;

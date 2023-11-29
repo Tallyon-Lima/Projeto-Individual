@@ -22,9 +22,18 @@ function publicarP(textoPost, imagemPost, idBatalha){
   return database.executar(instrucao);
 }
 
+function feedPerfil(batalhaSeguida) {
+  var instrucao = `SELECT * FROM post JOIN Batalhas ON fkBatalhaP = idBatalha WHERE nomeBatalha = '${batalhaSeguida}'
+  ORDER BY dtPost DESC;
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
 
 module.exports = { 
     listar,
     salvar,
-    publicarP
+    publicarP,
+    feedPerfil,
 }

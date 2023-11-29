@@ -13,5 +13,7 @@ router.post('/publicarP', function (req, res) {
   feedController.publicarP(req, res);
 })
 
-
+router.post('/feedPerfil', function (req, res){
+  feedController.feedPerfil(req, res);
+});
 module.exports = router;

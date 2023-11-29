@@ -11,7 +11,8 @@ var app = express();
 var indexRouter = require("./src/routes/index")
 var batalhaRouter = require("./src/routes/batalha");
 var usuarioRouter = require("./src/routes/usuario");
-var feedRoute = require("./src/routes/feed");
+var feedRouter = require("./src/routes/feed");
+var seguidorRouter = require("./src/routes/seguidor");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -22,8 +23,8 @@ app.use(cors());
 app.use("/", indexRouter)
 app.use("/batalha", batalhaRouter);
 app.use("/usuario", usuarioRouter);
-app.use("/feed", feedRoute);
-
+app.use("/feed", feedRouter);
+app.use("/seguidor", seguidorRouter);
 
 
 app.listen(PORTA, function () {
