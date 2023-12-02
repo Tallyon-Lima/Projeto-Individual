@@ -13,6 +13,7 @@ var batalhaRouter = require("./src/routes/batalha");
 var usuarioRouter = require("./src/routes/usuario");
 var feedRouter = require("./src/routes/feed");
 var seguidorRouter = require("./src/routes/seguidor");
+var rackRouter = require("./src/routes/rack");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,7 +26,7 @@ app.use("/batalha", batalhaRouter);
 app.use("/usuario", usuarioRouter);
 app.use("/feed", feedRouter);
 app.use("/seguidor", seguidorRouter);
-
+app.use("/rack", rackRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

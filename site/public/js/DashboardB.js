@@ -28,6 +28,7 @@ function pegarDadosPost() {
 
       setTimeout(pegarDadosBatalhas, 1000);
       setTimeout(pegarTodosOsDadosBatalhas,2000);
+      setTimeout(pegarDadosRack, 3000);
 }
 
 
@@ -220,6 +221,35 @@ function publicarPost() {
 
 
 
+
+
+/*Pegar os dados do ranck */
+
+function pegarDadosRack() {
+  var guardarRack =""
+  
+  var rankDasBatalha1Div = document.getElementById('rankDasBatalha1');
+  fetch("/rack/listarR")
+  .then(function (resposta) {
+    if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          guardarRack ="  <div>A batalha ma</div>"
+          for (contador = 0; contador < resposta.length; contador++) {
+            var rackb = resposta[contador];
+
+              guardarRack += `
+                  <div class="colocao">
+                    ${rackb.nomeBatalha}
+                    <div id="contagemSeguidores">${rackb.seguidor}</div>
+                    </div>
+                  `;
+          }
+          rankDasBatalha1Div.innerHTML += guardarRack
+
+        })
+      }    
+    })
+}
 
 
 

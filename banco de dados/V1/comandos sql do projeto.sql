@@ -56,7 +56,13 @@ CONSTRAINT fkBatalhaPPost FOREIGN KEY (fkBatalhaP) REFERENCES batalhas (idBatalh
 INSERT INTO usuario VALUES
 (1,'Tallyon','tallyon@gmail.com','11987307133','tallyon1234'),
 (2,'MC Magrão','magrao@gmail.com','11965853216', 'magrao1234'),
-(3,'MC Barreto','barreto@gmail.com','11965218475','barreto1234');
+(3,'MC Barreto','barreto@gmail.com','11965218475','barreto1234'),
+(4, 'Mc Guri', 'guri@gmail.com', null, 'guri123'),
+(5, 'Mc Prado', 'prado@gmail.com', null, 'prado123'),
+(6, 'Mc Jhony', 'jhony@gmail.com', null, 'jhony123'),
+(7, 'Mc Brennuz', 'brennuz@gmail.com', null, 'brennuz123'),
+(8, 'Mc Schuler', 'schuler@gmail.com', null, 'schuler123'),
+(9, 'Mc Maria', 'maria@gmail.com', null, 'maria123');
 
 INSERT INTO batalhas VALUES
 (null, 'Batalha Da Aldeia', 'BDA' ,'Mc Bob 13', 'batalhadaaldeia@gmail.com', '11941873265', 'bda123', 'batalha_da_aldeia.png'),
@@ -192,21 +198,109 @@ Fica na sintonia e cola com Nóis! 🔥⬇️<br>*MCS FINALISTAS*<br>1 - @lorran
 10 - @adilsin_etnia (PR)
 ', 'naciona1.jpg', CURRENT_TIMESTAMP);
 
-
-INSERT INTO seguidores(idSeguidor,fkUsuarioS, fkBatalhaS, seguindo) VALUES
-(1, 1, 1001, 1),
-(2, 1, 1000, 1);
-
-INSERT INTO seguidores(idSeguidor, fKBatalhaS, fkBatalhaSeguindo, seguindo) VALUES
-(null, 1001, 1000, 1);
+INSERT INTO seguidores (idSeguidor, fkUsuarioS, fkBatalhaS, seguindo) VALUES
+(null, 1, 1000, 1),
+(null, 2, 1000, 1),
+(null, 3, 1000, 1),
+(null, 4, 1000, 1),
+(null, 5, 1000, 1),
+(null, 6, 1000, 1),
+(null, 7, 1000, 1),
+(null, 8, 1000, 1),
+(null, 9, 1000, 1),
+(null, 1, 1001, 1),
+(null, 2, 1001, 1),
+(null, 3, 1001, 1),
+(null, 4, 1001, 1),
+(null, 5, 1001, 1),
+(null, 6, 1001, 1),
+(null, 7, 1001, 1),
+(null, 8, 1001, 1),
+(null, 1, 1002, 1),
+(null, 2, 1002, 1),
+(null, 3, 1002, 1),
+(null, 4, 1002, 1),
+(null, 5, 1002, 1),
+(null, 6, 1002, 1),
+(null, 7, 1002, 1),
+(null, 8, 1002, 1),
+(null, 1, 1003, 1),
+(null, 2, 1003, 1),
+(null, 3, 1003, 1),
+(null, 4, 1003, 1),
+(null, 5, 1003, 1),
+(null, 6, 1003, 1),
+(null, 7, 1003, 1),
+(null, 8, 1003, 1),
+(null, 1, 1004, 1),
+(null, 2, 1004, 1),
+(null, 3, 1004, 1),
+(null, 4, 1004, 1),
+(null, 5, 1004, 1),
+(null, 6, 1004, 1),
+(null, 7, 1004, 1),
+(null, 8, 1004, 1),
+(null, 1, 1005, 1),
+(null, 2, 1005, 1),
+(null, 3, 1005, 1),
+(null, 4, 1005, 1),
+(null, 5, 1005, 1),
+(null, 6, 1005, 1),
+(null, 1, 1006, 1),
+(null, 2, 1006, 1),
+(null, 3, 1006, 1),
+(null, 4, 1006, 1),
+(null, 5, 1006, 1),
+(null, 6, 1006, 1),
+(null, 7, 1006, 1),
+(null, 1, 1007, 1),
+(null, 2, 1007, 1),
+(null, 3, 1007, 1),
+(null, 4, 1007, 1),
+(null, 5, 1007, 1),
+(null, 6, 1007, 1),
+(null, 1, 1009, 1),
+(null, 2, 1009, 1),
+(null, 3, 1009, 1),
+(null, 4, 1009, 1),
+(null, 5, 1009, 1),
+(null, 1, 1010, 1),
+(null, 2, 1010, 1);
 
 INSERT INTO rackBatalha VALUES 
-(null, 'Guri' , 119, 1000),
-(null, 'Neo' , 80, 1000),
-(null, 'Jhony' , 59, 1000),
-(null, 'Prado' , 57, 1000),
-(null, 'Magão' , 53, 1000);
+(null, 'Guri' , 36, 1000),
+(null, 'Kroy' , 25, 1000),
+(null, 'Big Mike' , 23, 1000),
+(null, 'Neo' , 19, 1000),
+(null, 'Magrão' , 15, 1000);
 
+INSERT INTO rackBatalha VALUES 
+(null, 'Bask', 40, 1005),
+(null, 'Apollo', 19, 1005),
+(null, 'Kroy', 18, 1005),
+(null, 'Lino', 14, 1005),
+(null, 'Tavin', 11, 1005);
+
+INSERT INTO rackBatalha VALUES 
+(null, 'Dherik', 34, 1004),
+(null, 'Kairós', 32, 1004),
+(null, 'Brennuz', 17, 1004),
+(null, 'Fauzi', 15, 1004),
+(null, 'Young B ', 15, 1004);
+
+INSERT INTO rackBatalha VALUES 
+(null, 'Kroy', 27, 1006),
+(null, 'Big Mike', 22, 1006),
+(null, 'Bask', 22, 1006),
+(null, 'Youngui', 15, 1006),
+(null, 'Tavin', 10, 1006);
+
+INSERT INTO rackBatalha VALUES 
+(null, 'Grafiteh', 24, 1001),
+(null, 'MT', 24, 1001),
+(null, 'Zed', 19, 1001),
+(null, 'Sofia', 13, 1001),
+(null, 'Fael', 12, 1001);
 
 SELECT * FROM seguidores;		
 
@@ -234,9 +328,9 @@ nomeBatalha like '%%';
  
  select seguindo from seguidores where fkBatalhaS = 1004 and fkBatalhaSeguindo = 1000;
  
- 
- 
- 
- 
  SELECT * FROM post JOIN Batalhas ON fkBatalhaP = idBatalha WHERE nomeBatalha = 'Batalha Da Aldeia'
  ORDER BY dtPost DESC;
+ 
+SELECT * FROM rackBatalha AS rb JOIN Batalhas AS b ON rb.fkBatalhaRB = b.idBatalha;
+
+SELECT sum(seguidor) FROM  
