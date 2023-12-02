@@ -13,7 +13,7 @@ senhaUsuario varchar(14)
 
 CREATE TABLE batalhas(
 idBatalha int primary key auto_increment,
-nomeBatalha varchar(70),
+nomeBatalha varchar(70) unique,
 siglas varchar(7),
 apresentador1 varchar(45),
 emailBatalha varchar(80),
@@ -37,7 +37,7 @@ CONSTRAINT chkSeguindoSeguidores check (seguindo IN (1))
 CREATE TABLE rackBatalha(
 idRackBatalha int primary key auto_increment,
 nomeMc varchar(45),
-qtdTitulo int,
+qtdPonto int,
 fkBatalhaRB int,
 CONSTRAINT idRackBatalhaRackBatakha FOREIGN KEY (fkBatalhaRB) REFERENCES batalhas(idBatalha)
 );
@@ -200,6 +200,13 @@ INSERT INTO seguidores(idSeguidor,fkUsuarioS, fkBatalhaS, seguindo) VALUES
 INSERT INTO seguidores(idSeguidor, fKBatalhaS, fkBatalhaSeguindo, seguindo) VALUES
 (null, 1001, 1000, 1);
 
+INSERT INTO rackBatalha VALUES 
+(null, 'Guri' , 119, 1000),
+(null, 'Neo' , 80, 1000),
+(null, 'Jhony' , 59, 1000),
+(null, 'Prado' , 57, 1000),
+(null, 'Magão' , 53, 1000);
+
 
 SELECT * FROM seguidores;		
 
@@ -226,6 +233,9 @@ nomeBatalha like '%%';
  WHERE nomeBatalha = 'Batalha Da Aldeia';
  
  select seguindo from seguidores where fkBatalhaS = 1004 and fkBatalhaSeguindo = 1000;
+ 
+ 
+ 
  
  
  SELECT * FROM post JOIN Batalhas ON fkBatalhaP = idBatalha WHERE nomeBatalha = 'Batalha Da Aldeia'
