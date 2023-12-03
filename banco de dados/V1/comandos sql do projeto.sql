@@ -3,6 +3,7 @@ DROP DATABASE PontoDaBatalha;
 CREATE DATABASE PontoDaBatalha;
 USE PontoDaBatalha;
 
+
 CREATE TABLE usuario(
 idUsuario int primary key auto_increment,
 nomeUsuario varchar(45),
@@ -354,3 +355,5 @@ WHERE rb.fkBatalhaRB = "1000" ORDER BY idRackBatalha;
     
 SELECT  sum(seguindo) AS totalSeguidores FROM seguidores;
 
+SELECT idRackBatalha, nomeBatalha, nomeMc, qtdPonto FROM rackBatalha JOIN batalhas ON idBatalha = fkBatalhaRB
+ WHERE fkBatalhaRB = '1000'; 

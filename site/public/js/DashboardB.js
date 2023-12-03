@@ -21,9 +21,9 @@ function pegarDadosPost() {
 
       })
 
-      setTimeout(pegarDadosBatalhas, 1000);
-      setTimeout(pegarTodosOsDadosBatalhas,2000);
-      setTimeout(pegarTotalUsuario, 2500);
+  setTimeout(pegarDadosBatalhas, 1000);
+  setTimeout(pegarTodosOsDadosBatalhas, 2000);
+  setTimeout(pegarTotalUsuario, 2500);
 }
 
 
@@ -81,7 +81,7 @@ function pegarDadosBatalhas() {
           console.log(json);
           console.log(JSON.stringify(json));
           sessionStorage.IMAGEMBATALHAS_BATALHAS = json.imagem;
-          setTimeout(carregarImagemBatalhas,100)
+          setTimeout(carregarImagemBatalhas, 100)
         });
       } else {
         return false;
@@ -110,10 +110,10 @@ function carregarImagemBatalhas() {
             console.log(batalhas);
             var esquerdaPagina = document.getElementById('div_esquerdaPagina');
 
-              esquerdaPagina.innerHTML += `
+            esquerdaPagina.innerHTML += `
               <img src="../paginaInicialIns/Imagens/${batalhas.imagem}" id="divimg" onclick="abrirPerfilBatalha('${batalhas.imagem}')">
                   `;
-            
+
           }
         })
       }
@@ -125,7 +125,7 @@ function carregarImagemBatalhas() {
 
 /*Pegar todos os dados das batalhas */
 var listaIdBatalha = [];
-var listaNomeBatalhas =  [];
+var listaNomeBatalhas = [];
 var listaSiglasBatalhas = [];
 var listaApresentadorBatalhas = [];
 var listaEmailBatalhas = [];
@@ -136,42 +136,42 @@ var listaImagemBatalhas = [];
 
 function pegarTodosOsDadosBatalhas() {
   fetch("/batalha/buscarTodosBatalha")
-  .then(function (resultado) {
-    console.log("ESTOU NO THEN DO entrar 5555()!");
+    .then(function (resultado) {
+      console.log("ESTOU NO THEN DO entrar 5555()!");
 
-    if (resultado.ok) {
+      if (resultado.ok) {
         resultado.json()
-        .then(json => {
-          console.log(json);
-          sessionStorage.IDBATALHAS_BATALHAS = json.idBatalha;
-          sessionStorage.NOMEBATALHA_BATALHAS = json.nomeBatalha;
-          sessionStorage.SIGLAS_BATALHAS = json.siglas;
-          sessionStorage.APRESENTADOR1_BATALHAS = json.apresentador1;
-          sessionStorage.EMAILBATALHA_BATALHAS = json.emailBatalha;
-          sessionStorage.TELEFONEBATALHA_BATALHAS = json.telefoneBatalha;
-          sessionStorage.IMAGEM_BATALHAS = json.imagem;
-          for (contador = 0; contador < json.length; contador++) {
-            var batalhas = json[contador];
-            listaIdBatalha.push(batalhas.idBatalha)
-            listaNomeBatalhas.push(batalhas.nomeBatalha);
-            listaSiglasBatalhas.push(batalhas.siglas);   
-            listaApresentadorBatalhas.push(batalhas.apresentador1);
-            listaEmailBatalhas.push(batalhas.emailBatalha);
-            listaTelefoneBatalhas.push(batalhas.telefoneBatalha);
-            listaImagemBatalhas.push(batalhas.imagem);        
-          }
-    setTimeout(mostrarResultadoPesquisa, 100)
+          .then(json => {
+            console.log(json);
+            sessionStorage.IDBATALHAS_BATALHAS = json.idBatalha;
+            sessionStorage.NOMEBATALHA_BATALHAS = json.nomeBatalha;
+            sessionStorage.SIGLAS_BATALHAS = json.siglas;
+            sessionStorage.APRESENTADOR1_BATALHAS = json.apresentador1;
+            sessionStorage.EMAILBATALHA_BATALHAS = json.emailBatalha;
+            sessionStorage.TELEFONEBATALHA_BATALHAS = json.telefoneBatalha;
+            sessionStorage.IMAGEM_BATALHAS = json.imagem;
+            for (contador = 0; contador < json.length; contador++) {
+              var batalhas = json[contador];
+              listaIdBatalha.push(batalhas.idBatalha)
+              listaNomeBatalhas.push(batalhas.nomeBatalha);
+              listaSiglasBatalhas.push(batalhas.siglas);
+              listaApresentadorBatalhas.push(batalhas.apresentador1);
+              listaEmailBatalhas.push(batalhas.emailBatalha);
+              listaTelefoneBatalhas.push(batalhas.telefoneBatalha);
+              listaImagemBatalhas.push(batalhas.imagem);
+            }
+            setTimeout(mostrarResultadoPesquisa, 100)
 
-        })
-    } else{
-      return false;
-    } 
-  }).catch(
-    function (erro){
-      res.status(500).json(erro.sqlMessage)
-    }
-  )
- }
+          })
+      } else {
+        return false;
+      }
+    }).catch(
+      function (erro) {
+        res.status(500).json(erro.sqlMessage)
+      }
+    )
+}
 
 
 
@@ -219,39 +219,39 @@ function publicarPost() {
 
 
 /*Pegar os dados do ranck */
-function pegarTotalUsuario(){
+function pegarTotalUsuario() {
   var rankingLateralDiv = document.getElementById('rankingLateral2');
   rankingLateralDiv.innerHTML += ``;
 
   fetch("/usuario/totalUsuario")
-  .then(function (resposta) {
-    if (resposta.ok) {
+    .then(function (resposta) {
+      if (resposta.ok) {
         resposta.json().then(function (resposta) {
           rankingLateralDiv.innerHTML += `${resposta.totalSeguidores}`;
           setTimeout(pegarDadosRack1, 100)
 
         })
-      }    
+      }
     })
-  
-  
+
+
   rankingLateralDiv.innerHTML += `A batalha mais seguida é `
   setTimeout(pegarDadosRack, 100)
 }
 
 
 function pegarDadosRack() {
-  var guardarRack ="";
-  
+  var guardarRack = "";
+
   var rankDasBatalha1Div = document.getElementById('rankDasBatalha1');
   fetch("/rack/listarR")
-  .then(function (resposta) {
-    if (resposta.ok) {
+    .then(function (resposta) {
+      if (resposta.ok) {
         resposta.json().then(function (resposta) {
-          guardarRack =`<div>A Batalha Mais Seguida</div>`
+          guardarRack = `<div>A Batalha Mais Seguida</div>`
           for (contador = 0; contador < resposta.length; contador++) {
             var rackb = resposta[contador];
-            
+
             guardarRack += `
             <div class="colocao">
             ${rackb.nomeBatalha}
@@ -264,174 +264,310 @@ function pegarDadosRack() {
           setTimeout(pegarDadosRack1, 100)
 
         })
-      }    
+      }
     })
 
 }
 
 
 
-function pegarDadosRack1(){
-  var guardarRack ="";
+function pegarDadosRack1() {
+  var guardarRack = "";
   var fkBatalhaRB = 1000;
   fetch("/rack/listarRB",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      fkBatalhaRBServer: fkBatalhaRB,
-  })
-})
-               .then(function (resposta) {
-                  if (resposta.ok) {
-                    resposta.json().then(function (resposta) {
-                      var rankDasBatalha2Div = document.getElementById('rankDasBatalha2');
-                      guardarRack =`
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkBatalhaRBServer: fkBatalhaRB,
+      })
+    })
+    .then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          var rankDasBatalha2Div = document.getElementById('rankDasBatalha2');
+          guardarRack = `
                       <div>Batalha Da Aldeia</div>`;
-            
-                        for (contador = 0; contador < resposta.length; contador++) {
-                          var rankb = resposta[contador];
-                          
-                          guardarRack += `
+
+          for (contador = 0; contador < resposta.length; contador++) {
+            var rankb = resposta[contador];
+
+            guardarRack += `
                           <div class="colocao">
                             ${rankb.nomeMc}
                             <div id="contagemSeguidores">${rankb.qtdPonto}</div>
                             </div>
                           `;
-                        }
-                        guardarRack.innerHTML += `</div>`
-                        rankDasBatalha2Div.innerHTML += guardarRack  
-                        setTimeout(pegarDadosRack2, 100)
-              
-                      })
-                    }    
-                  })
-              
-              }   
-    
-              
-          function pegarDadosRack2(){
-            var guardarRack ="";
+          }
+          guardarRack.innerHTML += `</div>`
+          rankDasBatalha2Div.innerHTML += guardarRack
+          setTimeout(pegarDadosRack2, 100)
+
+        })
+      }
+    })
+
+}
+
+
+function pegarDadosRack2() {
+  var guardarRack = "";
   var fkBatalhaRB = 1001
   fetch("/rack/listarRB",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      fkBatalhaRBServer: fkBatalhaRB,
-  })
-})
-.then(function (resposta) {
-  if (resposta.ok) {
-    resposta.json().then(function (resposta) {
-      var rankDasBatalha3Div = document.getElementById('rankDasBatalha3');
-      guardarRack =`
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkBatalhaRBServer: fkBatalhaRB,
+      })
+    })
+    .then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          var rankDasBatalha3Div = document.getElementById('rankDasBatalha3');
+          guardarRack = `
       <div>Batalha Do Coliseu</div>`;
 
-        for (contador = 0; contador < resposta.length; contador++) {
-          var rankb = resposta[contador];
-          
-          guardarRack += `
+          for (contador = 0; contador < resposta.length; contador++) {
+            var rankb = resposta[contador];
+
+            guardarRack += `
           <div class="colocao">
             ${rankb.nomeMc}
             <div id="contagemSeguidores">${rankb.qtdPonto}</div>
             </div>
           `;
-        }
-        guardarRack.innerHTML += `</div>`
-        rankDasBatalha3Div.innerHTML += guardarRack  
-        setTimeout(pegarDadosRack3, 100)
+          }
+          guardarRack.innerHTML += `</div>`
+          rankDasBatalha3Div.innerHTML += guardarRack
+          setTimeout(pegarDadosRack3, 100)
 
-      })
-    }    
-  })
-            
+        })
+      }
+    })
+
 }
 
-function pegarDadosRack3(){
-  var guardarRack ="";
-  var fkBatalhaRB=1004
+function pegarDadosRack3() {
+  var guardarRack = "";
+  var fkBatalhaRB = 1004
 
   fetch("/rack/listarRB",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      fkBatalhaRBServer: fkBatalhaRB,
-  })
-})
-.then(function (resposta) {
-  if (resposta.ok) {
-    resposta.json().then(function (resposta) {
-      var rankDasBatalha4Div = document.getElementById('rankDasBatalha4');
-      guardarRack =`
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkBatalhaRBServer: fkBatalhaRB,
+      })
+    })
+    .then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          var rankDasBatalha4Div = document.getElementById('rankDasBatalha4');
+          guardarRack = `
       <div>Batalha Da Linear</div>`;
 
-        for (contador = 0; contador < resposta.length; contador++) {
-          var rankb = resposta[contador];
-          
-          guardarRack += `
+          for (contador = 0; contador < resposta.length; contador++) {
+            var rankb = resposta[contador];
+
+            guardarRack += `
           <div class="colocao">
             ${rankb.nomeMc}
             <div id="contagemSeguidores">${rankb.qtdPonto}</div>
             </div>
           `;
-        }
-        guardarRack.innerHTML += `</div>`
-        rankDasBatalha4Div.innerHTML += guardarRack  
-        setTimeout(pegarDadosRack4, 100)
+          }
+          guardarRack.innerHTML += `</div>`
+          rankDasBatalha4Div.innerHTML += guardarRack
+          setTimeout(pegarDadosRack4, 100)
 
-      })
-    }    
-  })
+        })
+      }
+    })
 }
 
-function pegarDadosRack4(){
-  var guardarRack ="";
-  var fkBatalhaRB=1005
+function pegarDadosRack4() {
+  var guardarRack = "";
+  var fkBatalhaRB = 1005
 
   fetch("/rack/listarRB",
-  {
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkBatalhaRBServer: fkBatalhaRB,
+      })
+    })
+    .then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          var rankDasBatalha5Div = document.getElementById('rankDasBatalha5');
+          guardarRack = `
+      <div>Batalha Da Norte</div>`;
+
+          for (contador = 0; contador < resposta.length; contador++) {
+            var rankb = resposta[contador];
+
+            guardarRack += `
+          <div class="colocao">
+            ${rankb.nomeMc}
+            <div id="contagemSeguidores">${rankb.qtdPonto}</div>
+            </div>
+          `;
+          }
+          guardarRack.innerHTML += `</div>`
+          rankDasBatalha5Div.innerHTML += guardarRack
+
+        })
+      }
+    })
+}
+
+function addRank() {
+  
+  telaFeed.style.display = "none";
+  telaPerfilBatalha.style.display = "none";
+  telaAddPost.style.display = "none";
+  header.style.display = "none";
+  pesquisa.style.display = "none";
+  mostrarResultadoBatalhas.style.display = "none";
+  telaRankDiv.style.display = "flex";
+
+
+  var guardarRack = `<div class="titulo">Você ainda não tem um rank<br><br><br></div>
+  <button onclick='criarRank()'>+</button>`;
+  var batalhaSeguida = document.getElementById('div_idBatalha').innerText;
+  var rankDasBatalha6Div = document.getElementById('rankDasBatalha6');
+
+  fetch("/rack/verificarRank", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      fkBatalhaRBServer: fkBatalhaRB,
-  })
-})
-.then(function (resposta) {
-  if (resposta.ok) {
-    resposta.json().then(function (resposta) {
-      var rankDasBatalha5Div = document.getElementById('rankDasBatalha5');
-      guardarRack =`
-      <div>Batalha Da Norte</div>`;
+      batalhaSeguidaServer: batalhaSeguida,
+    }),
+  }).then(function (resposta) {
+    if (resposta.ok) {
+      resposta.json().then(function (resposta) {
+        console.log("Dados recebidos: ", JSON.stringify(resposta));
+        if (resposta.length > 0) {
+          guardarRack = "";
 
-        for (contador = 0; contador < resposta.length; contador++) {
-          var rankb = resposta[contador];
-          
-          guardarRack += `
-          <div class="colocao">
-            ${rankb.nomeMc}
-            <div id="contagemSeguidores">${rankb.qtdPonto}</div>
-            </div>
-          `;
+          for (contador = 0; contador < resposta.length; contador++) {
+            var rankb = resposta[contador];
+
+            guardarRack += `
+                  <div class="colocao">
+                    ${rankb.nomeMc}
+                    <div id="contagemSeguidores">${rankb.qtdPonto}</div>
+                    </div>
+                  `;
+          }
+          guardarRack.innerHTML += `
+          </div>`
+
+          rankDasBatalha6Div.innerHTML = guardarRack
+          rankDasBatalha6Div.innerHTML += `<button class="button" onclick='apagarRank()'>Apagar Rack</button>`
         }
-        guardarRack.innerHTML += `</div>`
-        rankDasBatalha5Div.innerHTML += guardarRack  
-
-      })
-    }    
+      });
+    }
   })
+  rankDasBatalha6Div.innerHTML = guardarRack
 }
 
 
+
+function apagarRank(){
+  var guardarRack = "";
+  var batalhaSeguida = document.getElementById('div_idBatalha').innerText;
+  var rankDasBatalha6Div = document.getElementById('rankDasBatalha6');
+
+  fetch("/rack/apagarRank", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      batalhaSeguidaServer: batalhaSeguida,
+    }),
+  }).then(function (resposta) {
+    if (resposta.ok) {
+      resposta.json().then(function (resposta) {
+        console.log("Dados recebidos: ", JSON.stringify(resposta));
+        if (resposta.length > 0) {
+          guardarRack = "";
+
+          for (contador = 0; contador < resposta.length; contador++) {
+            var rankb = resposta[contador];
+
+            guardarRack += `
+                  <div class="colocao">
+                    ${rankb.nomeMc}
+                    <div id="contagemSeguidores">${rankb.qtdPonto}</div>
+                    </div>
+                  `;
+          }
+          guardarRack.innerHTML += `
+          </div>`
+
+          rankDasBatalha6Div.innerHTML = guardarRack
+          rankDasBatalha6Div.innerHTML += `<button class="button" onclick='apagarRank()'>Apagar Rack</button>`
+        }
+      });
+    }
+  })
+  rankDasBatalha6Div.innerHTML = guardarRack
+window.location = "../Dashboard/DashboardB.html"
+}
+
+function criarRank(){
+  criarRankDiv.style.display = "block";
+}
+
+function enviarRank(){
+  var nomeMc1 = input_nomeMc1.value;
+  var nomeMc2 = input_nomeMc2.value;
+  var nomeMc3 = input_nomeMc3.value;
+  var nomeMc4 = input_nomeMc4.value;
+  var nomeMc5 = input_nomeMc5.value;
+
+  var pontos1 = input_pontos1.value;
+  var pontos2 = input_pontos2.value;
+  var pontos3 = input_pontos3.value;
+  var pontos4 = input_pontos4.value;
+  var pontos5 = input_pontos5.value;
+  var batalhaSeguida = document.getElementById('div_idBatalha').innerText;
+
+  fetch("/rack/cadastrarRank", {
+    method: "POST",
+    headers: {
+        "Content-Type": 'application/json',
+    },
+    body: JSON.stringify({
+      nomeMc1Server: nomeMc1,
+      nomeMc2Server: nomeMc2,
+      nomeMc3Server: nomeMc3,
+      nomeMc4Server: nomeMc4,
+      nomeMc5Server: nomeMc5,
+      pontos1Server: pontos1,
+      pontos2Server: pontos2,
+      pontos3Server: pontos3,
+      pontos4Server: pontos4,
+      pontos5Server: pontos5,
+      batalhaSeguidaServer: batalhaSeguida,
+    })
+})
+window.location = "../Dashboard/DashboardB.html"
+}
 
 
 
@@ -451,6 +587,8 @@ var telaPerfilBatalha = document.getElementById('div_telaPerfilBatalha');
 var telaFeed = document.getElementById('div_feed2');
 var telaAddPost = document.getElementById('div_telaAddPost');
 var mostrarResultadoBatalhas = document.getElementById('div_mostrarResultadoBatalhas');
+var telaRankDiv = document.getElementById('telaRank');
+var criarRankDiv = document.getElementById('criarRank');
 
 
 
@@ -461,7 +599,7 @@ batalhaSeguida.innerHTML = `${idBatalha}`;
 var nomeBatalha = document.getElementById('nomeBatalha');
 nomeBatalha.innerHTML = sessionStorage.NOMEBATALHA_BATALHAS;
 var imagemBatalhaPerfil = document.getElementById('div_imagemBatalhaPerfil');
-var imagemBatalhaPerfil2 =sessionStorage.IMAGEM_BATALHAS;
+var imagemBatalhaPerfil2 = sessionStorage.IMAGEM_BATALHAS;
 imagemBatalhaPerfil.src = `../paginaInicialIns/Imagens/${imagemBatalhaPerfil2}`;
 var nomeBatalha2 = document.getElementById('nomeBatalha2');
 nomeBatalha2.innerHTML = sessionStorage.NOMEBATALHA_BATALHAS;
@@ -586,6 +724,7 @@ function abrirPesquisa() {
   telaFeed.style.display = "none";
   mostrarResultadoBatalhas.style.display = "flex";
   pesquisa.style.display = "flex";
+  telaRankDiv.style.display = "none";
 }
 
 
@@ -597,8 +736,13 @@ function abrirHome() {
   telaAddPost.style.display = "none";
   header.style.display = "flex";
   pesquisa.style.display = "none";
+  telaRankDiv.style.display = "none";
   mostrarResultadoBatalhas.style.display = "none";
+
 }
+
+
+
 
 function abrirPerfilBatalha(nomeImagemBatalha) {
   var nomeBatalhaDiv = document.getElementById('div_nomeBatlha');
@@ -612,79 +756,80 @@ function abrirPerfilBatalha(nomeImagemBatalha) {
   telaPerfilBatalha.style.display = "flex";
   telaFeed.style.display = "none";
   mostrarResultadoBatalhas.style.display = "none";
+  telaRankDiv.style.display = "none";
 
   var nomeImagemBatalhaPNG = nomeImagemBatalha;
-  
 
-  if(nomeImagemBatalhaPNG == 'batalha_da_aldeia.png' || nomeImagemBatalhaPNG == 'Batalha Da Aldeia'){
+
+  if (nomeImagemBatalhaPNG == 'batalha_da_aldeia.png' || nomeImagemBatalhaPNG == 'Batalha Da Aldeia') {
     idBatalhaDiv.innerHTML = listaIdBatalha[0];
-  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[0];
-  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[0]}`;
-apresentador1Div.innerHTML = `${listaApresentadorBatalhas[0]}`
+    nomeBatalhaDiv.innerHTML = listaNomeBatalhas[0];
+    fotoPerfilDiv.src = `../paginaInicialIns/Imagens/${listaImagemBatalhas[0]}`;
+    apresentador1Div.innerHTML = `${listaApresentadorBatalhas[0]}`
 
-  }else if(nomeImagemBatalhaPNG == 'batalha_do_coliseu.png' || nomeImagemBatalhaPNG == 'Batalha Do Coliseu'){
-    idBatalhaDiv.innerHTML = listaIdBatalha[1]; 
+  } else if (nomeImagemBatalhaPNG == 'batalha_do_coliseu.png' || nomeImagemBatalhaPNG == 'Batalha Do Coliseu') {
+    idBatalhaDiv.innerHTML = listaIdBatalha[1];
     nomeBatalhaDiv.innerHTML = listaNomeBatalhas[1];
-    fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[1]}`;
-  apresentador1Div.innerHTML = `${listaApresentadorBatalhas[1]}`
-  
-}else if(nomeImagemBatalhaPNG == 'batalha_da_brasilandia.png' || nomeImagemBatalhaPNG == 'Batalha Da Brasilândia'){
-  idBatalhaDiv.innerHTML = listaIdBatalha[2];
-  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[2];
-  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[2]}`;
-apresentador1Div.innerHTML = `${listaApresentadorBatalhas[2]}`
+    fotoPerfilDiv.src = `../paginaInicialIns/Imagens/${listaImagemBatalhas[1]}`;
+    apresentador1Div.innerHTML = `${listaApresentadorBatalhas[1]}`
 
-} else if(nomeImagemBatalhaPNG == 'batalha_da_leste.png' || nomeImagemBatalhaPNG == 'Batalha Da Leste'){
-  idBatalhaDiv.innerHTML = listaIdBatalha[3];
-  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[3];
-  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[3]}`;
-apresentador1Div.innerHTML = `${listaApresentadorBatalhas[3]}`
+  } else if (nomeImagemBatalhaPNG == 'batalha_da_brasilandia.png' || nomeImagemBatalhaPNG == 'Batalha Da Brasilândia') {
+    idBatalhaDiv.innerHTML = listaIdBatalha[2];
+    nomeBatalhaDiv.innerHTML = listaNomeBatalhas[2];
+    fotoPerfilDiv.src = `../paginaInicialIns/Imagens/${listaImagemBatalhas[2]}`;
+    apresentador1Div.innerHTML = `${listaApresentadorBatalhas[2]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_da_linear.png' || nomeImagemBatalhaPNG == 'Batalha Da Linear'){
-  idBatalhaDiv.innerHTML = listaIdBatalha[4];
-  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[4];
-  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[4]}`;
-apresentador1Div.innerHTML = `${listaApresentadorBatalhas[4]}`
+  } else if (nomeImagemBatalhaPNG == 'batalha_da_leste.png' || nomeImagemBatalhaPNG == 'Batalha Da Leste') {
+    idBatalhaDiv.innerHTML = listaIdBatalha[3];
+    nomeBatalhaDiv.innerHTML = listaNomeBatalhas[3];
+    fotoPerfilDiv.src = `../paginaInicialIns/Imagens/${listaImagemBatalhas[3]}`;
+    apresentador1Div.innerHTML = `${listaApresentadorBatalhas[3]}`
 
-} else if(nomeImagemBatalhaPNG == 'batalha_da_norte.png' || nomeImagemBatalhaPNG == 'Batalha Da Norte'){
-  idBatalhaDiv.innerHTML = listaIdBatalha[5];
-  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[5];
-  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[5]}`;
-apresentador1Div.innerHTML = `${listaApresentadorBatalhas[5]}`
+  } else if (nomeImagemBatalhaPNG == 'batalha_da_linear.png' || nomeImagemBatalhaPNG == 'Batalha Da Linear') {
+    idBatalhaDiv.innerHTML = listaIdBatalha[4];
+    nomeBatalhaDiv.innerHTML = listaNomeBatalhas[4];
+    fotoPerfilDiv.src = `../paginaInicialIns/Imagens/${listaImagemBatalhas[4]}`;
+    apresentador1Div.innerHTML = `${listaApresentadorBatalhas[4]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_do_ana_rosa.png' || nomeImagemBatalhaPNG == 'Batalha Do Ana Rosa'){
-  idBatalhaDiv.innerHTML = listaIdBatalha[6];
-  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[6];
-  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[6]}`;
-apresentador1Div.innerHTML = `${listaApresentadorBatalhas[6]}`
+  } else if (nomeImagemBatalhaPNG == 'batalha_da_norte.png' || nomeImagemBatalhaPNG == 'Batalha Da Norte') {
+    idBatalhaDiv.innerHTML = listaIdBatalha[5];
+    nomeBatalhaDiv.innerHTML = listaNomeBatalhas[5];
+    fotoPerfilDiv.src = `../paginaInicialIns/Imagens/${listaImagemBatalhas[5]}`;
+    apresentador1Div.innerHTML = `${listaApresentadorBatalhas[5]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_do_tanque.png' || nomeImagemBatalhaPNG == 'Batalha Do Tanque'){
-  idBatalhaDiv.innerHTML = listaIdBatalha[7];
-  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[7];
-  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[7]}`;
-apresentador1Div.innerHTML = `${listaApresentadorBatalhas[7]}`
+  } else if (nomeImagemBatalhaPNG == 'batalha_do_ana_rosa.png' || nomeImagemBatalhaPNG == 'Batalha Do Ana Rosa') {
+    idBatalhaDiv.innerHTML = listaIdBatalha[6];
+    nomeBatalhaDiv.innerHTML = listaNomeBatalhas[6];
+    fotoPerfilDiv.src = `../paginaInicialIns/Imagens/${listaImagemBatalhas[6]}`;
+    apresentador1Div.innerHTML = `${listaApresentadorBatalhas[6]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_321tempo.png' || nomeImagemBatalhaPNG == 'Batalha 321 Tempo'){
-  idBatalhaDiv.innerHTML = listaIdBatalha[8];
-  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[8];
-  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[8]}`;
-apresentador1Div.innerHTML = `${listaApresentadorBatalhas[8]}`
+  } else if (nomeImagemBatalhaPNG == 'batalha_do_tanque.png' || nomeImagemBatalhaPNG == 'Batalha Do Tanque') {
+    idBatalhaDiv.innerHTML = listaIdBatalha[7];
+    nomeBatalhaDiv.innerHTML = listaNomeBatalhas[7];
+    fotoPerfilDiv.src = `../paginaInicialIns/Imagens/${listaImagemBatalhas[7]}`;
+    apresentador1Div.innerHTML = `${listaApresentadorBatalhas[7]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_do_estudante.png' || nomeImagemBatalhaPNG == 'Batalha Do Estudante'){
-  idBatalhaDiv.innerHTML = listaIdBatalha[9];
-  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[9];
-  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[9]}`;
-apresentador1Div.innerHTML = `${listaApresentadorBatalhas[9]}`
+  } else if (nomeImagemBatalhaPNG == 'batalha_321tempo.png' || nomeImagemBatalhaPNG == 'Batalha 321 Tempo') {
+    idBatalhaDiv.innerHTML = listaIdBatalha[8];
+    nomeBatalhaDiv.innerHTML = listaNomeBatalhas[8];
+    fotoPerfilDiv.src = `../paginaInicialIns/Imagens/${listaImagemBatalhas[8]}`;
+    apresentador1Div.innerHTML = `${listaApresentadorBatalhas[8]}`
 
-}else if(nomeImagemBatalhaPNG == 'batalha_nacional.png' || nomeImagemBatalhaPNG == 'Batalha Do Nacional'){
-  idBatalhaDiv.innerHTML = listaIdBatalha[10];
-  nomeBatalhaDiv.innerHTML = listaNomeBatalhas[10];
-  fotoPerfilDiv.src =`../paginaInicialIns/Imagens/${listaImagemBatalhas[10]}`;
-apresentador1Div.innerHTML = `${listaApresentadorBatalhas[10]}`
+  } else if (nomeImagemBatalhaPNG == 'batalha_do_estudante.png' || nomeImagemBatalhaPNG == 'Batalha Do Estudante') {
+    idBatalhaDiv.innerHTML = listaIdBatalha[9];
+    nomeBatalhaDiv.innerHTML = listaNomeBatalhas[9];
+    fotoPerfilDiv.src = `../paginaInicialIns/Imagens/${listaImagemBatalhas[9]}`;
+    apresentador1Div.innerHTML = `${listaApresentadorBatalhas[9]}`
 
-}
-setTimeout(carregarQtdSeguidores, 10);
-setTimeout(verificarSeguidor, 1000);
+  } else if (nomeImagemBatalhaPNG == 'batalha_nacional.png' || nomeImagemBatalhaPNG == 'Batalha Do Nacional') {
+    idBatalhaDiv.innerHTML = listaIdBatalha[10];
+    nomeBatalhaDiv.innerHTML = listaNomeBatalhas[10];
+    fotoPerfilDiv.src = `../paginaInicialIns/Imagens/${listaImagemBatalhas[10]}`;
+    apresentador1Div.innerHTML = `${listaApresentadorBatalhas[10]}`
+
+  }
+  setTimeout(carregarQtdSeguidores, 10);
+  setTimeout(verificarSeguidor, 1000);
 }
 
 
@@ -694,6 +839,7 @@ function btnAdicionarPost() {
   pesquisa.style.display = "none";
   header.style.display = "none";
   telaAddPost.style.display = "flex";
+  telaRankDiv.style.display = "none";
   mostrarResultadoBatalhas.style.display = "none";
 }
 
@@ -718,43 +864,43 @@ function pesquisarBatalhaFuncao() {
     body: JSON.stringify({
       pesquisaBatalhaServer: pesquisaBatalha,
     })
-  }) .then(function (resposta) {
+  }).then(function (resposta) {
     console.log("ESTOU NO THEN DO entrar 2222()!");
 
     if (resposta.ok) {
-        resposta.json()
+      resposta.json()
         .then(json => {
           console.log(json);
           sessionStorage.NOMEBATALHA_BATALHAS = json.nomeBatalha;
-          console.log(resposta+"aqui maca" + nomeBatalha)
+          console.log(resposta + "aqui maca" + nomeBatalha)
           for (contador = 0; contador < json.length; contador++) {
             var batalhasP = json[contador];
-            listaNomeBatalha.push(batalhasP.nomeBatalha)           
+            listaNomeBatalha.push(batalhasP.nomeBatalha)
           }
-    setTimeout(mostrarResultadoPesquisa, 100)
+          setTimeout(mostrarResultadoPesquisa, 100)
         })
-    } else{
+    } else {
       return false;
-    } 
+    }
   }).catch(
-    function (erro){
+    function (erro) {
       res.status(500).json(erro.sqlMessage)
     }
   )
 
 
- }
+}
 
 
-function mostrarResultadoPesquisa(){
+function mostrarResultadoPesquisa() {
   var mostrarResultadoBatalhas = document.getElementById('div_mostrarResultadoBatalhas');
   mostrarResultadoBatalhas.innerHTML = ""
   mostrarResultadoBatalhas.innerHTML += `<div class="headerPesquisa" id="div_pesquisa"> 
   <img src="../paginaInicialIns/Imagens/lupa.png" >
   <input id="input_pesquisaBatalha"  placeholder="Pesquise aqui">
   <button onclick="pesquisarBatalhaFuncao()">Pesquisar</button>`;
-  
-  for(var contador = 0; contador < listaNomeBatalha.length; contador++){
+
+  for (var contador = 0; contador < listaNomeBatalha.length; contador++) {
     mostrarResultadoBatalhas.innerHTML += `
       <div class="resultadoBatalha" onclick="abrirPerfilBatalha('${listaNomeBatalha[contador]}')">
     ${listaNomeBatalha[contador]}
@@ -768,43 +914,43 @@ function mostrarResultadoPesquisa(){
 
 
 /*Seguidor*/
-function seguir(){
+function seguir() {
   var btnSeguir = document.getElementById('btnSeguir').innerText;
   var batalhaSeguida = document.getElementById('div_idBatalha').innerText;
 
- 
-  if(btnSeguir == "Seguir"){
-      fetch("/seguidor/seguir", {
-          method: "POST",
-          headers:{
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            idBatalhaServer: idBatalha,
-            batalhaSeguidaServer: batalhaSeguida,
-          }),
-      }).then(function (resposta){
-          console.log("resposta: ", resposta);
-          if(resposta.ok){
-              document.getElementById('btnSeguir').innerText = "Deixar de Seguir";
-          }
-      })
-  } else{
-      fetch("/seguidor/deixarSeguir", {
-          method: "POST",
-          headers:{
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            idBatalhaServer: idBatalha,
-            batalhaSeguidaServer: batalhaSeguida
-          }),
-      }).then(function (resposta){
-          console.log("resposta: ", resposta);
-          if(resposta.ok){
-              document.getElementById('btnSeguir').innerText = "Seguir";
-          }
-      })
+
+  if (btnSeguir == "Seguir") {
+    fetch("/seguidor/seguir", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        idBatalhaServer: idBatalha,
+        batalhaSeguidaServer: batalhaSeguida,
+      }),
+    }).then(function (resposta) {
+      console.log("resposta: ", resposta);
+      if (resposta.ok) {
+        document.getElementById('btnSeguir').innerText = "Deixar de Seguir";
+      }
+    })
+  } else {
+    fetch("/seguidor/deixarSeguir", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        idBatalhaServer: idBatalha,
+        batalhaSeguidaServer: batalhaSeguida
+      }),
+    }).then(function (resposta) {
+      console.log("resposta: ", resposta);
+      if (resposta.ok) {
+        document.getElementById('btnSeguir').innerText = "Seguir";
+      }
+    })
   }
 }
 
@@ -816,55 +962,55 @@ function carregarQtdSeguidores() {
   var mostrarQtdSeguidores = document.getElementById('div_mostrarQtdSeguidores');
   mostrarQtdSeguidores.innerHTML = `0`;
   fetch("/seguidor/seguidores", {
-      method: "POST",
-      headers:{
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-          nomeBatalhaServer: nomeBatalha,
-      }),
-  }).then(function (resposta){
-      if(resposta.ok) {
-          resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      nomeBatalhaServer: nomeBatalha,
+    }),
+  }).then(function (resposta) {
+    if (resposta.ok) {
+      resposta.json().then(function (resposta) {
+        console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-              var qtd = 0;
-              for(var contador = 0; contador < resposta.length; contador++){
-                qtd++
-              }
-              mostrarQtdSeguidores.innerHTML = `${qtd}`
-          
-          });
-      }
+        var qtd = 0;
+        for (var contador = 0; contador < resposta.length; contador++) {
+          qtd++
+        }
+        mostrarQtdSeguidores.innerHTML = `${qtd}`
+
+      });
+    }
   })
 }
 
-function verificarSeguidor(){
+function verificarSeguidor() {
   var batalhaSeguida = document.getElementById('div_idBatalha').innerText;
   document.getElementById('btnSeguir').innerText = "Seguir";
   fetch("/seguidor/verificarSeguidor", {
-      method: "POST",
-      headers:{
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        idBatalhaServer: idBatalha,
-        batalhaSeguidaServer: batalhaSeguida,
-      }),
-  }).then(function (resposta){
-      if(resposta.ok) {
-          resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              var seguindoOuNao = resposta[0];
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      idBatalhaServer: idBatalha,
+      batalhaSeguidaServer: batalhaSeguida,
+    }),
+  }).then(function (resposta) {
+    if (resposta.ok) {
+      resposta.json().then(function (resposta) {
+        console.log("Dados recebidos: ", JSON.stringify(resposta));
+        var seguindoOuNao = resposta[0];
 
-              if(seguindoOuNao.seguindo == 1){
-                  document.getElementById('btnSeguir').innerText = "Deixar de Seguir";
-              } else{
-                  document.getElementById('btnSeguir').innerText = "Seguir";
-              }
-              
-          });
-      }
+        if (seguindoOuNao.seguindo == 1) {
+          document.getElementById('btnSeguir').innerText = "Deixar de Seguir";
+        } else {
+          document.getElementById('btnSeguir').innerText = "Seguir";
+        }
+
+      });
+    }
   })
   setTimeout(FeedPerfil, 200)
 }
@@ -872,23 +1018,23 @@ function verificarSeguidor(){
 function FeedPerfil() {
   var nomeBatalha = document.getElementById('div_nomeBatlha').innerText;
   fetch("/feed/feedPerfil", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        nomeBatalhaServer: nomeBatalha,
-      }),
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      nomeBatalhaServer: nomeBatalha,
+    }),
   }).then(function (resposta) {
-      if (resposta.ok) {
-          resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              for (contador = 0; contador < resposta.length; contador++) {
-                var post = resposta[contador];
-                var feed = document.getElementById('div_feedPerfil');
-    
-                if (post.imagemPost == '') {
-                  feed.innerHTML += `
+    if (resposta.ok) {
+      resposta.json().then(function (resposta) {
+        console.log("Dados recebidos: ", JSON.stringify(resposta));
+        for (contador = 0; contador < resposta.length; contador++) {
+          var post = resposta[contador];
+          var feed = document.getElementById('div_feedPerfil');
+
+          if (post.imagemPost == '') {
+            feed.innerHTML += `
                       <div class="post" id="post">
                       <div class="titulo" id="nomeBatalha">
                       ${post.nomeBatalha} </div>
@@ -896,8 +1042,8 @@ function FeedPerfil() {
                       </div>
                       </div>
                       `;
-                } else {
-                  feed.innerHTML += `
+          } else {
+            feed.innerHTML += `
                       <div class="post" id="post">
                       <div class="titulo" id="nomeBatalha">
                       ${post.nomeBatalha} </div>
@@ -907,14 +1053,13 @@ function FeedPerfil() {
                           src="../paginaInicialIns/Imagens/${post.imagemPost}" id="imagemPostada">
                   </div>
                       `;
-                } ;
-              }
-          })
-      }
+          };
+        }
+      })
+    }
   })
 }
 
 
 
 
- 

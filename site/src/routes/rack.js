@@ -12,4 +12,16 @@ var rackController = require("../controllers/rackController");
     rackController.listarRB(req, res);
   });
 
+  router.post('/verificarRank', function (req, res){
+    rackController.verificarRank(req, res);
+});
+
+router.post('/apagarRank', function (req, res){
+  rackController.apagarRank(req, res);
+});
+
+router.post("/cadastrarRank", function (req, res) {
+  rackController.cadastrarRank(req, res);
+});
+
 module.exports = router;
