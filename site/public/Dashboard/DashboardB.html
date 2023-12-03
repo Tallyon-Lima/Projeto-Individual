@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/DashboardB.css">
 </head>
 
-<body onload="pegarDadosPost() ,     carregarFeed()">
+<body onload="pegarDadosPost(),carregarFeed()">
 
      <!-- Tela de formulario -->
   <div class="tela-form-ajuda" id="div_tela_form_ajuda">
@@ -38,7 +38,7 @@
         <div class="modal">
             <div class="primeiraLinha">
                 <div class="divDaImagem">
-                    <img id="div_imagemBatalhaPerfil" src="../paginaInicialIns/Imagens/">
+                    <img id="div_imagemBatalhaPerfil" >
                 </div>
                 <div id="nomeBatalha">Nome Usuario</div>
                 <span onclick="fecharPerfil()">X</span>
@@ -100,6 +100,7 @@
 
 
     <div class="telaInicial" id="div_telaInicial">
+
         <div class="menuLateral">
 
 
@@ -186,77 +187,20 @@
 
 
 
-        <div class="rankingLateral">
+        <div class="rankingLateral" id="rankingLateral">
+            <div id="rankingLateral2"></div>
+            <div class="rankDasBatalha" id="rankDasBatalha1"></div>
 
-            <div class="maisSeguidos">
-                Batalhas mais seguidas:
-            </div>
-            <div class="rankDasBatalha" id="rankDasBatalha1">
-               
-            </div>
+            <div class="rankDasBatalha" id="rankDasBatalha2"></div>
 
+            <div class="rankDasBatalha" id="rankDasBatalha3"></div>
 
-        <div class="rankDasBatalha">
-            <div>Ranking Da Aldeia</div>
-            <div class="colocao">
-                bda
-                <div id="contagemSeguidores">50</div>
-                </div>
-            <div class="colocao">
-                bdn
-            <div id="contagemSeguidores">50</div>
-            </div>
-            <div class="colocao">
-                bdc
-            <div id="contagemSeguidores">50</div>
-            </div>
-            <div class="colocao">
-                bdl
-            <div id="contagemSeguidores">50</div>
-            </div>
-            <div class="colocao">
-                nacional
-            <div id="contagemSeguidores">50</div>
-            </div>
-            <div class="colocao">
-                bdar
-            <div id="contagemSeguidores">50</div>
-            </div>
-        </div>
+            <div class="rankDasBatalha" id="rankDasBatalha4"></div>
 
-
-        <div class="rankDasBatalha">
-            <div>Ranking Do Ana Rosa</div>
-            <div class="colocao">
-                bda
-                <div id="contagemSeguidores">50</div>
-            </div>
-            <div class="colocao">
-                bdn
-            <div id="contagemSeguidores">50</div>
-            </div>
-            <div class="colocao">
-                bdc
-            <div id="contagemSeguidores">50</div>
-            </div>
-            <div class="colocao">
-                bdl
-            <div id="contagemSeguidores">50</div>
-            </div>
-            <div class="colocao">
-                nacional
-            <div id="contagemSeguidores">50</div>
-            </div>
-            <div class="colocao">
-                bdar
-            </div>
-            <div id="contagemSeguidores">50</div>
-    </div>
-
+            <div class="rankDasBatalha" id="rankDasBatalha5"></div>
 
     </div>
 </body>
 </html>
 <script src="../js/DashboardB.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="../js/graficos.js"></script>
+

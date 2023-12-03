@@ -7,4 +7,9 @@ var rackController = require("../controllers/rackController");
     rackController.listarR(req, res);
   });
 
+  
+  router.post('/listarRB', function (req, res){
+    rackController.listarRB(req, res);
+  });
+
 module.exports = router;

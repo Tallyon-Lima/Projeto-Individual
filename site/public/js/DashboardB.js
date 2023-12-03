@@ -8,12 +8,7 @@ function pegarDadosPost() {
         console.log(resposta);
         resposta.json().then(json => {
           console.log(json);
-          console.log(JSON.stringify(json));
-          sessionStorage.IDPOST_POST = json.idPost;
-          sessionStorage.CONTEUDO_POST = json.conteudo;
-          sessionStorage.IMAGEMPOST_POST = json.imagemPost;
-          sessionStorage.DTPOST = json.dtPost;
-          sessionStorage.FKBATALHAP = json.fkBatalhaP;
+          console.log(JSON.stringify(json))
           sessionStorage.BATALHAS = JSON.stringify(json.batalha)
         });
       } else {
@@ -28,7 +23,7 @@ function pegarDadosPost() {
 
       setTimeout(pegarDadosBatalhas, 1000);
       setTimeout(pegarTodosOsDadosBatalhas,2000);
-      setTimeout(pegarDadosRack, 3000);
+      setTimeout(pegarTotalUsuario, 2500);
 }
 
 
@@ -224,31 +219,216 @@ function publicarPost() {
 
 
 /*Pegar os dados do ranck */
+function pegarTotalUsuario(){
+  var rankingLateralDiv = document.getElementById('rankingLateral2');
+  rankingLateralDiv.innerHTML += ``;
+
+  fetch("/usuario/totalUsuario")
+  .then(function (resposta) {
+    if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          rankingLateralDiv.innerHTML += `${resposta.totalSeguidores}`;
+          setTimeout(pegarDadosRack1, 100)
+
+        })
+      }    
+    })
+  
+  
+  rankingLateralDiv.innerHTML += `A batalha mais seguida é `
+  setTimeout(pegarDadosRack, 100)
+}
+
 
 function pegarDadosRack() {
-  var guardarRack =""
+  var guardarRack ="";
   
   var rankDasBatalha1Div = document.getElementById('rankDasBatalha1');
   fetch("/rack/listarR")
   .then(function (resposta) {
     if (resposta.ok) {
         resposta.json().then(function (resposta) {
-          guardarRack ="  <div>A batalha ma</div>"
+          guardarRack =`<div>A Batalha Mais Seguida</div>`
           for (contador = 0; contador < resposta.length; contador++) {
             var rackb = resposta[contador];
-
-              guardarRack += `
-                  <div class="colocao">
-                    ${rackb.nomeBatalha}
-                    <div id="contagemSeguidores">${rackb.seguidor}</div>
-                    </div>
-                  `;
+            
+            guardarRack += `
+            <div class="colocao">
+            ${rackb.nomeBatalha}
+            <div id="contagemSeguidores">${rackb.seguidor}</div>
+            </div>
+            `;
           }
+          guardarRack.innerHTML += `</div>`
           rankDasBatalha1Div.innerHTML += guardarRack
+          setTimeout(pegarDadosRack1, 100)
 
         })
       }    
     })
+
+}
+
+
+
+function pegarDadosRack1(){
+  var guardarRack ="";
+  var fkBatalhaRB = 1000;
+  fetch("/rack/listarRB",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      fkBatalhaRBServer: fkBatalhaRB,
+  })
+})
+               .then(function (resposta) {
+                  if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                      var rankDasBatalha2Div = document.getElementById('rankDasBatalha2');
+                      guardarRack =`
+                      <div>Batalha Da Aldeia</div>`;
+            
+                        for (contador = 0; contador < resposta.length; contador++) {
+                          var rankb = resposta[contador];
+                          
+                          guardarRack += `
+                          <div class="colocao">
+                            ${rankb.nomeMc}
+                            <div id="contagemSeguidores">${rankb.qtdPonto}</div>
+                            </div>
+                          `;
+                        }
+                        guardarRack.innerHTML += `</div>`
+                        rankDasBatalha2Div.innerHTML += guardarRack  
+                        setTimeout(pegarDadosRack2, 100)
+              
+                      })
+                    }    
+                  })
+              
+              }   
+    
+              
+          function pegarDadosRack2(){
+            var guardarRack ="";
+  var fkBatalhaRB = 1001
+  fetch("/rack/listarRB",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      fkBatalhaRBServer: fkBatalhaRB,
+  })
+})
+.then(function (resposta) {
+  if (resposta.ok) {
+    resposta.json().then(function (resposta) {
+      var rankDasBatalha3Div = document.getElementById('rankDasBatalha3');
+      guardarRack =`
+      <div>Batalha Do Coliseu</div>`;
+
+        for (contador = 0; contador < resposta.length; contador++) {
+          var rankb = resposta[contador];
+          
+          guardarRack += `
+          <div class="colocao">
+            ${rankb.nomeMc}
+            <div id="contagemSeguidores">${rankb.qtdPonto}</div>
+            </div>
+          `;
+        }
+        guardarRack.innerHTML += `</div>`
+        rankDasBatalha3Div.innerHTML += guardarRack  
+        setTimeout(pegarDadosRack3, 100)
+
+      })
+    }    
+  })
+            
+}
+
+function pegarDadosRack3(){
+  var guardarRack ="";
+  var fkBatalhaRB=1004
+
+  fetch("/rack/listarRB",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      fkBatalhaRBServer: fkBatalhaRB,
+  })
+})
+.then(function (resposta) {
+  if (resposta.ok) {
+    resposta.json().then(function (resposta) {
+      var rankDasBatalha4Div = document.getElementById('rankDasBatalha4');
+      guardarRack =`
+      <div>Batalha Da Linear</div>`;
+
+        for (contador = 0; contador < resposta.length; contador++) {
+          var rankb = resposta[contador];
+          
+          guardarRack += `
+          <div class="colocao">
+            ${rankb.nomeMc}
+            <div id="contagemSeguidores">${rankb.qtdPonto}</div>
+            </div>
+          `;
+        }
+        guardarRack.innerHTML += `</div>`
+        rankDasBatalha4Div.innerHTML += guardarRack  
+        setTimeout(pegarDadosRack4, 100)
+
+      })
+    }    
+  })
+}
+
+function pegarDadosRack4(){
+  var guardarRack ="";
+  var fkBatalhaRB=1005
+
+  fetch("/rack/listarRB",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      fkBatalhaRBServer: fkBatalhaRB,
+  })
+})
+.then(function (resposta) {
+  if (resposta.ok) {
+    resposta.json().then(function (resposta) {
+      var rankDasBatalha5Div = document.getElementById('rankDasBatalha5');
+      guardarRack =`
+      <div>Batalha Da Norte</div>`;
+
+        for (contador = 0; contador < resposta.length; contador++) {
+          var rankb = resposta[contador];
+          
+          guardarRack += `
+          <div class="colocao">
+            ${rankb.nomeMc}
+            <div id="contagemSeguidores">${rankb.qtdPonto}</div>
+            </div>
+          `;
+        }
+        guardarRack.innerHTML += `</div>`
+        rankDasBatalha5Div.innerHTML += guardarRack  
+
+      })
+    }    
+  })
 }
 
 
@@ -526,7 +706,7 @@ function btnAdicionarPost() {
 
 
 
-var listaNomeBatalha = [  ];
+var listaNomeBatalha = [];
 
 function pesquisarBatalhaFuncao() {
   var pesquisaBatalha = input_pesquisaBatalha.value.toLowerCase();
@@ -546,7 +726,7 @@ function pesquisarBatalhaFuncao() {
         .then(json => {
           console.log(json);
           sessionStorage.NOMEBATALHA_BATALHAS = json.nomeBatalha;
-          console.log(resposta+"aqui" + nomeBatalha)
+          console.log(resposta+"aqui maca" + nomeBatalha)
           for (contador = 0; contador < json.length; contador++) {
             var batalhasP = json[contador];
             listaNomeBatalha.push(batalhasP.nomeBatalha)           
@@ -737,4 +917,4 @@ function FeedPerfil() {
 
 
 
- /*Gráfico*/
+ 

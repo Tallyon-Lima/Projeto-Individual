@@ -27,9 +27,17 @@ function verificarSeguidor(idBatalha, batalhaSeguida) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+
+function totalUsuario() {
+    var instrucao = `SELECT  sum(seguindo) AS totalSeguidores FROM seguidores;`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     seguir,
      deixarSeguir,
      seguidores,
-     verificarSeguidor
+     verificarSeguidor,
+     totalUsuario
     }

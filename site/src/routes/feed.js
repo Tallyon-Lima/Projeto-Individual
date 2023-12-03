@@ -3,8 +3,6 @@ var router = express.Router();
 
 const feedController = require('../controllers/feedController.js');
 
-
-
 router.get('/listar', function (req, res){
   feedController.listar(req, res);
 });

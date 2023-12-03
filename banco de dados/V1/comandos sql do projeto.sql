@@ -312,6 +312,10 @@ SELECT * FROM batalhas;
 
 SELECT * FROM usuario;
 
+SELECT * FROM rackBatalha; 
+
+SELECT * FROM seguidores;
+
 SELECT * FROM post AS p
     JOIN batalhas AS b ON p.fkBatalhaP = b.idBatalha
     Order BY p.dtPost DESC;
@@ -331,6 +335,22 @@ nomeBatalha like '%%';
  SELECT * FROM post JOIN Batalhas ON fkBatalhaP = idBatalha WHERE nomeBatalha = 'Batalha Da Aldeia'
  ORDER BY dtPost DESC;
  
-SELECT * FROM rackBatalha AS rb JOIN Batalhas AS b ON rb.fkBatalhaRB = b.idBatalha;
+SELECT * FROM rackBatalha AS rb JOIN Batalhas AS b ON rb.fkBatalhaRB = b.idBatalha
+WHERE rb.fkBatalhaRB = "1000";
 
-SELECT sum(seguidor) FROM  
+SELECT SUM(seguindo) AS seguidor, b.nomeBatalha FROM seguidores AS s
+JOIN Batalhas AS b ON s.fkBatalhaS = b.idBatalha
+GROUP BY s.fkBatalhaS
+ORDER BY seguidor DESC;
+
+SELECT * FROM post JOIN Batalhas ON fkBatalhaP = idBatalha WHERE nomeBatalha = 'Batalha Da Aldeia'
+    ORDER BY dtPost DESC;
+
+SELECT * FROM rackBatalha AS rb JOIN Batalhas AS b ON rb.fkBatalhaRB = b.idBatalha
+WHERE rb.fkBatalhaRB = "1005";
+    
+SELECT rb.nomeMc, rb.qtdPonto FROM rackBatalha AS rb JOIN Batalhas AS b ON rb.fkBatalhaRB = b.idBatalha
+WHERE rb.fkBatalhaRB = "1000" ORDER BY idRackBatalha;
+    
+SELECT  sum(seguindo) AS totalSeguidores FROM seguidores;
+

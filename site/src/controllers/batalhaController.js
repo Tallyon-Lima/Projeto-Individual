@@ -70,9 +70,6 @@ function cadastrarB(req, res) {
 
 function buscarBatalha(req, res) {
     var pesquisaBatalha = req.body.pesquisaBatalhaServer;
-    if (ReadableStreamDefaultController == undefined) {
-        res.status(400).send("Não tem batalhas está undefined!");
-    }
 
     batalhaModel.buscarBatalha(pesquisaBatalha).then(function(resposta){
         res.status(200).send(resposta);

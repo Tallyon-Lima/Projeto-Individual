@@ -17,4 +17,9 @@ router.post("/deixarSeguir", function (req, res){
 router.post('/verificarSeguidor', function (req, res){
     seguidorController.verificarSeguidor(req, res);
 });
+
+router.get('/totalUsuario', function (req, res){
+    seguidorController.totalUsuario(req, res);
+  });
+  
 module.exports = router;

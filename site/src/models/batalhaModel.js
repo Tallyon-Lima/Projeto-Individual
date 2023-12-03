@@ -23,7 +23,7 @@ function cadastrarB(nomeBatalha, siglas, apresentador1, emailBatalha, telefoneBa
 function buscarBatalha(pesquisaBatalha) {
     var instrucao = `SELECT nomeBatalha FROM batalhas WHERE 
     nomeBatalha like '%${pesquisaBatalha}%'; `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
+    console.log("Executando a instrução SQL:  \n" + instrucao);
     return database.executar(instrucao);
 }
 
@@ -35,7 +35,7 @@ function listarB() {
 
 function buscarTodosBatalha() {
     var instrucao = ` SELECT * FROM batalhas;`;
-    console.log("Executando a instrução RSQL: \n" + instrucao);
+    console.log("Executando a instrução SQL:  \n" + instrucao);
     return database.executar(`${instrucao}`);
 }
 
