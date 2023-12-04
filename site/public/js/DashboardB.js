@@ -629,14 +629,6 @@ window.addEventListener("scroll", function () {
   }
 });
 
-window.addEventListener("scroll", function () {
-  var header = document.getElementById("div_telaPerfilBatalha");
-  if (window.scrollY > 0) {
-    header.style.display = "none";
-  } else {
-    header.style.display = "flex";
-  }
-});
 
 
 
